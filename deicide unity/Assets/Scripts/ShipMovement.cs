@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ShipMovement : MonoBehaviour
 {
-
-
     int delay = 0;
     public GameObject Gun;
     public GameObject Bullet;
@@ -19,18 +17,13 @@ public class ShipMovement : MonoBehaviour
         Gun = transform.Find("Gun").gameObject;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
+        // Getting input for movement
         rb.AddForce(new Vector2(Input.GetAxisRaw("Horizontal") * speed, 0));
         rb.AddForce(new Vector2(0, Input.GetAxisRaw("Vertical") * speed));
 
+        // Shooting on left click. Modify number after "delay >" to change the time between shots
         if (Input.GetMouseButton(0) && delay > 20)
             Shoot();
 
@@ -39,16 +32,19 @@ public class ShipMovement : MonoBehaviour
 
     void Shoot()
     {
+        // Checking for mouse position and making a Quaternion of it
         var MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         MousePos.z = 0;
         var aim = Quaternion.FromToRotation(Vector3.right, MousePos - transform.position);
 
+        // Spawning bullet and shooting it towards the mouse
         var bullet = (GameObject)Instantiate(Bullet, Gun.transform.position, aim);
         bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * 15;
         Destroy(bullet, 2.0f);
         delay = 0;
     }
 
+    // Ship takes 1 damage
     public void Damage()
     {
         health--;
