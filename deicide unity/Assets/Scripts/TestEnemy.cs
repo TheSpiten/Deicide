@@ -17,26 +17,32 @@ public class TestEnemy : MonoBehaviour
 
     void Update()
     {
+        // Simple movement along a Vector2, change speed_y and speed_x to change direction
         rb.velocity = new Vector2(speed_x, speed_y);
 
     }
 
+    // Checking for collision with the player's ship
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag=="Player")
+        if (collision.gameObject.tag == "Player")
         {
+            // Deals one damage to player's ship
             collision.gameObject.GetComponent<ShipMovement>().Damage();
+            // Destroys the enemy, probably not what we want
             Die();
         }
     }
 
-    void Damage()
+    // Deal one damage to the enemy
+    public void Damage()
     {
         health--;
         if (health == 0)
             Die();
     }
 
+    // Destroy the enemy
     void Die()
     {
         Destroy(gameObject);
