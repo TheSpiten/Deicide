@@ -5,16 +5,15 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public AudioClip soundCannon;
+    public AudioClip soundMachineGun1;
+    public AudioClip soundMachineGun2;
+    public AudioClip soundMachineGun3;
 
     private AudioSource soundSource;
 
-    private int soundIteration;
-    private List<float> soundTimers;
-    private List<AudioSource> soundSources;
-    private List<Component> soundComponents;
-
     private bool isMusicPlaying;
     private int currentMusicPlaying;
+    private List<int> machineGunSounds;
 
     private void Awake()
     {
@@ -32,69 +31,70 @@ public class AudioManager : MonoBehaviour
         // Does not destroy itself when a scene is loaded
         DontDestroyOnLoad(gameObject);
 
-        soundIteration = 0;
-        soundTimers = new List<float>();
-        soundSources = new List<AudioSource>();
-        soundComponents = new List<Component>();
-        soundSource = GetComponent<AudioSource>();
-    }
+        // Sets list for machine gun sounds
+        machineGunSounds = new List<int>();
+        SetMachineGunSounds();
 
-    void Start()
-    {
         // Music is by default not playing
         isMusicPlaying = false;
         currentMusicPlaying = 0;
     }
 
-    private void Update()
-    {/*
-        // Updates soundTimers
-        for (int i = 0; i < soundTimers.Count; i++)
-        {
-            soundTimers[i] -= Time.deltaTime;
-
-            // If a soundTimer is up it removes the source and the elements from the lists
-            if (soundTimers[i] <= 0)
-            {
-                Destroy(soundComponents[i]);
-                soundComponents.Remove(soundComponents[i]);
-                soundSources.Remove(soundSources[i]);
-                soundTimers[i] = 0;
-                soundTimers.Remove(0);
-                soundIteration--;
-            }
-        }*/
+    private void Start()
+    {
+        // Gets attached audio source component
+        soundSource = GetComponent<AudioSource>();
     }
 
     public void PlaySound(int soundNumber)
     {
-        AudioClip soundClip = soundCannon;
-        //int soundLength = 0;
+        AudioClip soundClip = soundMachineGun1;
 
         // Plays a sound depending on the integer
         switch (soundNumber)
         {
-            // Normal shot
+            // Machine gun shot
+            // Plays a random sound from a list of 3, never repeating the same sound in a row
             case 0:
+                if (machineGunSounds.Count < 1)
+                {
+                    SetMachineGunSounds();
+                }
+                int randomGunSounds = machineGunSounds[Mathf.FloorToInt(Random.Range(0, machineGunSounds.Count - 0.0001f))];
+                Debug.Log(randomGunSounds);
+                switch (randomGunSounds)
+                {
+                    case 1:
+                        soundClip = soundMachineGun1;
+                        break;
 
+                    case 2:
+                        soundClip = soundMachineGun2;
+                        break;
+
+                    case 3:
+                        soundClip = soundMachineGun3;
+                        break;
+
+                    default:
+                        soundClip = soundMachineGun1;
+                        break;
+                }
+                machineGunSounds.Remove(randomGunSounds);
+                if (machineGunSounds.Count < 1)
+                {
+                    SetMachineGunSounds();
+                    machineGunSounds.Remove(randomGunSounds);
+                }
                 break;
 
             // Cannon shot
             case 1:
                 soundClip = soundCannon;
-                //soundLength = 4;
                 break;
         }
 
         soundSource.PlayOneShot(soundClip, 1f);
-        /*
-        // Even I don't know what's going on here /Daniel
-        soundComponents.Add(gameObject.AddComponent<AudioSource>());
-        soundSources.Add(soundComponents[soundIteration].GetComponent<AudioSource>());
-        soundSources[soundIteration].clip = soundClip;
-        soundSources[soundIteration].Play();
-        soundTimers.Add(soundLength);
-        soundIteration++;*/
     }
 
     public void PlayMusic(int musicNumber)
@@ -125,5 +125,14 @@ public class AudioManager : MonoBehaviour
     public bool GetIsMusicPlaying()
     {
         return isMusicPlaying;
+    }
+
+    private void SetMachineGunSounds()
+    {
+        // Sets machineGunSounds list
+        machineGunSounds.Clear();
+        machineGunSounds.Add(1);
+        machineGunSounds.Add(2);
+        machineGunSounds.Add(3);
     }
 }
