@@ -8,8 +8,10 @@ public class Bossfunctions : MonoBehaviour
 
         public List<Color> colors; //list of colors, can be changed in inspector
 
-        SpriteRenderer renderReference;
-
+        public SpriteRenderer renderHead;
+        public SpriteRenderer renderBody;
+        public SpriteRenderer renderLegs;
+    /*
         void OnCollisionEnter2D(Collision2D coll)
         {
             if (coll.gameObject.tag == "Bullet") { //uncomment to check tag of colliding object
@@ -23,14 +25,16 @@ public class Bossfunctions : MonoBehaviour
                 }
                 renderReference.color = colors[counter];
             } //uncomment to check tag of colliding object
-        }
+        }*/
 
     // Start is called before the first frame update
     void Start()
     {
         counter = 0;
-        renderReference = GetComponent<SpriteRenderer>();
-        renderReference.color = colors[counter];
+        colors.Add(new Color(100f, 100f, 100f));
+        renderHead.color = colors[counter];
+        renderBody.color = colors[counter];
+        renderLegs.color = colors[counter];
 
     }
 
@@ -38,5 +42,34 @@ public class Bossfunctions : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void HitBoss(string enemyTag)
+    {
+        if (counter < colors.Count - 1)
+        {
+            counter++;
+        }
+        else
+        {
+            counter = 0;
+        }
+
+        switch(enemyTag)
+        {
+            case "EnemyHead":
+                renderHead.color = colors[counter];
+                break;
+
+            case "EnemyBody":
+                renderBody.color = colors[counter];
+                break;
+
+            case "EnemyLegs":
+                renderLegs.color = colors[counter];
+                break;
+
+        }
+        GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(0); Debug.Log("hej");
     }
 }

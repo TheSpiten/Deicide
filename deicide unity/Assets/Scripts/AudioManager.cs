@@ -50,6 +50,8 @@ public class AudioManager : MonoBehaviour
     {
         AudioClip soundClip = soundMachineGun1;
 
+        float soundVolume = 1f;
+
         // Plays a sound depending on the integer
         switch (soundNumber)
         {
@@ -86,15 +88,17 @@ public class AudioManager : MonoBehaviour
                     SetMachineGunSounds();
                     machineGunSounds.Remove(randomGunSounds);
                 }
+                soundVolume = 0.1f;
                 break;
 
             // Cannon shot
             case 1:
                 soundClip = soundCannon;
+                soundVolume = 1f;
                 break;
         }
 
-        soundSource.PlayOneShot(soundClip, 1f);
+        soundSource.PlayOneShot(soundClip, soundVolume);
     }
 
     public void PlayMusic(int musicNumber)
