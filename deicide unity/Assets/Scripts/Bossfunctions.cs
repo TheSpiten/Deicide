@@ -70,6 +70,5 @@ public class Bossfunctions : MonoBehaviour
                 break;
 
         }
-        GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(0); Debug.Log("hej");
     }
 }
