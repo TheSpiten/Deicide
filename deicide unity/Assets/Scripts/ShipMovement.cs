@@ -42,6 +42,7 @@ public class ShipMovement : MonoBehaviour
         bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * 15;
         Destroy(bullet, 2.0f);
         delay = 0;
+        GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(1);
     }
 
     // Ship takes 1 damage
