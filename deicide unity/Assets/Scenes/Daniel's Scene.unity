@@ -716,6 +716,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4486374036441482228, guid: 8c56b058b5a8eab4997a7647bf583fe5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486374036441482228, guid: 8c56b058b5a8eab4997a7647bf583fe5,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: -9.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486374036441482229, guid: 8c56b058b5a8eab4997a7647bf583fe5,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 9.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c56b058b5a8eab4997a7647bf583fe5, type: 3}
 --- !u!1001 &6211723659428320880
@@ -835,6 +850,11 @@ PrefabInstance:
         type: 3}
       propertyPath: speed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6211723658415701415, guid: 8a5d4a95df32a7340882dd21720d397a,
+        type: 3}
+      propertyPath: shootAim
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6211723658415701418, guid: 8a5d4a95df32a7340882dd21720d397a,
         type: 3}
