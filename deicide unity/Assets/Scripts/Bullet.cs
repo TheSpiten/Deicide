@@ -13,5 +13,11 @@ public class Bullet : MonoBehaviour
             collision.gameObject.GetComponent<TestEnemy>().Damage();
             Destroy(gameObject);
         }
+        else if (collision.gameObject.tag == "EnemyHead" || collision.gameObject.tag == "EnemyLegs" || collision.gameObject.tag == "EnemyBody")
+        {
+            //collision.gameObject.GetComponent<Bossfunctions>().HitBoss(collision.gameObject.tag);
+            Destroy(gameObject);
+            GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(0);
+        }
     }
 }
