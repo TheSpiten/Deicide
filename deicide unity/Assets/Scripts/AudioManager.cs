@@ -63,7 +63,7 @@ public class AudioManager : MonoBehaviour
                     SetMachineGunSounds();
                 }
                 int randomGunSounds = machineGunSounds[Mathf.FloorToInt(Random.Range(0, machineGunSounds.Count - 0.0001f))];
-                Debug.Log(randomGunSounds);
+                
                 switch (randomGunSounds)
                 {
                     case 1:

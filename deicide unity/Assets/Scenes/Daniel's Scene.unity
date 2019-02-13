@@ -804,7 +804,7 @@ PrefabInstance:
     - target: {fileID: 6211723658415701415, guid: 8a5d4a95df32a7340882dd21720d397a,
         type: 3}
       propertyPath: dashMultiplier
-      value: 1.25
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 6211723658415701415, guid: 8a5d4a95df32a7340882dd21720d397a,
         type: 3}
@@ -819,7 +819,7 @@ PrefabInstance:
     - target: {fileID: 6211723658415701415, guid: 8a5d4a95df32a7340882dd21720d397a,
         type: 3}
       propertyPath: dashSpeedIncrease
-      value: 2.5
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 6211723658415701415, guid: 8a5d4a95df32a7340882dd21720d397a,
         type: 3}
@@ -830,6 +830,11 @@ PrefabInstance:
         type: 3}
       propertyPath: dashSpeedDuration
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6211723658415701415, guid: 8a5d4a95df32a7340882dd21720d397a,
+        type: 3}
+      propertyPath: speed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6211723658415701418, guid: 8a5d4a95df32a7340882dd21720d397a,
         type: 3}

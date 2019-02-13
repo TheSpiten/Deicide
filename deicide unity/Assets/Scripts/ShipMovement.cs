@@ -27,7 +27,7 @@ public class ShipMovement : MonoBehaviour
     }
 
     // Should maybe be FixedUpdate()?
-    void Update()
+    void FixedUpdate()
     {
         // Updates dash speed
         float newVelocityX = rb.velocity.x;
@@ -52,15 +52,19 @@ public class ShipMovement : MonoBehaviour
         }
         rb.velocity = new Vector2(newVelocityX, newVelocityY);
 
+        // Getting input for movement
+        rb.AddForce(new Vector2(Input.GetAxisRaw("Horizontal") * speed * dashCurrentIncreasedSpeed, 0));
+        rb.AddForce(new Vector2(0, Input.GetAxisRaw("Vertical") * speed * dashCurrentIncreasedSpeed));
+        
+    }
+
+    private void Update()
+    {
         // Updates dashTimer
         dashTimer = TimerTick(dashTimer);
         // Updates dashSpeedTimer
         dashSpeedTimer = TimerTick(dashSpeedTimer);
 
-        // Getting input for movement
-        rb.AddForce(new Vector2(Input.GetAxisRaw("Horizontal") * speed * dashCurrentIncreasedSpeed, 0));
-        rb.AddForce(new Vector2(0, Input.GetAxisRaw("Vertical") * speed * dashCurrentIncreasedSpeed));
-        
         // Declares input keys
         var shootKey = KeyCode.Z;
         var dashKey = KeyCode.X;
@@ -75,7 +79,7 @@ public class ShipMovement : MonoBehaviour
                 Shoot();
             }
         }
-        
+
         // Dashes if dashKey (or right click?) is pressed
         if (Input.GetMouseButton(1) || Input.GetKeyDown(dashKey))
         {
