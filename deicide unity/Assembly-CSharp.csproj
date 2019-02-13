@@ -61,12 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\AudioManager.cs" />
-<<<<<<< HEAD
     <Compile Include="Assets\Scripts\BackgroundScroller.cs" />
-=======
-    <Compile Include="Assets\Scripts\bosscolission.cs" />
-    <Compile Include="Assets\Scripts\Bossfunctions.cs" />
->>>>>>> master
     <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\ShipMovement.cs" />
     <Compile Include="Assets\Scripts\TestEnemy.cs" />
