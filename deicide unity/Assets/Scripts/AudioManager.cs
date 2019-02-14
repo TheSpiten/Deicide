@@ -96,6 +96,11 @@ public class AudioManager : MonoBehaviour
                 soundClip = soundCannon;
                 soundVolume = 1f;
                 break;
+
+            // Spear hit
+            case 2:
+
+                break;
         }
 
         soundSource.PlayOneShot(soundClip, soundVolume);
@@ -106,6 +111,7 @@ public class AudioManager : MonoBehaviour
         // Plays music depending on the integer
         switch (musicNumber)
         {
+            // Place music here plz
             case 0:
 
                 break;

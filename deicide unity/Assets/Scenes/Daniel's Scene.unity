@@ -854,7 +854,7 @@ PrefabInstance:
     - target: {fileID: 6211723658415701415, guid: 8a5d4a95df32a7340882dd21720d397a,
         type: 3}
       propertyPath: shootAim
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6211723658415701418, guid: 8a5d4a95df32a7340882dd21720d397a,
         type: 3}
