@@ -5,7 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - AudioManager
+  - EnemyHead
+  - EnemyLegs
+  - EnemyBody
   layers:
   - Default
   - TransparentFX
