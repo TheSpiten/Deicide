@@ -55,6 +55,9 @@ public class ShipMovement : MonoBehaviour
         // Getting input for movement
         rb.AddForce(new Vector2(Input.GetAxisRaw("Horizontal") * speed * dashCurrentIncreasedSpeed, 0));
         rb.AddForce(new Vector2(0, Input.GetAxisRaw("Vertical") * speed * dashCurrentIncreasedSpeed));
+
+        //var move = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
+        //var move_norm = move.normalized;
         
     }
 
