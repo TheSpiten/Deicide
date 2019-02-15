@@ -16,6 +16,14 @@ public class Bossfunctions : MonoBehaviour
         public SpriteRenderer renderHead;
         public SpriteRenderer renderBody;
         public SpriteRenderer renderLegs;
+
+    private SpriteRenderer spriteRenderer;
+    public Sprite empty;
+    public Sprite standardSprite;
+    public Animator jabAnimator;
+    private float jabMax = 1;
+    private float jabTimer = 0;
+
     /*
         void OnCollisionEnter2D(Collision2D coll)
         {
@@ -37,6 +45,9 @@ public class Bossfunctions : MonoBehaviour
     private void Awake()
     {
         jabCountdown = jabInterval;
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        jabAnimator.gameObject.SetActive(false);
     }
 
     void Start()
@@ -52,13 +63,28 @@ public class Bossfunctions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (jabCountdown <= 0)
+        if (jabTimer > 0)
         {
-            Instantiate(javelin, javelinSpawnPoint.transform);
-            jabCountdown = jabInterval;
+            jabTimer -= Time.deltaTime;
         }
+        else
+        {
+            spriteRenderer.enabled = true;
+            jabAnimator.gameObject.SetActive(false);
 
-        jabCountdown -= Time.deltaTime;
+            if (jabCountdown <= 0)
+            {
+                Instantiate(javelin, javelinSpawnPoint.transform);
+                jabCountdown = jabInterval;
+                spriteRenderer.enabled = false;
+                jabAnimator.gameObject.SetActive(true);
+                jabTimer = jabMax;
+            }
+
+            jabCountdown -= Time.deltaTime;
+
+            spriteRenderer.sprite = standardSprite;
+        }
     }
 
     public void HitBoss(string enemyTag)
