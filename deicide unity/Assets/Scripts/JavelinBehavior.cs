@@ -4,33 +4,35 @@ using UnityEngine;
 
 public class JavelinBehavior : MonoBehaviour
 {
+    public float javelinDuration;
+    private float javelinTimer;
+    private bool hit;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && hit == false)
         {
+            collision.gameObject.GetComponent<ShipMovement>().Damage();
             //collision.gameObject.GetComponent<Bossfunctions>().HitBoss(collision.gameObject.tag);
             //Destroy(collision);
-            GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(0);
+            GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(2);
+            hit = true;
         }
+    }
 
+    void Awake()
+    {
+        javelinTimer = javelinDuration;
+        hit = false;
+    }
 
-
-
-
-
-
-        // Start is called before the first frame update
-        void Start()
+    // Update is called once per frame
+    void Update()
+    {
+        if (javelinTimer <= 0)
         {
-        
+            Destroy(gameObject);
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
+        javelinTimer -= Time.deltaTime;
     }
 }
