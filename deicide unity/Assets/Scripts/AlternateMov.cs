@@ -50,7 +50,7 @@ public class AlternateMov : MonoBehaviour
                 newVelocityY = 0;
             }
         }
-        //rb.velocity = new Vector2(newVelocityX, newVelocityY);
+        rb.velocity = new Vector2(newVelocityX, newVelocityY);
 
         // Getting input for horizontal movement
         float move_h = Input.GetAxisRaw("Horizontal");
@@ -60,7 +60,7 @@ public class AlternateMov : MonoBehaviour
         // Normalizing the vector so diagonal movement isn't faster
         Vector2 movement = new Vector2(move_h, move_v).normalized;
 
-        // Making the object move
+        // Making the object move by directly changing the velocity
         rb.velocity = movement * speed * dashCurrentIncreasedSpeed;
     }
 

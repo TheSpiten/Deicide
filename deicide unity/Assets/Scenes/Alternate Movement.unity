@@ -1239,8 +1239,14 @@ PrefabInstance:
     - target: {fileID: 6211723658415701415, guid: 8a5d4a95df32a7340882dd21720d397a,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6211723658415701415, guid: 8a5d4a95df32a7340882dd21720d397a,
+        type: 3}
+      propertyPath: Dynamite
+      value: 
+      objectReference: {fileID: 6885526453830230752, guid: a6f3e35f8a3117d439f6b905ec2ee6e7,
+        type: 3}
     - target: {fileID: 6211723658415701418, guid: 8a5d4a95df32a7340882dd21720d397a,
         type: 3}
       propertyPath: m_SortingLayerID
@@ -1621,7 +1627,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 800097027}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a9d1e51aa4a1b64399361d42055895e, type: 3}
   m_Name: 
