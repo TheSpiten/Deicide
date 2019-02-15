@@ -52,13 +52,16 @@ public class ShipMovement : MonoBehaviour
         }
         rb.velocity = new Vector2(newVelocityX, newVelocityY);
 
-        // Getting input for movement
-        rb.AddForce(new Vector2(Input.GetAxisRaw("Horizontal") * speed * dashCurrentIncreasedSpeed, 0));
-        rb.AddForce(new Vector2(0, Input.GetAxisRaw("Vertical") * speed * dashCurrentIncreasedSpeed));
+        // Getting input for horizontal movement
+        float move_h = Input.GetAxisRaw("Horizontal");
+        // Getting input for vertical movement
+        float move_v = Input.GetAxisRaw("Vertical");
 
-        //var move = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
-        //var move_norm = move.normalized;
-        
+        // Normalizing the vector so diagonal movement isn't faster
+        Vector2 movement = new Vector2(move_h, move_v).normalized;
+
+        // Making the object move
+        rb.AddForce(movement * speed * dashCurrentIncreasedSpeed);
     }
 
     private void Update()

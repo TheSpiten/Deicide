@@ -50,26 +50,18 @@ public class AlternateMov : MonoBehaviour
                 newVelocityY = 0;
             }
         }
-        rb.velocity = new Vector2(newVelocityX, newVelocityY);
+        //rb.velocity = new Vector2(newVelocityX, newVelocityY);
 
-        // Getting input for movement
-        Vector2 move_h = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
-        move_h = move_h.normalized * speed * dashCurrentIncreasedSpeed;
-        Vector2 move_v = new Vector2(0, Input.GetAxisRaw("Vertical"));
-        move_v = move_v.normalized * speed * dashCurrentIncreasedSpeed;
+        // Getting input for horizontal movement
+        float move_h = Input.GetAxisRaw("Horizontal");
+        // Getting input for vertical movement
+        float move_v = Input.GetAxisRaw("Vertical");
 
-        if(rb.velocity.y > 0)
-        {
-            //rb.velocity.y = 0;
+        // Normalizing the vector so diagonal movement isn't faster
+        Vector2 movement = new Vector2(move_h, move_v).normalized;
 
-        }
-
-        rb.AddForce(move_h);
-        rb.AddForce(move_v);
-
-        //var move = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
-        //var move_norm = move.normalized;
-
+        // Making the object move
+        rb.velocity = movement * speed * dashCurrentIncreasedSpeed;
     }
 
     private void Update()
