@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public AudioClip soundCannon;
     public AudioClip soundMachineGun1;
     public AudioClip soundMachineGun2;
     public AudioClip soundMachineGun3;
+    public AudioClip soundCannon;
+    public AudioClip soundJavelinJab;
+    public AudioClip soundJavelinHit;
 
     private AudioSource soundSource;
 
@@ -96,6 +98,17 @@ public class AudioManager : MonoBehaviour
                 soundClip = soundCannon;
                 soundVolume = 1f;
                 break;
+
+            // Javelin jab
+            case 2:
+
+                break;
+
+            // Javelin hit
+            case 3:
+                soundClip = soundJavelinHit;
+                Debug.Log("hej");
+                break;
         }
 
         soundSource.PlayOneShot(soundClip, soundVolume);
@@ -106,6 +119,7 @@ public class AudioManager : MonoBehaviour
         // Plays music depending on the integer
         switch (musicNumber)
         {
+            // Place music here plz
             case 0:
 
                 break;
