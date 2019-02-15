@@ -4,10 +4,12 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - soundCannon: {fileID: 8300000, guid: 7323b996c7909054ab5383ded75d703e, type: 3}
   - soundMachineGun1: {fileID: 8300000, guid: b195693ae2c594740b948bd874a4d329, type: 3}
   - soundMachineGun2: {fileID: 8300000, guid: e05a9cc957f22dd4f9fda06ba146a953, type: 3}
   - soundMachineGun3: {fileID: 8300000, guid: 6c5edb4e6d49b2f47bc7206fc6ed1c01, type: 3}
+  - soundCannon: {fileID: 8300000, guid: 7323b996c7909054ab5383ded75d703e, type: 3}
+  - soundJavelinJab: {fileID: 8300000, guid: 7323b996c7909054ab5383ded75d703e, type: 3}
+  - soundJavelinHit: {fileID: 8300000, guid: b1b4f52183368ef4dbf63eba7e80650e, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1021273389
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1021273390}
+  m_Layer: 0
+  m_Name: JavelinSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1021273390
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021273389}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -12, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4829934877925119330}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4829934876939145342
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,6 +318,7 @@ Transform:
   - {fileID: 4829934876939145343}
   - {fileID: 4829934878063128712}
   - {fileID: 4829934877007176799}
+  - {fileID: 1021273390}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -303,6 +334,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edaf9c582cacb5d428f6799887874dbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  javelin: {fileID: 4444699810631933573, guid: 85fa439ae1731e147946d637f3db48d4, type: 3}
+  javelinSpawnPoint: {fileID: 1021273389}
+  jabInterval: 5
   colors: []
   renderHead: {fileID: 4829934876939145338}
   renderBody: {fileID: 4829934878063128715}
