@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public AudioClip soundCannon;
     public AudioClip soundMachineGun1;
     public AudioClip soundMachineGun2;
     public AudioClip soundMachineGun3;
+    public AudioClip soundCannon;
+    public AudioClip soundJavelinJab;
+    public AudioClip soundJavelinHit;
 
     private AudioSource soundSource;
 
@@ -97,9 +99,15 @@ public class AudioManager : MonoBehaviour
                 soundVolume = 1f;
                 break;
 
-            // Spear hit
+            // Javelin jab
             case 2:
 
+                break;
+
+            // Javelin hit
+            case 3:
+                soundClip = soundJavelinHit;
+                Debug.Log("hej");
                 break;
         }
 

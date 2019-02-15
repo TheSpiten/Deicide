@@ -15,7 +15,7 @@ public class JavelinBehavior : MonoBehaviour
             collision.gameObject.GetComponent<ShipMovement>().Damage();
             //collision.gameObject.GetComponent<Bossfunctions>().HitBoss(collision.gameObject.tag);
             //Destroy(collision);
-            GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(2);
+            GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(3);
             hit = true;
         }
     }
