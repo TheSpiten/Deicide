@@ -23,6 +23,8 @@ public class Bossfunctions : MonoBehaviour
     public Animator jabAnimator;
     private float jabMax = 1;
     private float jabTimer = 0;
+    private float TEMPJABTIMER = 0.52f;
+    private bool COUNTDOWNJAB = false;
 
     /*
         void OnCollisionEnter2D(Collision2D coll)
@@ -66,6 +68,18 @@ public class Bossfunctions : MonoBehaviour
         if (jabTimer > 0)
         {
             jabTimer -= Time.deltaTime;
+
+            if (COUNTDOWNJAB == true)
+            {
+                TEMPJABTIMER -= Time.deltaTime;
+            }
+
+            if (TEMPJABTIMER <= 0)
+            {
+                Instantiate(javelin, javelinSpawnPoint.transform);
+                COUNTDOWNJAB = false;
+                TEMPJABTIMER = 0.52f;
+            }
         }
         else
         {
@@ -74,11 +88,11 @@ public class Bossfunctions : MonoBehaviour
 
             if (jabCountdown <= 0)
             {
-                Instantiate(javelin, javelinSpawnPoint.transform);
                 jabCountdown = jabInterval;
                 spriteRenderer.enabled = false;
                 jabAnimator.gameObject.SetActive(true);
                 jabTimer = jabMax;
+                COUNTDOWNJAB = true;
             }
 
             jabCountdown -= Time.deltaTime;

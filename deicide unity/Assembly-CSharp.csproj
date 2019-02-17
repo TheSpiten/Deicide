@@ -65,12 +65,9 @@
     <Compile Include="Assets\Scripts\bosscolission.cs" />
     <Compile Include="Assets\Scripts\Bossfunctions.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
-<<<<<<< HEAD
-    <Compile Include="Assets\Scripts\JavelinBehavior.cs" />
-=======
     <Compile Include="Assets\Scripts\Dynamite.cs" />
     <Compile Include="Assets\Scripts\GunAim.cs" />
->>>>>>> Axel's-Branch-2
+    <Compile Include="Assets\Scripts\JavelinBehavior.cs" />
     <Compile Include="Assets\Scripts\OffsetScroller.cs" />
     <Compile Include="Assets\Scripts\ShipMovement.cs" />
     <Compile Include="Assets\Scripts\TestEnemy.cs" />
