@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class ShipMovement : MonoBehaviour
 {
-    // Temporary variable for testing
-    public bool shootAim;
-
     int delay = 0;
     int delayDynamite = 0;
     public GameObject Gun;
@@ -27,7 +24,7 @@ public class ShipMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        Gun = transform.Find("Gun").gameObject;
+        Gun = transform.Find("Sphere").Find("Gun").gameObject;
         dashCurrentIncreasedSpeed = 1;
     }
 
@@ -124,47 +121,29 @@ public class ShipMovement : MonoBehaviour
 
     void Shoot()
     {
-        if (shootAim == true)
-        {
-            // Checking for mouse position and making a Quaternion of it
-            var MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            MousePos.z = 0;
-            var aim = Quaternion.FromToRotation(Vector3.right, MousePos - transform.position);
+        // Checking for mouse position and making a Quaternion of it
+        //var MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //MousePos.z = 0;
+        //var aim = Quaternion.FromToRotation(Vector3.right, MousePos - transform.position);
 
-            // Spawning bullet and shooting it towards the mouse
-            var bullet = (GameObject)Instantiate(Bullet, Gun.transform.position, aim);
-            bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * 15;
-            Destroy(bullet, 2.0f);
-            delay = 0;
-            // Plays shooting sound
-            GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(1);
-        }
-        else
-        {
-            Vector3 aimTransform = transform.position;
-            aimTransform.x += 10;
-
-            var aim = Quaternion.FromToRotation(Vector3.right, aimTransform - transform.position);
-
-            // Spawning bullet and shooting it towards the mouse
-            var bullet = (GameObject)Instantiate(Bullet, Gun.transform.position, aim);
-            bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * 15;
-            Destroy(bullet, 2.0f);
-            delay = 0;
-            // Plays shooting sound
-            GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(1);
-        }
+        // Spawning bullet and shooting it towards the mouse
+        var bullet = (GameObject)Instantiate(Bullet, Gun.transform.position, Gun.transform.rotation);
+        bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * 15;
+        Destroy(bullet, 2.0f);
+        delay = 0;
+        // Plays shooting sound
+        GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(1);
     }
 
     void ShootDynamite()
     {
         // Checking for mouse position and making a Quaternion of it
-        var MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        MousePos.z = 0;
-        var aim = Quaternion.FromToRotation(Vector3.right, MousePos - transform.position);
+        //var MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //MousePos.z = 0;
+        //var aim = Quaternion.FromToRotation(Vector3.right, MousePos - transform.position);
 
         // Spawning dynamite and shooting it towards the mouse
-        var dynamite = (GameObject)Instantiate(Dynamite, Gun.transform.position, aim);
+        var dynamite = (GameObject)Instantiate(Dynamite, Gun.transform.position, Gun.transform.rotation);
         dynamite.GetComponent<Rigidbody2D>().velocity = dynamite.transform.right * 7;
         Destroy(dynamite, 4.0f);
         delayDynamite = 0;
