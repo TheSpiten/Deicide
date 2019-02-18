@@ -24,7 +24,7 @@ public class ShipMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        Gun = transform.Find("Sphere").Find("Gun").gameObject;
+        Gun = transform.Find("GunRotator").Find("Gun").Find("BulletSpawn").gameObject;
         dashCurrentIncreasedSpeed = 1;
     }
 
@@ -90,7 +90,7 @@ public class ShipMovement : MonoBehaviour
 
         if (Input.GetMouseButton(1))
         {
-            if (delayDynamite > 20)
+            if (delayDynamite > 40)
             {
                 ShootDynamite();
             }
