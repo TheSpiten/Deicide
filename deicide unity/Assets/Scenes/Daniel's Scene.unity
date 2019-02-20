@@ -1295,9 +1295,24 @@ PrefabInstance:
     - target: {fileID: 4829934877925119331, guid: d26fdc5b1420bb74ea35196fa96f6848,
         type: 3}
       propertyPath: jabInterval
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4829934877925119324, guid: d26fdc5b1420bb74ea35196fa96f6848,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4829934876939145338, guid: d26fdc5b1420bb74ea35196fa96f6848,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4829934877007176794, guid: d26fdc5b1420bb74ea35196fa96f6848,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4829934878063128715, guid: d26fdc5b1420bb74ea35196fa96f6848,
         type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -1357,7 +1372,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &845650902
 Transform:
   m_ObjectHideFlags: 0
@@ -1427,7 +1442,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

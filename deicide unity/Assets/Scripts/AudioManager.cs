@@ -107,7 +107,6 @@ public class AudioManager : MonoBehaviour
             // Javelin hit
             case 3:
                 soundClip = soundJavelinHit;
-                Debug.Log("hej");
                 break;
         }
 
