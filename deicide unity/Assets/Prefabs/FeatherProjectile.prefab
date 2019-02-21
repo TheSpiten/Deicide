@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6607054811714441412}
   - component: {fileID: 6607054811714441418}
   - component: {fileID: 6607054811714441417}
+  - component: {fileID: 8959042774205220974}
   m_Layer: 0
   m_Name: FeatherProjectile
   m_TagString: Feather
@@ -140,3 +141,15 @@ PolygonCollider2D:
       - {x: 0.315, y: -0.14999999}
       - {x: 0.415, y: -0.089999996}
       - {x: 0.565, y: -0.04}
+--- !u!114 &8959042774205220974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6607054811714441413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4207734706b86154ca416a9cb7ec8909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

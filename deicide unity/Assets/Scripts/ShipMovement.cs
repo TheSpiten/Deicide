@@ -21,23 +21,23 @@ public class ShipMovement : MonoBehaviour
     private float dashSpeedTimer;
     private float dashCurrentIncreasedSpeed;
 
-    public bool shootAim;
+    public bool shootAim = true;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-<<<<<<< HEAD
-        Gun = transform.Find("GunRotator").Find("Gun").Find("BulletSpawn").gameObject;
-=======
+//<<<<<<< HEAD
+        //Gun = transform.Find("GunRotator").Find("Gun").Find("BulletSpawn").gameObject;
+//=======
         if (shootAim == true)
         {
-            Gun = transform.Find("Sphere").Find("Gun").gameObject;
+            Gun = transform.Find("GunRotator").Find("Gun").Find("BulletSpawn").gameObject;
         }
         else
         {
-            Gun = transform.Find("Gun").gameObject;
+            Gun = transform.Find("GunRotator").Find("Gun").Find("BulletSpawn").gameObject;
         }
->>>>>>> master
+        //>>>>>>> master
         dashCurrentIncreasedSpeed = 1;
     }
 
