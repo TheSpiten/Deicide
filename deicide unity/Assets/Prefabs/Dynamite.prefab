@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1886180521036222370}
   - component: {fileID: 6899155259387316595}
   - component: {fileID: 4947841965505220133}
+  - component: {fileID: 1577175957404901805}
   m_Layer: 0
   m_Name: Dynamite
   m_TagString: Untagged
@@ -97,7 +98,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.75
+  m_GravityScale: 0.6
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -139,5 +140,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7530116b367b31048835963b1bd09ae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TestExplosionArea: {fileID: 4907208007375028613, guid: 7409b27aa580acb4b8e372054d986504,
+    type: 3}
+  EnergyExplosion: {fileID: 1329845292236604, guid: 9bba9cf244c53c5439505dfc96fdd11c,
+    type: 3}
+  delay: 2
+  radius: 2
+  shouldDraw: 0
+--- !u!114 &1577175957404901805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6885526453830230752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 102e6cb2d34ef0343b9659eb120bf102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

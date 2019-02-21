@@ -60,12 +60,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\BossAim.cs" />
+    <Compile Include="Assets\FeatherStorm.cs" />
     <Compile Include="Assets\Scripts\AlternateMov.cs" />
     <Compile Include="Assets\Scripts\AudioManager.cs" />
     <Compile Include="Assets\Scripts\bosscolission.cs" />
     <Compile Include="Assets\Scripts\Bossfunctions.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\Dynamite.cs" />
+    <Compile Include="Assets\Scripts\ExplodeDynamite.cs" />
     <Compile Include="Assets\Scripts\GunAim.cs" />
     <Compile Include="Assets\Scripts\JavelinBehavior.cs" />
     <Compile Include="Assets\Scripts\OffsetScroller.cs" />
