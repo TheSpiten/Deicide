@@ -21,10 +21,23 @@ public class ShipMovement : MonoBehaviour
     private float dashSpeedTimer;
     private float dashCurrentIncreasedSpeed;
 
+    public bool shootAim;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+<<<<<<< HEAD
         Gun = transform.Find("GunRotator").Find("Gun").Find("BulletSpawn").gameObject;
+=======
+        if (shootAim == true)
+        {
+            Gun = transform.Find("Sphere").Find("Gun").gameObject;
+        }
+        else
+        {
+            Gun = transform.Find("Gun").gameObject;
+        }
+>>>>>>> master
         dashCurrentIncreasedSpeed = 1;
     }
 
@@ -75,7 +88,7 @@ public class ShipMovement : MonoBehaviour
 
         // Declares input keys
         var shootKey = KeyCode.Z;
-        var dashKey = KeyCode.X;
+        var dashKey = KeyCode.Space;
         var powerupKey = KeyCode.C;
 
         // Shooting on left click. Modify number after "delay >" to change the time between shots
@@ -84,7 +97,14 @@ public class ShipMovement : MonoBehaviour
         {
             if (delay > 20)
             {
-                Shoot();
+                if (shootAim == true)
+                {
+                    Shoot();
+                }
+                else
+                {
+                    ShootNoAim();
+                }
             }
         }
 
@@ -127,6 +147,16 @@ public class ShipMovement : MonoBehaviour
         //var aim = Quaternion.FromToRotation(Vector3.right, MousePos - transform.position);
 
         // Spawning bullet and shooting it towards the mouse
+        var bullet = (GameObject)Instantiate(Bullet, Gun.transform.position, Gun.transform.rotation);
+        bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * 15;
+        Destroy(bullet, 2.0f);
+        delay = 0;
+        // Plays shooting sound
+        GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(1);
+    }
+
+    private void ShootNoAim()
+    {
         var bullet = (GameObject)Instantiate(Bullet, Gun.transform.position, Gun.transform.rotation);
         bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * 15;
         Destroy(bullet, 2.0f);
