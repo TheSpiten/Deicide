@@ -27,18 +27,16 @@ public class ShipMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-//<<<<<<< HEAD
-        //Gun = transform.Find("GunRotator").Find("Gun").Find("BulletSpawn").gameObject;
-//=======
+
         if (shootAim == true)
         {
             Gun = transform.Find("GunRotator").Find("Gun").Find("BulletSpawn").gameObject;
         }
         else
         {
-            Gun = transform.Find("GunRotator").Find("Gun").Find("BulletSpawn").gameObject;
+            Gun = transform.Find("Gun").gameObject;
         }
-        //>>>>>>> master
+        
         dashCurrentIncreasedSpeed = 1;
     }
 
