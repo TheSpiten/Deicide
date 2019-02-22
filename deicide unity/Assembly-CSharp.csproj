@@ -60,7 +60,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\FeatherDamage.cs" />
     <Compile Include="Assets\Scripts\AlternateMov.cs" />
     <Compile Include="Assets\Scripts\AudioManager.cs" />
     <Compile Include="Assets\Scripts\BossAim.cs" />
@@ -69,10 +68,12 @@
     <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\Dynamite.cs" />
     <Compile Include="Assets\Scripts\ExplodeDynamite.cs" />
+    <Compile Include="Assets\Scripts\FeatherDamage.cs" />
     <Compile Include="Assets\Scripts\FeatherStorm.cs" />
     <Compile Include="Assets\Scripts\GunAim.cs" />
     <Compile Include="Assets\Scripts\JavelinBehavior.cs" />
     <Compile Include="Assets\Scripts\OffsetScroller.cs" />
+    <Compile Include="Assets\Scripts\PowerUp.cs" />
     <Compile Include="Assets\Scripts\ShipMovement.cs" />
     <Compile Include="Assets\Scripts\TestEnemy.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">

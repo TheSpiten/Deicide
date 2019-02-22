@@ -16,7 +16,8 @@ public class ShipMovement : MonoBehaviour
     public float dragMultiplier;
     public float dashSpeedIncrease;
     public float dashSpeedDuration;
-    int health = 3;
+    public int health = 3;
+    public int dynamiteAmmo = 3;
     private float dashTimer;
     private float dashSpeedTimer;
     private float dashCurrentIncreasedSpeed;
@@ -110,9 +111,10 @@ public class ShipMovement : MonoBehaviour
 
         if (Input.GetMouseButton(1))
         {
-            if (delayDynamite > 40)
+            if (delayDynamite > 40 && dynamiteAmmo > 0)
             {
                 ShootDynamite();
+                dynamiteAmmo--;
             }
         }
 
