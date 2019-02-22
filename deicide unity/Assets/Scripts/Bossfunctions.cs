@@ -280,55 +280,8 @@ public class Bossfunctions : MonoBehaviour
         }
 
         AttackUpdate();
-
-        /*
-        if (Input.GetKey(featherKey) == true)
-        {
-
-        }
-
-        if (Input.GetKey(spearKey) == true)
-        {
-
-        }
-
-
-        if (jabTimer > 0)
-        {
-            jabTimer -= Time.deltaTime;
-
-            if (COUNTDOWNJAB == true)
-            {
-                TEMPJABTIMER -= Time.deltaTime;
-            }
-
-            if (TEMPJABTIMER <= 0)
-            {
-                Instantiate(javelin, javelinSpawnPoint.transform);
-                COUNTDOWNJAB = false;
-                TEMPJABTIMER = 0.52f;
-            }
-        }
-        else if (Input.GetKey(jabKey) == true)
-        {
-            spriteRenderer.enabled = true;
-            jabAnimator.gameObject.SetActive(false);
-
-            if (jabCountdown <= 0)
-            {
-                jabCountdown = jabInterval;
-                spriteRenderer.enabled = false;
-                jabAnimator.gameObject.SetActive(true);
-                jabTimer = jabMax;
-                COUNTDOWNJAB = true;
-            }
-
-            jabCountdown -= Time.deltaTime;
-
-            spriteRenderer.sprite = standardSprite;
-        }*/
     }
-
+    /*
     public void HitBoss(string enemyTag)
     {
         if (counter < colors.Count - 1)
@@ -356,7 +309,7 @@ public class Bossfunctions : MonoBehaviour
 
         }
     }
-
+    */
     private void AttackUpdate()
     {
         // Updates attacks in attack list
@@ -467,6 +420,6 @@ public class Bossfunctions : MonoBehaviour
 
     private void SpearsAttack()
     {
-
+        SpearsClass spearsAttack = new SpearsClass();
     }
 }
