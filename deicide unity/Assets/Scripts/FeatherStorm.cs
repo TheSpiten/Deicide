@@ -19,24 +19,22 @@ public class FeatherStorm : MonoBehaviour
 
     }
 
-    void FeatherAttack()
+    public void FeatherAttack()
     {
 
         var feather = (GameObject)Instantiate(Feather, FeatherSpawn.transform.position, FeatherSpawn.transform.rotation);
-        feather.GetComponent<Rigidbody2D>().velocity = -feather.transform.right * 7;
+        feather.GetComponent<Rigidbody2D>().velocity = -feather.transform.right * 8;
 
 
         for (int i = 1; i < FeatherAmount; i++) 
         {
-            float xSpread = Random.Range(-3, 3);
-            float ySpread = Random.Range(-3, 3);
-            Vector3 spread = new Vector3(xSpread, ySpread, 0.0f).normalized * ConeSize;
-            Debug.Log(spread);
-            Quaternion rotation = Quaternion.AngleAxis(45, spread) * FeatherSpawn.transform.rotation;
-            Debug.Log(Quaternion.Euler(spread));
-            Debug.Log(FeatherSpawn.transform.rotation);
+            //float xSpread = Random.Range(-3, 3);
+            //float ySpread = Random.Range(-3, 3);
+            //Vector3 spread = new Vector3(xSpread, ySpread, 0.0f).normalized * ConeSize;
+            Quaternion rotation = Quaternion.AngleAxis(Random.Range(-30,30), Vector3.forward).normalized * FeatherSpawn.transform.rotation;
+
             var feathers = (GameObject)Instantiate(Feather, FeatherSpawn.transform.position, rotation);
-            feathers.GetComponent<Rigidbody2D>().velocity = -feathers.transform.right * 7;
+            feathers.GetComponent<Rigidbody2D>().velocity = -feathers.transform.right * Random.Range(6,9);
             Destroy(feathers, 3.0f);
         }
         Destroy(feather, 4.0f);

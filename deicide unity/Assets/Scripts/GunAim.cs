@@ -10,6 +10,14 @@ public class GunAim : MonoBehaviour
         var MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         MousePos.z = 0;
         var aim = Quaternion.FromToRotation(Vector3.right, MousePos - transform.position);
-        transform.rotation = aim;
+        //if (aim.z > 0.5f)
+        //    aim.z = 0.5f;
+        //else if (aim.z < -0.5f)
+        //    aim.z = -0.5f;
+        if (aim.z <= 0.5f && aim.z >= -0.5f)
+        {
+            transform.rotation = aim;
+        }
+        //transform.rotation = aim;
     }
 }

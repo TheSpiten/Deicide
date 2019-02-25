@@ -32,7 +32,8 @@ public class Dynamite : MonoBehaviour
         // Particle effects for the explosion
         var explosion = (GameObject)Instantiate(EnergyExplosion, transform.position, transform.rotation);
         Destroy(explosion, 1.95f);
-
+        Camera.main.GetComponent<ScreenShake>().Shake();
+        //Camera.current.GetComponent<ScreenShake>().Shake();
 
         Vector2 explosionPos = transform.position;
         // Array of colliders in the sphere
