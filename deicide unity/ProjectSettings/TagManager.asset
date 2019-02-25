@@ -8,6 +8,10 @@ TagManager:
   - EnemyHead
   - EnemyLegs
   - EnemyBody
+  - AudioManager
+  - Javelin
+  - Feather
+  - Bullet
   layers:
   - Default
   - TransparentFX
