@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class ShipMovement : MonoBehaviour
 {
-    int delay = 0;
-    int delayDynamite = 0;
-    public GameObject Gun;
-    public GameObject Bullet;
-    public GameObject Dynamite;
+
     Rigidbody2D rb;
     public float speed;
     public float dashDelay;
@@ -17,7 +13,6 @@ public class ShipMovement : MonoBehaviour
     public float dashSpeedIncrease;
     public float dashSpeedDuration;
     public int health = 3;
-    public int dynamiteAmmo = 3;
     private float dashTimer;
     private float dashSpeedTimer;
     private float dashCurrentIncreasedSpeed;
@@ -27,15 +22,6 @@ public class ShipMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        if (shootAim == true)
-        {
-            Gun = transform.Find("GunRotator").Find("Gun").Find("BulletSpawn").gameObject;
-        }
-        else
-        {
-            Gun = transform.Find("Gun").gameObject;
-        }
         
         dashCurrentIncreasedSpeed = 1;
     }
@@ -90,32 +76,7 @@ public class ShipMovement : MonoBehaviour
         var dashKey = KeyCode.Space;
         var powerupKey = KeyCode.C;
 
-        // Shooting on left click. Modify number after "delay >" to change the time between shots
-        // Also shoots if shootKey is pressed
-        if (Input.GetMouseButton(0) || Input.GetKey(shootKey))
-        {
-            if (delay > 20)
-            {
-                if (shootAim == true)
-                {
-                    Shoot();
-                }
-                else
-                {
-                    ShootNoAim();
-                }
-            }
-        }
-
-        if (Input.GetMouseButton(1))
-        {
-            if (delayDynamite > 40 && dynamiteAmmo > 0)
-            {
-                ShootDynamite();
-                dynamiteAmmo--;
-            }
-        }
-
+        
         // Dashes if dashKey(or right click ?) is pressed
         if (Input.GetMouseButton(2) || Input.GetKeyDown(dashKey))
             {
@@ -134,52 +95,6 @@ public class ShipMovement : MonoBehaviour
         {
             dashCurrentIncreasedSpeed = 1;
         }
-
-        delay++;
-        delayDynamite++;
-    }
-
-    void Shoot()
-    {
-        // Checking for mouse position and making a Quaternion of it
-        //var MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //MousePos.z = 0;
-        //var aim = Quaternion.FromToRotation(Vector3.right, MousePos - transform.position);
-
-        // Spawning bullet and shooting it towards the mouse
-        var bullet = (GameObject)Instantiate(Bullet, Gun.transform.position, Gun.transform.rotation);
-        bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * 20;
-        Destroy(bullet, 2.0f);
-        delay = 0;
-        Camera.main.GetComponent<ScreenShake>().Shake(0.02f, 0.1f);
-        // Plays shooting sound
-        GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(1);
-    }
-
-    private void ShootNoAim()
-    {
-        var bullet = (GameObject)Instantiate(Bullet, Gun.transform.position, Gun.transform.rotation);
-        bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * 15;
-        Destroy(bullet, 2.0f);
-        delay = 0;
-        // Plays shooting sound
-        GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(1);
-    }
-
-    void ShootDynamite()
-    {
-        // Checking for mouse position and making a Quaternion of it
-        //var MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //MousePos.z = 0;
-        //var aim = Quaternion.FromToRotation(Vector3.right, MousePos - transform.position);
-
-        // Spawning dynamite and shooting it towards the mouse
-        var dynamite = (GameObject)Instantiate(Dynamite, Gun.transform.position, Gun.transform.rotation);
-        dynamite.GetComponent<Rigidbody2D>().velocity = dynamite.transform.right * 7;
-        Destroy(dynamite, 4.0f);
-        delayDynamite = 0;
-        // Plays shooting sound
-        GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(1);
     }
 
     private void Dash()

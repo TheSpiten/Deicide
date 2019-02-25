@@ -22,7 +22,7 @@ public class PowerUp : MonoBehaviour
         else if (other.gameObject.CompareTag("DynamitePowerUp"))
         {
             other.gameObject.SetActive(false);
-            gameObject.GetComponent<ShipMovement>().dynamiteAmmo += 5;
+            gameObject.GetComponent<Shoot>().dynamiteAmmo += 5;
         }
 
     }
