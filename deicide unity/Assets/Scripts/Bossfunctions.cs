@@ -448,6 +448,10 @@ public class Bossfunctions : MonoBehaviour
             case Action.JabStrike:
                 Instantiate(javelin, javelinSpawnPoint.transform);
                 break;
+
+            case Action.StormFeathers:
+                this.GetComponent<FeatherStorm>().FeatherAttack();
+                break;
         }
     }
 

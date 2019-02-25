@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\JavelinBehavior.cs" />
     <Compile Include="Assets\Scripts\OffsetScroller.cs" />
     <Compile Include="Assets\Scripts\PowerUp.cs" />
+    <Compile Include="Assets\Scripts\ScreenShake.cs" />
     <Compile Include="Assets\Scripts\ShipMovement.cs" />
     <Compile Include="Assets\Scripts\TestEnemy.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">

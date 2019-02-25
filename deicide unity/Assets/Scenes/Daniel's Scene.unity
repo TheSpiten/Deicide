@@ -892,6 +892,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 537282812}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &550138413 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4829934877925119329, guid: d26fdc5b1420bb74ea35196fa96f6848,
+    type: 3}
+  m_PrefabInstance: {fileID: 780608770}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &550138414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550138413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f2376f0c6b326c41b7ab68d859f2e82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Feather: {fileID: 6607054811714441413, guid: 1ce783ecbe200f443a356843fac236c8, type: 3}
+  FeatherSpawn: {fileID: 1168484735}
+  ConeSize: 4
+  FeatherAmount: 5
 --- !u!1 &553894315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1307,12 +1329,12 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4829934877007176794, guid: d26fdc5b1420bb74ea35196fa96f6848,
+    - target: {fileID: 4829934878063128715, guid: d26fdc5b1420bb74ea35196fa96f6848,
         type: 3}
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4829934878063128715, guid: d26fdc5b1420bb74ea35196fa96f6848,
+    - target: {fileID: 4829934877007176794, guid: d26fdc5b1420bb74ea35196fa96f6848,
         type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -2275,6 +2297,12 @@ Transform:
   m_Father: {fileID: 982980970}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1168484735 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7274148647081725824, guid: d26fdc5b1420bb74ea35196fa96f6848,
+    type: 3}
+  m_PrefabInstance: {fileID: 780608770}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1172089819 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6211723658415701419, guid: 8a5d4a95df32a7340882dd21720d397a,
