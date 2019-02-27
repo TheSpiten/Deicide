@@ -179,7 +179,13 @@ public class Bossfunctions : MonoBehaviour
     // Placeholder for spear attack
     private class SpearsClass : Attack
     {
-        public SpearsClass() : base(AttackType.Spears)
+        private float eyeWait;
+        private float indicWait;
+        private float spearDuration;
+        private float spearSpeed;
+
+
+        public SpearsClass(float timmer) : base(AttackType.Spears)
         {
             
         }
