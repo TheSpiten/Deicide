@@ -11,6 +11,11 @@ public class AudioManager : MonoBehaviour
     public AudioClip soundJavelinJab;
     public AudioClip soundJavelinHit;
 
+    public AudioClip soundStormOut;
+    public AudioClip soundStormIn;
+
+    public AudioClip soundPickup;
+
     private AudioSource soundSource;
 
     private bool isMusicPlaying;
@@ -101,12 +106,27 @@ public class AudioManager : MonoBehaviour
 
             // Javelin jab
             case 2:
-
+                soundClip = soundJavelinJab;
                 break;
 
             // Javelin hit
             case 3:
                 soundClip = soundJavelinHit;
+                break;
+
+            // Pickup sound
+            case 4:
+                soundClip = soundPickup;
+                break;
+
+            // Storm out sound
+            case 5:
+                soundClip = soundStormOut;
+                break;
+
+            // Storm in sound
+            case 6:
+                soundClip = soundStormIn;
                 break;
         }
 
