@@ -18,7 +18,7 @@ public class TestEnemy : MonoBehaviour
     void Update()
     {
         // Simple movement along a Vector2, change speed_y and speed_x to change direction
-        rb.velocity = new Vector2(speed_x, speed_y);
+        //rb.velocity = new Vector2(speed_x, speed_y);
 
     }
 
