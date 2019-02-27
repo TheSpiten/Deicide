@@ -28,7 +28,7 @@ public class TestEnemy : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             // Deals one damage to player's ship
-            collision.gameObject.GetComponent<ShipMovement>().Damage();
+            collision.gameObject.GetComponent<ShipMovement>().Damage(30);
             // Destroys the enemy, probably not what we want
             Die();
         }

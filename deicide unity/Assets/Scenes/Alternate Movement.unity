@@ -424,6 +424,19 @@ MonoBehaviour:
   speed_x: 0
   speed_y: 0
   health: 0
+--- !u!114 &427845792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427845790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20da4289b8933f94dba224e7a6f39afb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossHealth: 1000
 --- !u!1 &476332181
 GameObject:
   m_ObjectHideFlags: 0
@@ -1259,6 +1272,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 550138413, guid: 371c98d08ae2233459d0ad76649e2d60, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 780608775, guid: 371c98d08ae2233459d0ad76649e2d60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.86
@@ -1303,8 +1320,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4829934877007176792, guid: 371c98d08ae2233459d0ad76649e2d60, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 371c98d08ae2233459d0ad76649e2d60, type: 3}
 --- !u!4 &1970409823 stripped
 Transform:

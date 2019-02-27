@@ -12,7 +12,7 @@ public class ShipMovement : MonoBehaviour
     public float dragMultiplier;
     public float dashSpeedIncrease;
     public float dashSpeedDuration;
-    public int health = 3;
+    public int health = 100;
     private float dashTimer;
     private float dashSpeedTimer;
     private float dashCurrentIncreasedSpeed;
@@ -106,9 +106,9 @@ public class ShipMovement : MonoBehaviour
     }
 
     // Ship takes 1 damage
-    public void Damage()
+    public void Damage(int damage)
     {
-        health--;
+        health -= damage;
         if (health == 0)
             Destroy(gameObject);
     }
