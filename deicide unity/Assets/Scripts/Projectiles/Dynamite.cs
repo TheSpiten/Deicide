@@ -47,9 +47,9 @@ public class Dynamite : MonoBehaviour
             if (!hit.GetComponent<Rigidbody2D>()) { continue; }
             Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
             // trying to do damage depending on distance
-            Debug.Log(rb.gameObject.tag);
-            Debug.Log(hit.bounds.SqrDistance(explosionPos));
-            Debug.Log(Mathf.RoundToInt(50 * 1/(hit.bounds.SqrDistance(explosionPos) + 1)));
+            //Debug.Log(rb.gameObject.tag);
+            //Debug.Log(hit.bounds.SqrDistance(explosionPos));
+            //Debug.Log(Mathf.RoundToInt(50 * 1/(hit.bounds.SqrDistance(explosionPos) + 1)));
             if (rb.gameObject.tag == "Feather")
             {
                 Destroy(rb.gameObject);

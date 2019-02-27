@@ -32,9 +32,9 @@ public class Shoot : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Period))
+        if (Input.GetMouseButton(1) || Input.GetKey(KeyCode.Period))
         {
-            if (delayDynamite > 20 && dynamiteAmmo > 0)
+            if (delayDynamite > 30 && dynamiteAmmo > 0)
             {
                 ShootDynamite();
                 dynamiteAmmo--;

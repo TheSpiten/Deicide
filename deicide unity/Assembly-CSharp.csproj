@@ -69,7 +69,9 @@
     <Compile Include="Assets\Scripts\Player\GunAim.cs" />
     <Compile Include="Assets\Scripts\Player\ShipMovement.cs" />
     <Compile Include="Assets\Scripts\Player\Shoot.cs" />
-    <Compile Include="Assets\Scripts\PowerUp.cs" />
+    <Compile Include="Assets\Scripts\PowerUps\BalloonMovement.cs" />
+    <Compile Include="Assets\Scripts\PowerUps\PowerUp.cs" />
+    <Compile Include="Assets\Scripts\PowerUps\PUSpawn.cs" />
     <Compile Include="Assets\Scripts\Projectiles\Bullet.cs" />
     <Compile Include="Assets\Scripts\Projectiles\Dynamite.cs" />
     <Compile Include="Assets\Scripts\Projectiles\FeatherDamage.cs" />
