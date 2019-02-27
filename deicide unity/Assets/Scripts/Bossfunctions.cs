@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Bossfunctions : MonoBehaviour
 {
+    public GameObject javelin;
+    public GameObject javelinSpawnPoint;
+    public float jabInterval;
+    private float jabCountdown;
+
         private int counter;
 
         public List<Color> colors; //list of colors, can be changed in inspector
@@ -28,6 +33,12 @@ public class Bossfunctions : MonoBehaviour
         }*/
 
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        jabCountdown = jabInterval;
+    }
+
     void Start()
     {
         counter = 0;
@@ -41,7 +52,13 @@ public class Bossfunctions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (jabCountdown <= 0)
+        {
+            Instantiate(javelin, javelinSpawnPoint.transform);
+            jabCountdown = jabInterval;
+        }
+
+        jabCountdown -= Time.deltaTime;
     }
 
     public void HitBoss(string enemyTag)
