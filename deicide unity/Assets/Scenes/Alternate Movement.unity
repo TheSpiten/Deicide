@@ -447,6 +447,19 @@ MonoBehaviour:
   speed_x: 0
   speed_y: 0
   health: 0
+--- !u!114 &427845792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427845790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20da4289b8933f94dba224e7a6f39afb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossHealth: 1000
 --- !u!1 &476332181
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,6 +690,19 @@ MonoBehaviour:
   Bullet: {fileID: 1855547274562421224, guid: b3fc30c987469c34aabed7e0c4e3b272, type: 3}
   Dynamite: {fileID: 6885526453830230752, guid: a6f3e35f8a3117d439f6b905ec2ee6e7,
     type: 3}
+--- !u!114 &534100310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534100308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ffcf6825f4fed84ab1c2f257a407a9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldPrefab: {fileID: 0}
 --- !u!1 &650060109 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6601431615083946529, guid: 44f7c003ea509a74cb38f83b340dd0e7,
@@ -707,6 +733,7 @@ GameObject:
   - component: {fileID: 652135345}
   - component: {fileID: 652135344}
   - component: {fileID: 652135347}
+  - component: {fileID: 652135348}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -790,6 +817,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56da4924fbdf3444da25df5b66c6f444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &652135348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652135343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c87eeb589b3674f47937e0887e6a339b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShieldBalloon: {fileID: 7556201631324864513, guid: e5c6f9954aa1f2a469716376568a9252,
+    type: 3}
+  HealthBalloon: {fileID: 2764561061383937029, guid: 9564985520fe9f74abe1285dd7f53f2b,
+    type: 3}
+  DynamiteBalloon: {fileID: 4186599954545132758, guid: d9ffe45fa3e5b4b4f8962097a1cde2b3,
+    type: 3}
 --- !u!1001 &757957243
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1282,6 +1327,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 550138413, guid: 371c98d08ae2233459d0ad76649e2d60, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 780608775, guid: 371c98d08ae2233459d0ad76649e2d60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.86
@@ -1326,8 +1375,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4829934877007176792, guid: 371c98d08ae2233459d0ad76649e2d60, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 371c98d08ae2233459d0ad76649e2d60, type: 3}
 --- !u!4 &1970409823 stripped
 Transform:
