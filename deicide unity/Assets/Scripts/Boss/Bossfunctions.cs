@@ -331,10 +331,12 @@ public class Bossfunctions : MonoBehaviour
 
             case Action.JabStrike:
                 Instantiate(javelin, javelinSpawnPoint.transform);
+                GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(2);
                 break;
 
             case Action.StormFeathers:
                 GetComponent<FeatherStorm>().FeatherAttack();
+                GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(5);
                 break;
         }
     }

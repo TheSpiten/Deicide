@@ -8,8 +8,11 @@ MonoImporter:
   - soundMachineGun2: {fileID: 8300000, guid: e05a9cc957f22dd4f9fda06ba146a953, type: 3}
   - soundMachineGun3: {fileID: 8300000, guid: 6c5edb4e6d49b2f47bc7206fc6ed1c01, type: 3}
   - soundCannon: {fileID: 8300000, guid: 7323b996c7909054ab5383ded75d703e, type: 3}
-  - soundJavelinJab: {fileID: 8300000, guid: 7323b996c7909054ab5383ded75d703e, type: 3}
+  - soundJavelinJab: {fileID: 8300000, guid: 0b67802f720867646aa4e77f120e9103, type: 3}
   - soundJavelinHit: {fileID: 8300000, guid: b1b4f52183368ef4dbf63eba7e80650e, type: 3}
+  - soundStormOut: {fileID: 8300000, guid: 6f1655a11f9e4454e956890bd9541d60, type: 3}
+  - soundStormIn: {fileID: 8300000, guid: 4484cbea6a2b5a548bdb77d1d9ea7915, type: 3}
+  - soundPickup: {fileID: 8300000, guid: 998ef83203da9664aacfa58e6bc41840, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
