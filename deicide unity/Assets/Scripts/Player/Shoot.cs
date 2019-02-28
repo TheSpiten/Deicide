@@ -32,9 +32,9 @@ public class Shoot : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Period))
+        if (Input.GetMouseButton(1) || Input.GetKey(KeyCode.Period))
         {
-            if (delayDynamite > 20 && dynamiteAmmo > 0)
+            if (delayDynamite > 30 && dynamiteAmmo > 0)
             {
                 ShootDynamite();
                 dynamiteAmmo--;
@@ -52,12 +52,12 @@ public class Shoot : MonoBehaviour
         bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * 20;
         Destroy(bullet, 2.0f);
         delay = 0;
-        Camera.main.GetComponent<ScreenShake>().Shake(0.02f, 0.1f);
+        Camera.main.GetComponent<ScreenShake>().Shake(0.05f, 0.1f);
         // Plays shooting sound
         GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(1);
     }
 
-    void ShootDynamite()
+    public void ShootDynamite()
     {
         // Spawning dynamite and shooting it towards the mouse
         var dynamite = (GameObject)Instantiate(Dynamite, Gun.transform.position, Gun.transform.rotation);

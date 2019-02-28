@@ -9,7 +9,7 @@ public class FeatherDamage : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             // ShipMovement is a script name, careful with the names if you change/reuse
-            collision.gameObject.GetComponent<ShipMovement>().Damage();
+            collision.gameObject.GetComponent<ShipMovement>().Damage(20);
             Destroy(gameObject);
         }
     }

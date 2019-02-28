@@ -46,13 +46,17 @@ public class Dynamite : MonoBehaviour
         {
             if (!hit.GetComponent<Rigidbody2D>()) { continue; }
             Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
+            // trying to do damage depending on distance
+            //Debug.Log(rb.gameObject.tag);
+            //Debug.Log(hit.bounds.SqrDistance(explosionPos));
+            //Debug.Log(Mathf.RoundToInt(50 * 1/(hit.bounds.SqrDistance(explosionPos) + 1)));
             if (rb.gameObject.tag == "Feather")
             {
                 Destroy(rb.gameObject);
             }
 
             else if (rb.gameObject.tag == "EnemyHead" || rb.gameObject.tag == "EnemyLegs" || rb.gameObject.tag == "EnemyBody")
-                rb.gameObject.GetComponent<TestEnemy>().Damage();
+                rb.gameObject.GetComponentInParent<BossHealth>().DamageBoss(Mathf.RoundToInt(50 * 1 / (hit.bounds.SqrDistance(explosionPos) + 1)));
         }
         // Destroying the dynamite
         Destroy(gameObject);
@@ -64,7 +68,7 @@ public class Dynamite : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             // TestEnemy is a script name, careful with the names if you change/reuse
-            collision.gameObject.GetComponent<TestEnemy>().Damage();
+            collision.gameObject.GetComponentInParent<BossHealth>().DamageBoss(10);
             Detonate();
         }
         else if (collision.gameObject.tag == "Bullet")

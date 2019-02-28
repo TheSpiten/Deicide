@@ -12,6 +12,9 @@ TagManager:
   - Javelin
   - Feather
   - Bullet
+  - ShieldPowerUp
+  - HealthPowerUp
+  - DynamitePowerUp
   layers:
   - Default
   - TransparentFX
