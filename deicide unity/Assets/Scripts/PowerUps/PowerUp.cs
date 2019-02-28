@@ -97,10 +97,8 @@ public class PowerUp : MonoBehaviour
 
     void Shield()
     {
-        // I'm guessing this won't follow the ship and will have to be changed, but not sure so maybe ?
-        var shield = (GameObject)Instantiate(shieldPrefab, transform.position, transform.rotation);
-        shield.transform.up = transform.up;
-        shield.transform.right = transform.right;
+        transform.Find("shieldPrefab").gameObject.SetActive(true);
+        transform.Find("shieldBack").gameObject.SetActive(true);
     }
 
     void SetOthersToFalse(string powerup)
