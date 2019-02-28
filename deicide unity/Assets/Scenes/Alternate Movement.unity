@@ -301,6 +301,21 @@ PrefabInstance:
       propertyPath: soundStormIn
       value: 
       objectReference: {fileID: 8300000, guid: 4484cbea6a2b5a548bdb77d1d9ea7915, type: 3}
+    - target: {fileID: 5549109139505656562, guid: 0b2efabaca6227f43922b8b32cb471b6,
+        type: 3}
+      propertyPath: soundBossHit1
+      value: 
+      objectReference: {fileID: 8300000, guid: 32cbffc8ee68334458539008e8e36e1e, type: 3}
+    - target: {fileID: 5549109139505656562, guid: 0b2efabaca6227f43922b8b32cb471b6,
+        type: 3}
+      propertyPath: soundBossHit2
+      value: 
+      objectReference: {fileID: 8300000, guid: a5f62f0cb4b5afc4490e896418faa21b, type: 3}
+    - target: {fileID: 5549109139505656562, guid: 0b2efabaca6227f43922b8b32cb471b6,
+        type: 3}
+      propertyPath: soundBossHit3
+      value: 
+      objectReference: {fileID: 8300000, guid: 6730ec018fd9737458d25b233467269c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b2efabaca6227f43922b8b32cb471b6, type: 3}
 --- !u!1 &421458537 stripped
@@ -330,6 +345,9 @@ MonoBehaviour:
   soundStormOut: {fileID: 0}
   soundStormIn: {fileID: 0}
   soundPickup: {fileID: 0}
+  soundBossHit1: {fileID: 0}
+  soundBossHit2: {fileID: 0}
+  soundBossHit3: {fileID: 0}
 --- !u!82 &421458539
 AudioSource:
   m_ObjectHideFlags: 0
