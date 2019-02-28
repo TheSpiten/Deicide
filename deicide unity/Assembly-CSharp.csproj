@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\Utility\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Utility\OffsetScroller.cs" />
     <Compile Include="Assets\Scripts\Utility\ScreenShake.cs" />
+    <Compile Include="Assets\Scripts\Utility\UIManager.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/Daniel/Documents/GitHub/Deicide/deicide unity/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

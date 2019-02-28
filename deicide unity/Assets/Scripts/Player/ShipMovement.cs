@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShipMovement : MonoBehaviour
 {
+    enum Powerup { none, repair, dynamite, shield }
 
     Rigidbody2D rb;
     public float speed;
@@ -126,5 +127,10 @@ public class ShipMovement : MonoBehaviour
             returnTime = 0;
         }
         return returnTime;
+    }
+
+    public float GetPlayerHealth()
+    {
+        return health;
     }
 }
