@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ShipMovement : MonoBehaviour
 {
-    enum Powerup { none, repair, dynamite, shield }
-
     Rigidbody2D rb;
     public float speed;
     public float dashDelay;
@@ -132,5 +130,10 @@ public class ShipMovement : MonoBehaviour
     public float GetPlayerHealth()
     {
         return health;
+    }
+
+    public float GetPlayerDashTimer()
+    {
+        return dashTimer;
     }
 }

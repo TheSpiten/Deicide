@@ -119,4 +119,22 @@ public class PowerUp : MonoBehaviour
             GetComponent<Shoot>().dynamiteAmmo = 0;
         }
     }
+
+    public string GetPlayerPowerup()
+    {
+        if (hasHPack == true)
+        {
+            return "repair";
+        }
+        else if (hasShield == true)
+        {
+            return "shield";
+        }
+        else if (gameObject.GetComponent<Shoot>().dynamiteAmmo > 0)
+        {
+            return "dynamite";
+        }
+        
+        return "none";
+    }
 }
