@@ -10,17 +10,18 @@ public class AudioManager : MonoBehaviour
     public AudioClip soundCannon;
     public AudioClip soundJavelinJab;
     public AudioClip soundJavelinHit;
-
     public AudioClip soundStormOut;
     public AudioClip soundStormIn;
-
     public AudioClip soundPickup;
+    public AudioClip soundBossHit1;
+    public AudioClip soundBossHit2;
+    public AudioClip soundBossHit3;
 
     private AudioSource soundSource;
 
     private bool isMusicPlaying;
     private int currentMusicPlaying;
-    private List<int> machineGunSounds;
+    private List<int> bossHitSounds;
 
     private void Awake()
     {
@@ -39,8 +40,8 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         // Sets list for machine gun sounds
-        machineGunSounds = new List<int>();
-        SetMachineGunSounds();
+        bossHitSounds = new List<int>();
+        SetBossHitSounds();
 
         // Music is by default not playing
         isMusicPlaying = false;
@@ -65,68 +66,73 @@ public class AudioManager : MonoBehaviour
             // Machine gun shot
             // Plays a random sound from a list of 3, never repeating the same sound in a row
             case 0:
-                if (machineGunSounds.Count < 1)
+                if (bossHitSounds.Count < 1)
                 {
-                    SetMachineGunSounds();
+                    SetBossHitSounds();
                 }
-                int randomGunSounds = machineGunSounds[Mathf.FloorToInt(Random.Range(0, machineGunSounds.Count - 0.0001f))];
+                int randomGunSounds = bossHitSounds[Mathf.FloorToInt(Random.Range(0, bossHitSounds.Count - 0.0001f))];
                 
                 switch (randomGunSounds)
                 {
                     case 1:
-                        soundClip = soundMachineGun1;
+                        soundClip = soundBossHit1;
                         break;
 
                     case 2:
-                        soundClip = soundMachineGun2;
+                        soundClip = soundBossHit2;
                         break;
 
                     case 3:
-                        soundClip = soundMachineGun3;
+                        soundClip = soundBossHit3;
                         break;
 
                     default:
-                        soundClip = soundMachineGun1;
+                        soundClip = soundBossHit1;
                         break;
                 }
-                machineGunSounds.Remove(randomGunSounds);
-                if (machineGunSounds.Count < 1)
+                bossHitSounds.Remove(randomGunSounds);
+                if (bossHitSounds.Count < 1)
                 {
-                    SetMachineGunSounds();
-                    machineGunSounds.Remove(randomGunSounds);
+                    SetBossHitSounds();
+                    bossHitSounds.Remove(randomGunSounds);
                 }
-                soundVolume = 0.1f;
+                soundVolume = 0.15f;
                 break;
 
             // Cannon shot
             case 1:
                 soundClip = soundCannon;
-                soundVolume = 1f;
+                soundVolume = 0.25f;
                 break;
 
             // Javelin jab
             case 2:
                 soundClip = soundJavelinJab;
+                soundVolume = 1f;
                 break;
 
             // Javelin hit
             case 3:
                 soundClip = soundJavelinHit;
+                soundVolume = 1f;
                 break;
 
             // Pickup sound
             case 4:
                 soundClip = soundPickup;
+                soundVolume = 1f;
                 break;
 
             // Storm out sound
             case 5:
                 soundClip = soundStormOut;
+                soundVolume = 1f;
                 break;
 
             // Storm in sound
             case 6:
                 soundClip = soundStormIn;
+                soundVolume = 1f;
                 break;
         }
 
@@ -164,12 +170,12 @@ public class AudioManager : MonoBehaviour
         return isMusicPlaying;
     }
 
-    private void SetMachineGunSounds()
+    private void SetBossHitSounds()
     {
         // Sets machineGunSounds list
-        machineGunSounds.Clear();
-        machineGunSounds.Add(1);
-        machineGunSounds.Add(2);
-        machineGunSounds.Add(3);
+        bossHitSounds.Clear();
+        bossHitSounds.Add(1);
+        bossHitSounds.Add(2);
+        bossHitSounds.Add(3);
     }
 }

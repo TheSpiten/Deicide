@@ -13,6 +13,9 @@ MonoImporter:
   - soundStormOut: {fileID: 8300000, guid: 6f1655a11f9e4454e956890bd9541d60, type: 3}
   - soundStormIn: {fileID: 8300000, guid: 4484cbea6a2b5a548bdb77d1d9ea7915, type: 3}
   - soundPickup: {fileID: 8300000, guid: 998ef83203da9664aacfa58e6bc41840, type: 3}
+  - soundBossHit1: {fileID: 8300000, guid: 32cbffc8ee68334458539008e8e36e1e, type: 3}
+  - soundBossHit2: {fileID: 8300000, guid: a5f62f0cb4b5afc4490e896418faa21b, type: 3}
+  - soundBossHit3: {fileID: 8300000, guid: 6730ec018fd9737458d25b233467269c, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
