@@ -24,20 +24,23 @@ public class Shoot : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.Comma))
+        if (gameObject.GetComponent<ShipMovement>().GetPlayerAlive() == true)
         {
-            if (delay > 10)
+            if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.Comma))
             {
-            ShootBullet();
+                if (delay > 10)
+                {
+                    ShootBullet();
+                }
             }
-        }
 
-        if (Input.GetMouseButton(1) || Input.GetKey(KeyCode.Period))
-        {
-            if (delayDynamite > 40 && dynamiteAmmo > 0)
+            if (Input.GetMouseButton(1) || Input.GetKey(KeyCode.Period))
             {
-                ShootDynamite();
-                dynamiteAmmo--;
+                if (delayDynamite > 40 && dynamiteAmmo > 0)
+                {
+                    ShootDynamite();
+                    dynamiteAmmo--;
+                }
             }
         }
 
@@ -50,7 +53,7 @@ public class Shoot : MonoBehaviour
         // Spawning bullet and shooting it towards the mouse
         var bullet = (GameObject)Instantiate(Bullet, Gun.transform.position, Gun.transform.rotation);
         bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * 20;
-        Destroy(bullet, 2.0f);
+        Destroy(bullet, 4.0f);
         delay = 0;
         Camera.main.GetComponent<ScreenShake>().Shake(0.05f, 0.1f);
         // Plays shooting sound

@@ -17,6 +17,8 @@ public class ShipMovement : MonoBehaviour
     private float dashCurrentIncreasedSpeed;
     private float bounceTimer;
 
+    private bool alive;
+
     public bool isShielded = false;
 
     private void Awake()
@@ -26,6 +28,8 @@ public class ShipMovement : MonoBehaviour
         dashCurrentIncreasedSpeed = 1;
 
         bounceTimer = 0;
+
+        alive = true;
     }
 
     private void OnCollisionEnter2D(Collider2D collision)
@@ -40,7 +44,7 @@ public class ShipMovement : MonoBehaviour
     // Should maybe be FixedUpdate()?
     void FixedUpdate()
     {
-        if (bounceTimer <= 0)
+        if (bounceTimer <= 0 && alive == true)
         {
             // Updates dash speed
             float newVelocityX = rb.velocity.x;
@@ -80,33 +84,35 @@ public class ShipMovement : MonoBehaviour
 
     private void Update()
     {
-        if (transform.Find("shieldPrefab").gameObject.activeSelf == true && transform.Find("shieldBack").gameObject.activeSelf == true)
-            isShielded = true;
-        else if ((transform.Find("shieldPrefab").gameObject.activeSelf == true && transform.Find("shieldBack").gameObject.activeSelf == true) == false)
-            isShielded = false;
-
-        // Updates dashTimer
-        dashTimer = TimerTick(dashTimer);
-        // Updates dashSpeedTimer
-        dashSpeedTimer = TimerTick(dashSpeedTimer);
-        // Updates bounceTimer
-        if (bounceTimer > 0)
+        if (alive == true)
         {
-            bounceTimer -= Time.deltaTime;
-        }
-        else
-        {
-            bounceTimer = 0;
-        }
+            if (transform.Find("shieldPrefab").gameObject.activeSelf == true && transform.Find("shieldBack").gameObject.activeSelf == true)
+                isShielded = true;
+            else if ((transform.Find("shieldPrefab").gameObject.activeSelf == true && transform.Find("shieldBack").gameObject.activeSelf == true) == false)
+                isShielded = false;
 
-        // Declares input keys
-        var shootKey = KeyCode.Z;
-        var dashKey = KeyCode.Space;
-        var powerupKey = KeyCode.C;
+            // Updates dashTimer
+            dashTimer = TimerTick(dashTimer);
+            // Updates dashSpeedTimer
+            dashSpeedTimer = TimerTick(dashSpeedTimer);
+            // Updates bounceTimer
+            if (bounceTimer > 0)
+            {
+                bounceTimer -= Time.deltaTime;
+            }
+            else
+            {
+                bounceTimer = 0;
+            }
 
-        
-        // Dashes if dashKey(or right click ?) is pressed
-        if (Input.GetMouseButton(2) || Input.GetKeyDown(dashKey))
+            // Declares input keys
+            var shootKey = KeyCode.Z;
+            var dashKey = KeyCode.Space;
+            var powerupKey = KeyCode.C;
+
+
+            // Dashes if dashKey(or right click ?) is pressed
+            if (Input.GetMouseButton(2) || Input.GetKeyDown(dashKey))
             {
                 if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
                 {
@@ -118,10 +124,11 @@ public class ShipMovement : MonoBehaviour
                 }
             }
 
-        // Resets speed increase caused by dashing
-        if (dashSpeedTimer == 0)
-        {
-            dashCurrentIncreasedSpeed = 1;
+            // Resets speed increase caused by dashing
+            if (dashSpeedTimer == 0)
+            {
+                dashCurrentIncreasedSpeed = 1;
+            }
         }
     }
 
@@ -138,7 +145,14 @@ public class ShipMovement : MonoBehaviour
     {
         health -= damage;
         if (health <= 0)
-            Destroy(gameObject);
+        {
+            if (alive == true)
+            {
+                alive = false;
+                GameObject.FindGameObjectWithTag("UIManager").gameObject.SetActive(false);
+                transform.Find("ShipSprite").gameObject.SetActive(false);
+            }
+        }
     }
 
     private float TimerTick(float currentTime)
@@ -164,5 +178,10 @@ public class ShipMovement : MonoBehaviour
     public float GetPlayerDashTimer()
     {
         return dashTimer;
+    }
+
+    public bool GetPlayerAlive()
+    {
+        return alive;
     }
 }

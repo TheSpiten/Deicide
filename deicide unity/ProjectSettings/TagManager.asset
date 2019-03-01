@@ -17,6 +17,7 @@ TagManager:
   - DynamitePowerUp
   - BossShield
   - Boundary
+  - UIManager
   layers:
   - Default
   - TransparentFX

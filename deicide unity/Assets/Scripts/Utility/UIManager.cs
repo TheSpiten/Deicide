@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -41,6 +42,22 @@ public class UIManager : MonoBehaviour
         UpdateHealth();
         UpdateDash();
         UpdatePowerup();
+
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            SceneManager.LoadScene("Alternate Movement");
+        }
+        else if (Input.GetKeyDown(KeyCode.T))
+        {
+            if (Time.timeScale == 0)
+            {
+                Time.timeScale = 1;
+            }
+            else
+            {
+                Time.timeScale = 0;
+            }
+        }
     }
 
     private void UpdateHealth()

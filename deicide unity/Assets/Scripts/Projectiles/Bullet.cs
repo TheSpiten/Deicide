@@ -23,9 +23,10 @@ public class Bullet : MonoBehaviour
 
         if (collision.gameObject.tag == "BossShield")
         {
-            Debug.Log("Bullet");
             Transform bouncePoint = collision.gameObject.transform.Find("ShieldBouncePoint");
-            transform.rotation = Quaternion.Euler(0, Quaternion.Angle(bouncePoint.rotation, transform.rotation), 0);
+            Vector2 bounceDirection = new Vector2(transform.position.x - bouncePoint.position.x, transform.position.y - bouncePoint.position.y);
+            bounceDirection.Normalize();
+            gameObject.GetComponent<Rigidbody2D>().velocity = bounceDirection * 15;
         }
     }
 }
