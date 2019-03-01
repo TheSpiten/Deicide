@@ -9,7 +9,7 @@ public class BossHealth : MonoBehaviour
     public void DamageBoss(int damage)
     {
         bossHealth -= damage;
-        if (bossHealth == 0)
+        if (bossHealth <= 0)
             Destroy(gameObject);
     }
 }

@@ -56,7 +56,9 @@ public class Dynamite : MonoBehaviour
             }
 
             else if (rb.gameObject.tag == "EnemyHead" || rb.gameObject.tag == "EnemyLegs" || rb.gameObject.tag == "EnemyBody")
+            {
                 rb.gameObject.GetComponentInParent<BossHealth>().DamageBoss(Mathf.RoundToInt(50 * 1 / (hit.bounds.SqrDistance(explosionPos) + 1)));
+            }
         }
         // Destroying the dynamite
         Destroy(gameObject);

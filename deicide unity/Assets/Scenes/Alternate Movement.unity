@@ -1249,7 +1249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eabcec28d1791424ca29277e09830ea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dynamiteAmmo: 100
+  dynamiteAmmo: 10
   Gun: {fileID: 893833506}
   Bullet: {fileID: 1855547274562421224, guid: b3fc30c987469c34aabed7e0c4e3b272, type: 3}
   Dynamite: {fileID: 6885526453830230752, guid: a6f3e35f8a3117d439f6b905ec2ee6e7,
