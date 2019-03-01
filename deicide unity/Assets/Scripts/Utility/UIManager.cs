@@ -8,26 +8,32 @@ public class UIManager : MonoBehaviour
     private GameObject healthUI;
     private float healthValue;
 
-    enum Powerup { none, repair, dynamite, shield };
-    Powerup playerPowerup;
-
     float playerDashTimer;
     private Text playerDashText;
-    private Text playerDashOKText;
+    private GameObject playerDashIcon;
+
+    enum Powerup { none, repair, dynamite, shield };
+    Powerup playerPowerup;
+    private GameObject repairIcon;
+    private GameObject shieldIcon;
+    private GameObject dynamiteIcon;
         
     void Awake()
     {
         healthUI = GameObject.Find("UI_health");
         playerPowerup = Powerup.none;
         playerDashTimer = -1;
+        playerDashText = transform.Find("UI_dash_timer").GetComponent<Text>();
+        playerDashIcon = transform.Find("UI_dash_ready").gameObject;
+
+        repairIcon = transform.Find("UI_powerup_icons").transform.Find("UI_powerup_repair").gameObject;
+        shieldIcon = transform.Find("UI_powerup_icons").transform.Find("UI_powerup_shield").gameObject;
+        dynamiteIcon = transform.Find("UI_powerup_icons").transform.Find("UI_powerup_dynamite").gameObject;
     }
 
     private void Start()
     {
         SetPowerupsInactive();
-
-        playerDashText = transform.Find("UI_dash_timer").GetComponent<Text>();
-        playerDashOKText = transform.Find("UI_dash_ok").GetComponent<Text>();
     }
 
     void Update()
@@ -41,7 +47,7 @@ public class UIManager : MonoBehaviour
     {
         healthValue = GetPlayerHealth();
 
-        healthUI.transform.rotation = Quaternion.Euler(0, 0, -100 + healthValue);
+        healthUI.transform.rotation = Quaternion.Euler(0, 0, -90 + healthValue * 0.9f);
     }
 
     private float GetPlayerHealth()
@@ -55,14 +61,14 @@ public class UIManager : MonoBehaviour
 
         if (playerDashTimer <= 0)
         {
-            playerDashOKText.gameObject.SetActive(true);
+            playerDashIcon.SetActive(true);
             playerDashText.gameObject.SetActive(false);
         }
         else
         {
             playerDashText.gameObject.SetActive(true);
             playerDashText.text = Mathf.Ceil(playerDashTimer).ToString();
-            playerDashOKText.gameObject.SetActive(false);
+            playerDashIcon.SetActive(false);
         }
     }
 
@@ -100,9 +106,9 @@ public class UIManager : MonoBehaviour
 
     private void SetPowerupsInactive()
     {
-        transform.Find("UI_powerup_icons").transform.Find("UI_powerup_repair").gameObject.SetActive(false);
-        transform.Find("UI_powerup_icons").transform.Find("UI_powerup_shield").gameObject.SetActive(false);
-        transform.Find("UI_powerup_icons").transform.Find("UI_powerup_dynamite").gameObject.SetActive(false);
+        repairIcon.SetActive(false);
+        shieldIcon.SetActive(false);
+        dynamiteIcon.SetActive(false);
     }
 
     private void SetPowerupActive(Powerup powerup)
