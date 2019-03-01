@@ -6,7 +6,7 @@ public class Shoot : MonoBehaviour
 {
     int delay = 0;
     int delayDynamite = 0;
-    public int dynamiteAmmo = 3;
+    public int dynamiteAmmo = 0;
 
     public GameObject Gun;
     public GameObject Bullet;
@@ -34,7 +34,7 @@ public class Shoot : MonoBehaviour
 
         if (Input.GetMouseButton(1) || Input.GetKey(KeyCode.Period))
         {
-            if (delayDynamite > 30 && dynamiteAmmo > 0)
+            if (delayDynamite > 40 && dynamiteAmmo > 0)
             {
                 ShootDynamite();
                 dynamiteAmmo--;
@@ -60,7 +60,7 @@ public class Shoot : MonoBehaviour
     public void ShootDynamite()
     {
         // Spawning dynamite and shooting it towards the mouse
-        var dynamite = (GameObject)Instantiate(Dynamite, Gun.transform.position, Gun.transform.rotation);
+        GameObject dynamite = Instantiate(Dynamite, Gun.transform.position, Gun.transform.rotation);
         dynamite.GetComponent<Rigidbody2D>().velocity = dynamite.transform.right * 7;
         Destroy(dynamite, 4.0f);
         delayDynamite = 0;

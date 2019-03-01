@@ -17,7 +17,7 @@ public class ShipMovement : MonoBehaviour
     private float dashCurrentIncreasedSpeed;
     private float bounceTimer;
 
-    public bool shootAim = true;
+    public bool isShielded = false;
 
     private void Awake()
     {
@@ -80,6 +80,11 @@ public class ShipMovement : MonoBehaviour
 
     private void Update()
     {
+        if (transform.Find("shieldPrefab").gameObject.activeSelf == true && transform.Find("shieldBack").gameObject.activeSelf == true)
+            isShielded = true;
+        else if ((transform.Find("shieldPrefab").gameObject.activeSelf == true && transform.Find("shieldBack").gameObject.activeSelf == true) == false)
+            isShielded = false;
+
         // Updates dashTimer
         dashTimer = TimerTick(dashTimer);
         // Updates dashSpeedTimer
@@ -132,7 +137,7 @@ public class ShipMovement : MonoBehaviour
     public void Damage(int damage)
     {
         health -= damage;
-        if (health == 0)
+        if (health <= 0)
             Destroy(gameObject);
     }
 

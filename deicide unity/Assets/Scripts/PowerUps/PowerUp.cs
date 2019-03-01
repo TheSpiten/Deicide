@@ -80,8 +80,6 @@ public class PowerUp : MonoBehaviour
                 Heal();
                 hasHPack = false;
             }
-            else if (GetComponent<Shoot>().dynamiteAmmo > 0)
-                GetComponent<Shoot>().ShootDynamite();
         }
     }
 
