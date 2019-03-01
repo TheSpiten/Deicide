@@ -15,6 +15,7 @@ public class ShipMovement : MonoBehaviour
     private float dashTimer;
     private float dashSpeedTimer;
     private float dashCurrentIncreasedSpeed;
+    private float bounceTimer;
 
     public bool shootAim = true;
 
@@ -23,44 +24,58 @@ public class ShipMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         
         dashCurrentIncreasedSpeed = 1;
+
+        bounceTimer = 0;
+    }
+
+    private void OnCollisionEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Boundary")
+        {
+            bounceTimer = 1f;
+            //rb.AddForce(-rb.velocity * 20);
+        }
     }
 
     // Should maybe be FixedUpdate()?
     void FixedUpdate()
     {
-        // Updates dash speed
-        float newVelocityX = rb.velocity.x;
-        float newVelocityY = rb.velocity.y;
-        int signVelocityX = Mathf.FloorToInt(Mathf.Sign(rb.velocity.x));
-        int signVelocityY = Mathf.FloorToInt(Mathf.Sign(rb.velocity.y));
-        if (Mathf.Abs(rb.velocity.x) > speed)
+        if (bounceTimer <= 0)
         {
-            newVelocityX = rb.velocity.x - (rb.drag * dragMultiplier * Mathf.Sign(rb.velocity.x));
-            if (Mathf.Sign(newVelocityX) != signVelocityX)
+            // Updates dash speed
+            float newVelocityX = rb.velocity.x;
+            float newVelocityY = rb.velocity.y;
+            int signVelocityX = Mathf.FloorToInt(Mathf.Sign(rb.velocity.x));
+            int signVelocityY = Mathf.FloorToInt(Mathf.Sign(rb.velocity.y));
+            if (Mathf.Abs(rb.velocity.x) > speed)
             {
-                newVelocityX = 0;
+                newVelocityX = rb.velocity.x - (rb.drag * dragMultiplier * Mathf.Sign(rb.velocity.x));
+                if (Mathf.Sign(newVelocityX) != signVelocityX)
+                {
+                    newVelocityX = 0;
+                }
             }
-        }
-        if (Mathf.Abs(rb.velocity.y) > speed)
-        {
-            newVelocityY = rb.velocity.y - (rb.drag * dragMultiplier * Mathf.Sign(rb.velocity.y));
-            if (Mathf.Sign(newVelocityY) != signVelocityY)
+            if (Mathf.Abs(rb.velocity.y) > speed)
             {
-                newVelocityY = 0;
+                newVelocityY = rb.velocity.y - (rb.drag * dragMultiplier * Mathf.Sign(rb.velocity.y));
+                if (Mathf.Sign(newVelocityY) != signVelocityY)
+                {
+                    newVelocityY = 0;
+                }
             }
+            rb.velocity = new Vector2(newVelocityX, newVelocityY);
+
+            // Getting input for horizontal movement
+            float move_h = Input.GetAxisRaw("Horizontal");
+            // Getting input for vertical movement
+            float move_v = Input.GetAxisRaw("Vertical");
+
+            // Normalizing the vector so diagonal movement isn't faster
+            Vector2 movement = new Vector2(move_h, move_v).normalized;
+
+            // Making the object move by adding a force to it
+            rb.AddForce(movement * speed * dashCurrentIncreasedSpeed);
         }
-        rb.velocity = new Vector2(newVelocityX, newVelocityY);
-
-        // Getting input for horizontal movement
-        float move_h = Input.GetAxisRaw("Horizontal");
-        // Getting input for vertical movement
-        float move_v = Input.GetAxisRaw("Vertical");
-
-        // Normalizing the vector so diagonal movement isn't faster
-        Vector2 movement = new Vector2(move_h, move_v).normalized;
-
-        // Making the object move by adding a force to it
-        rb.AddForce(movement * speed * dashCurrentIncreasedSpeed);
     }
 
     private void Update()
@@ -69,6 +84,15 @@ public class ShipMovement : MonoBehaviour
         dashTimer = TimerTick(dashTimer);
         // Updates dashSpeedTimer
         dashSpeedTimer = TimerTick(dashSpeedTimer);
+        // Updates bounceTimer
+        if (bounceTimer > 0)
+        {
+            bounceTimer -= Time.deltaTime;
+        }
+        else
+        {
+            bounceTimer = 0;
+        }
 
         // Declares input keys
         var shootKey = KeyCode.Z;
