@@ -19,7 +19,10 @@ public class Shield : MonoBehaviour
     {
         if (collision.CompareTag("Feather") == true || collision.CompareTag("Javelin") == true)
         {
-            gameObject.SetActive(false);
+            GameObject.FindGameObjectWithTag("ShieldFront").SetActive(false);
+            GameObject.FindGameObjectWithTag("ShieldBack").SetActive(false);
+
+            //gameObject.SetActive(false);
             Destroy(collision.gameObject);
         }
     }

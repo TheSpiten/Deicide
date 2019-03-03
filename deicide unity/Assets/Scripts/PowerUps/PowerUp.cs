@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    public GameObject shieldPrefab;
+    //public GameObject shieldPrefab;
     bool hasShield = false;
     bool hasHPack = false;
 
