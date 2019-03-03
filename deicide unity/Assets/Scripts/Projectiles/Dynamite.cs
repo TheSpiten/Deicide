@@ -78,7 +78,7 @@ public class Dynamite : MonoBehaviour
             Detonate();
             Destroy(collision.gameObject);
         }
-        else if (collision.gameObject.tag == "EnemyHead" || collision.gameObject.tag == "EnemyLegs" || collision.gameObject.tag == "EnemyBody")
+        else if (collision.gameObject.tag == "EnemyHead" || collision.gameObject.tag == "EnemyLegs" || collision.gameObject.tag == "EnemyBody" || collision.gameObject.tag == "BossShield")
         {
             //collision.gameObject.GetComponent<Bossfunctions>().HitBoss(collision.gameObject.tag);
             Detonate();

@@ -15,8 +15,14 @@ TagManager:
   - ShieldPowerUp
   - HealthPowerUp
   - DynamitePowerUp
+<<<<<<< HEAD
   - ShieldFront
   - ShieldBack
+=======
+  - BossShield
+  - Boundary
+  - UIManager
+>>>>>>> master
   layers:
   - Default
   - TransparentFX

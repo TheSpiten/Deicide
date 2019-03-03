@@ -20,5 +20,13 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
             GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(0);
         }
+
+        if (collision.gameObject.tag == "BossShield")
+        {
+            Transform bouncePoint = collision.gameObject.transform.Find("ShieldBouncePoint");
+            Vector2 bounceDirection = new Vector2(transform.position.x - bouncePoint.position.x, transform.position.y - bouncePoint.position.y);
+            bounceDirection.Normalize();
+            gameObject.GetComponent<Rigidbody2D>().velocity = bounceDirection * 15;
+        }
     }
 }
