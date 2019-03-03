@@ -95,6 +95,10 @@ public class PowerUp : MonoBehaviour
         if (gameObject.GetComponent<ShipMovement>().health < 100)
         {
             gameObject.GetComponent<ShipMovement>().health += 25;
+            if (gameObject.GetComponent<ShipMovement>().GetPlayerHealth() > 100)
+            {
+                gameObject.GetComponent<ShipMovement>().health = 100;
+            }
         }
     }
 

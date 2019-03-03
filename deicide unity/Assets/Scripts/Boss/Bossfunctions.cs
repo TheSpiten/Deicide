@@ -15,12 +15,14 @@ public class Bossfunctions : MonoBehaviour
     {
         protected AttackType attackType;
         protected Action action;
+        protected bool startAnimation;
         protected bool end;
 
         public Attack(AttackType type)
         {
             attackType = type;
             action = Action.None;
+            startAnimation = true;
             end = false;
         }
 
@@ -196,6 +198,7 @@ public class Bossfunctions : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public Sprite standardSprite;
     public Animator jabAnimator;
+    public Animator stormAnimator;
 
 
     private void Awake()
@@ -205,6 +208,7 @@ public class Bossfunctions : MonoBehaviour
         attackStack = new List<Attack>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         jabAnimator.gameObject.SetActive(false);
+        stormAnimator.gameObject.SetActive(false);
 
         // TEMPORARY
         jabCountdown = 1;
@@ -320,6 +324,7 @@ public class Bossfunctions : MonoBehaviour
                 // Resets sprite in case there was an animation
                 spriteRenderer.enabled = true;
                 jabAnimator.gameObject.SetActive(false);
+                stormAnimator.gameObject.SetActive(false);
             }
         }
     }
@@ -353,6 +358,11 @@ public class Bossfunctions : MonoBehaviour
                 break;
 
             case Action.StormFeathers:
+                if (stormAnimator.gameObject.activeSelf == false)
+                {
+                    spriteRenderer.enabled = false;
+                    stormAnimator.gameObject.SetActive(true);
+                }
                 GetComponent<FeatherStorm>().FeatherAttack();
                 GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(5);
                 break;

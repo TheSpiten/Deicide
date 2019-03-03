@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
+    private GameObject baseUI;
+    private bool showUI;
+
     private GameObject healthUI;
     private float healthValue;
 
@@ -21,6 +24,9 @@ public class UIManager : MonoBehaviour
         
     void Awake()
     {
+        baseUI = GameObject.Find("UI_base");
+        showUI = true;
+
         healthUI = GameObject.Find("UI_health");
         playerPowerup = Powerup.none;
         playerDashTimer = -1;
@@ -39,23 +45,26 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        UpdateHealth();
-        UpdateDash();
-        UpdatePowerup();
+        if (showUI == true)
+        {
+            UpdateHealth();
+            UpdateDash();
+            UpdatePowerup();
 
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            SceneManager.LoadScene("Alternate Movement");
-        }
-        else if (Input.GetKeyDown(KeyCode.T))
-        {
-            if (Time.timeScale == 0)
+            if (Input.GetKeyDown(KeyCode.Y))
             {
-                Time.timeScale = 1;
+                SceneManager.LoadScene("Alternate Movement");
             }
-            else
+            else if (Input.GetKeyDown(KeyCode.T))
             {
-                Time.timeScale = 0;
+                if (Time.timeScale == 0)
+                {
+                    Time.timeScale = 1;
+                }
+                else
+                {
+                    Time.timeScale = 0;
+                }
             }
         }
     }
@@ -147,5 +156,17 @@ public class UIManager : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public void TurnOffUI()
+    {
+        showUI = false;
+        baseUI.SetActive(false);
+        healthUI.SetActive(false);
+        repairIcon.SetActive(false);
+        shieldIcon.SetActive(false);
+        dynamiteIcon.SetActive(false);
+        playerDashIcon.SetActive(false);
+        playerDashText.gameObject.SetActive(false);
     }
 }
