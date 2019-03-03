@@ -12,11 +12,14 @@ public class JavelinBehavior : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && hit == false)
         {
-            collision.gameObject.GetComponent<ShipMovement>().Damage();
-            //collision.gameObject.GetComponent<Bossfunctions>().HitBoss(collision.gameObject.tag);
-            //Destroy(collision);
-            GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(3);
-            hit = true;
+            if (collision.GetComponent<ShipMovement>().isShielded == false)
+            {
+                collision.gameObject.GetComponent<ShipMovement>().Damage(50);
+                //collision.gameObject.GetComponent<Bossfunctions>().HitBoss(collision.gameObject.tag);
+                //Destroy(collision);
+                GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(3);
+                hit = true;
+            }
         }
     }
 

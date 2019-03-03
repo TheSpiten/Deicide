@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ShipMovement : MonoBehaviour
 {
-
     Rigidbody2D rb;
     public float speed;
     public float dashDelay;
@@ -12,73 +11,108 @@ public class ShipMovement : MonoBehaviour
     public float dragMultiplier;
     public float dashSpeedIncrease;
     public float dashSpeedDuration;
-    public int health = 3;
+    public int health = 100;
     private float dashTimer;
     private float dashSpeedTimer;
     private float dashCurrentIncreasedSpeed;
+    private float bounceTimer;
 
-    public bool shootAim = true;
+    private bool alive;
+
+    public bool isShielded = false;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         
         dashCurrentIncreasedSpeed = 1;
+
+        bounceTimer = 0;
+
+        alive = true;
+    }
+
+    private void OnCollisionEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Boundary")
+        {
+            bounceTimer = 1f;
+            //rb.AddForce(-rb.velocity * 20);
+        }
     }
 
     // Should maybe be FixedUpdate()?
     void FixedUpdate()
     {
-        // Updates dash speed
-        float newVelocityX = rb.velocity.x;
-        float newVelocityY = rb.velocity.y;
-        int signVelocityX = Mathf.FloorToInt(Mathf.Sign(rb.velocity.x));
-        int signVelocityY = Mathf.FloorToInt(Mathf.Sign(rb.velocity.y));
-        if (Mathf.Abs(rb.velocity.x) > speed)
+        if (bounceTimer <= 0 && alive == true)
         {
-            newVelocityX = rb.velocity.x - (rb.drag * dragMultiplier * Mathf.Sign(rb.velocity.x));
-            if (Mathf.Sign(newVelocityX) != signVelocityX)
+            // Updates dash speed
+            float newVelocityX = rb.velocity.x;
+            float newVelocityY = rb.velocity.y;
+            int signVelocityX = Mathf.FloorToInt(Mathf.Sign(rb.velocity.x));
+            int signVelocityY = Mathf.FloorToInt(Mathf.Sign(rb.velocity.y));
+            if (Mathf.Abs(rb.velocity.x) > speed)
             {
-                newVelocityX = 0;
+                newVelocityX = rb.velocity.x - (rb.drag * dragMultiplier * Mathf.Sign(rb.velocity.x));
+                if (Mathf.Sign(newVelocityX) != signVelocityX)
+                {
+                    newVelocityX = 0;
+                }
             }
-        }
-        if (Mathf.Abs(rb.velocity.y) > speed)
-        {
-            newVelocityY = rb.velocity.y - (rb.drag * dragMultiplier * Mathf.Sign(rb.velocity.y));
-            if (Mathf.Sign(newVelocityY) != signVelocityY)
+            if (Mathf.Abs(rb.velocity.y) > speed)
             {
-                newVelocityY = 0;
+                newVelocityY = rb.velocity.y - (rb.drag * dragMultiplier * Mathf.Sign(rb.velocity.y));
+                if (Mathf.Sign(newVelocityY) != signVelocityY)
+                {
+                    newVelocityY = 0;
+                }
             }
+            rb.velocity = new Vector2(newVelocityX, newVelocityY);
+
+            // Getting input for horizontal movement
+            float move_h = Input.GetAxisRaw("Horizontal");
+            // Getting input for vertical movement
+            float move_v = Input.GetAxisRaw("Vertical");
+
+            // Normalizing the vector so diagonal movement isn't faster
+            Vector2 movement = new Vector2(move_h, move_v).normalized;
+
+            // Making the object move by adding a force to it
+            rb.AddForce(movement * speed * dashCurrentIncreasedSpeed);
         }
-        rb.velocity = new Vector2(newVelocityX, newVelocityY);
-
-        // Getting input for horizontal movement
-        float move_h = Input.GetAxisRaw("Horizontal");
-        // Getting input for vertical movement
-        float move_v = Input.GetAxisRaw("Vertical");
-
-        // Normalizing the vector so diagonal movement isn't faster
-        Vector2 movement = new Vector2(move_h, move_v).normalized;
-
-        // Making the object move by adding a force to it
-        rb.AddForce(movement * speed * dashCurrentIncreasedSpeed);
     }
 
     private void Update()
     {
-        // Updates dashTimer
-        dashTimer = TimerTick(dashTimer);
-        // Updates dashSpeedTimer
-        dashSpeedTimer = TimerTick(dashSpeedTimer);
+        if (alive == true)
+        {
+            if (transform.Find("shieldPrefab").gameObject.activeSelf == true && transform.Find("shieldBack").gameObject.activeSelf == true)
+                isShielded = true;
+            else if ((transform.Find("shieldPrefab").gameObject.activeSelf == true && transform.Find("shieldBack").gameObject.activeSelf == true) == false)
+                isShielded = false;
 
-        // Declares input keys
-        var shootKey = KeyCode.Z;
-        var dashKey = KeyCode.Space;
-        var powerupKey = KeyCode.C;
+            // Updates dashTimer
+            dashTimer = TimerTick(dashTimer);
+            // Updates dashSpeedTimer
+            dashSpeedTimer = TimerTick(dashSpeedTimer);
+            // Updates bounceTimer
+            if (bounceTimer > 0)
+            {
+                bounceTimer -= Time.deltaTime;
+            }
+            else
+            {
+                bounceTimer = 0;
+            }
 
-        
-        // Dashes if dashKey(or right click ?) is pressed
-        if (Input.GetMouseButton(2) || Input.GetKeyDown(dashKey))
+            // Declares input keys
+            var shootKey = KeyCode.Z;
+            var dashKey = KeyCode.Space;
+            var powerupKey = KeyCode.C;
+
+
+            // Dashes if dashKey(or right click ?) is pressed
+            if (Input.GetMouseButton(2) || Input.GetKeyDown(dashKey))
             {
                 if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
                 {
@@ -90,10 +124,11 @@ public class ShipMovement : MonoBehaviour
                 }
             }
 
-        // Resets speed increase caused by dashing
-        if (dashSpeedTimer == 0)
-        {
-            dashCurrentIncreasedSpeed = 1;
+            // Resets speed increase caused by dashing
+            if (dashSpeedTimer == 0)
+            {
+                dashCurrentIncreasedSpeed = 1;
+            }
         }
     }
 
@@ -106,11 +141,18 @@ public class ShipMovement : MonoBehaviour
     }
 
     // Ship takes 1 damage
-    public void Damage()
+    public void Damage(int damage)
     {
-        health--;
-        if (health == 0)
-            Destroy(gameObject);
+        health -= damage;
+        if (health <= 0)
+        {
+            if (alive == true)
+            {
+                alive = false;
+                GameObject.FindGameObjectWithTag("UIManager").gameObject.SetActive(false);
+                transform.Find("ShipSprite").gameObject.SetActive(false);
+            }
+        }
     }
 
     private float TimerTick(float currentTime)
@@ -126,5 +168,20 @@ public class ShipMovement : MonoBehaviour
             returnTime = 0;
         }
         return returnTime;
+    }
+
+    public float GetPlayerHealth()
+    {
+        return health;
+    }
+
+    public float GetPlayerDashTimer()
+    {
+        return dashTimer;
+    }
+
+    public bool GetPlayerAlive()
+    {
+        return alive;
     }
 }
