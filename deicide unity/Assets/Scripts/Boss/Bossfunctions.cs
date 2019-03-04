@@ -252,9 +252,9 @@ public class Bossfunctions : MonoBehaviour
             JabAttack(2);
             JabAttack(2);
             JabAttack(2);
-            StormAttack(4, 2);
+            StormAttack(4, 1.5f);
             JabAttack(2);
-            StormAttack(6, 1.5f);
+            StormAttack(4, 0.75f);
         }
 
         AttackUpdate();

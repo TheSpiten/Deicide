@@ -50,21 +50,21 @@ public class UIManager : MonoBehaviour
             UpdateHealth();
             UpdateDash();
             UpdatePowerup();
+        }
 
-            if (Input.GetKeyDown(KeyCode.Y))
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            SceneManager.LoadScene("Alternate Movement");
+        }
+        else if (Input.GetKeyDown(KeyCode.T))
+        {
+            if (Time.timeScale == 0)
             {
-                SceneManager.LoadScene("Alternate Movement");
+                Time.timeScale = 1;
             }
-            else if (Input.GetKeyDown(KeyCode.T))
+            else
             {
-                if (Time.timeScale == 0)
-                {
-                    Time.timeScale = 1;
-                }
-                else
-                {
-                    Time.timeScale = 0;
-                }
+                Time.timeScale = 0;
             }
         }
     }

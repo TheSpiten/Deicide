@@ -18,6 +18,8 @@ TagManager:
   - BossShield
   - Boundary
   - UIManager
+  - ShieldFront
+  - ShieldBack
   layers:
   - Default
   - TransparentFX
