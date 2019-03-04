@@ -149,8 +149,9 @@ public class ShipMovement : MonoBehaviour
             if (alive == true)
             {
                 alive = false;
-                GameObject.FindGameObjectWithTag("UIManager").gameObject.SetActive(false);
+                GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().TurnOffUI();
                 transform.Find("ShipSprite").gameObject.SetActive(false);
+                transform.Find("GunRotator").transform.Find("Gun").gameObject.SetActive(false);
             }
         }
     }

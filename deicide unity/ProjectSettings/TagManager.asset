@@ -22,6 +22,11 @@ TagManager:
   - BossShield
   - Boundary
   - UIManager
+<<<<<<< HEAD
+>>>>>>> master
+=======
+  - ShieldFront
+  - ShieldBack
 >>>>>>> master
   layers:
   - Default

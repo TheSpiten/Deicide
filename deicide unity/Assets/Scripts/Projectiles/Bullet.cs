@@ -27,6 +27,7 @@ public class Bullet : MonoBehaviour
             Vector2 bounceDirection = new Vector2(transform.position.x - bouncePoint.position.x, transform.position.y - bouncePoint.position.y);
             bounceDirection.Normalize();
             gameObject.GetComponent<Rigidbody2D>().velocity = bounceDirection * 15;
+            GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(7);
         }
     }
 }

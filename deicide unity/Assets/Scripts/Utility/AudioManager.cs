@@ -96,7 +96,7 @@ public class AudioManager : MonoBehaviour
                     SetBossHitSounds();
                     bossHitSounds.Remove(randomGunSounds);
                 }
-                soundVolume = 0.15f;
+                soundVolume = 0.25f;
                 break;
 
             // Cannon shot
@@ -113,8 +113,8 @@ public class AudioManager : MonoBehaviour
 
             // Javelin hit
             case 3:
-                soundClip = soundJavelinHit;
-                soundVolume = 1f;
+                //soundClip = soundJavelinHit;
+                //soundVolume = 1f;
                 break;
 
             // Pickup sound
@@ -133,6 +133,12 @@ public class AudioManager : MonoBehaviour
             case 6:
                 soundClip = soundStormIn;
                 soundVolume = 1f;
+                break;
+
+            // Shield hit sound
+            case 7:
+                soundClip = soundMachineGun1;
+                soundVolume = 0.15f;
                 break;
         }
 
