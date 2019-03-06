@@ -35,7 +35,7 @@ public class FeatherStorm : MonoBehaviour
 
             var feathers = (GameObject)Instantiate(Feather, FeatherSpawn.transform.position, rotation);
             feathers.GetComponent<Rigidbody2D>().velocity = -feathers.transform.right * Random.Range(6,9);
-            Destroy(feathers, 3.0f);
+            Destroy(feathers, 4.0f);
         }
         Destroy(feather, 4.0f);
     }

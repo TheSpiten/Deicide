@@ -55,7 +55,7 @@ public class Shoot : MonoBehaviour
         bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * 20;
         Destroy(bullet, 4.0f);
         delay = 0;
-        Camera.main.GetComponent<ScreenShake>().Shake(0.05f, 0.1f);
+        Camera.main.GetComponent<ScreenShake>().Shake(0.025f, 0.1f);
         // Plays shooting sound
         GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(1);
     }
