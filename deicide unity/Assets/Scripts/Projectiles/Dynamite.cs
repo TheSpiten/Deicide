@@ -56,7 +56,9 @@ public class Dynamite : MonoBehaviour
             }
 
             else if (rb.gameObject.tag == "EnemyHead" || rb.gameObject.tag == "EnemyLegs" || rb.gameObject.tag == "EnemyBody")
+            {
                 rb.gameObject.GetComponentInParent<BossHealth>().DamageBoss(Mathf.RoundToInt(50 * 1 / (hit.bounds.SqrDistance(explosionPos) + 1)));
+            }
         }
         // Destroying the dynamite
         Destroy(gameObject);
@@ -76,7 +78,7 @@ public class Dynamite : MonoBehaviour
             Detonate();
             Destroy(collision.gameObject);
         }
-        else if (collision.gameObject.tag == "EnemyHead" || collision.gameObject.tag == "EnemyLegs" || collision.gameObject.tag == "EnemyBody")
+        else if (collision.gameObject.tag == "EnemyHead" || collision.gameObject.tag == "EnemyLegs" || collision.gameObject.tag == "EnemyBody" || collision.gameObject.tag == "BossShield")
         {
             //collision.gameObject.GetComponent<Bossfunctions>().HitBoss(collision.gameObject.tag);
             Detonate();

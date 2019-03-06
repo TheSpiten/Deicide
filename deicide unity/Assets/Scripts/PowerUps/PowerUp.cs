@@ -11,31 +11,33 @@ public class PowerUp : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("ShieldPowerUp"))
+        if (gameObject.GetComponent<ShipMovement>().GetPlayerAlive() == true)
         {
-            other.gameObject.SetActive(false);
-            hasShield = true;
-            SetOthersToFalse("shield");
-            GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(4);
-            //Destroy(other.gameObject);
+            if (other.gameObject.CompareTag("ShieldPowerUp"))
+            {
+                other.gameObject.SetActive(false);
+                hasShield = true;
+                SetOthersToFalse("shield");
+                GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(4);
+                //Destroy(other.gameObject);
+            }
+            else if (other.gameObject.CompareTag("HealthPowerUp"))
+            {
+                other.gameObject.SetActive(false);
+                hasHPack = true;
+                SetOthersToFalse("health");
+                GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(4);
+                //Destroy(other.gameObject);
+            }
+            else if (other.gameObject.CompareTag("DynamitePowerUp"))
+            {
+                other.gameObject.SetActive(false);
+                gameObject.GetComponent<Shoot>().dynamiteAmmo = 5;
+                SetOthersToFalse("dynamite");
+                GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(4);
+                //Destroy(other.gameObject);
+            }
         }
-        else if (other.gameObject.CompareTag("HealthPowerUp"))
-        {
-            other.gameObject.SetActive(false);
-            hasHPack = true;
-            SetOthersToFalse("health");
-            GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(4);
-            //Destroy(other.gameObject);
-        }
-        else if (other.gameObject.CompareTag("DynamitePowerUp"))
-        {
-            other.gameObject.SetActive(false);
-            gameObject.GetComponent<Shoot>().dynamiteAmmo = 5;
-            SetOthersToFalse("dynamite");
-            GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(4);
-            //Destroy(other.gameObject);
-        }
-
     }
 
     //private void OnCollisionEnter2D(Collision2D collision)
@@ -68,20 +70,21 @@ public class PowerUp : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Period))
+        if (gameObject.GetComponent<ShipMovement>().GetPlayerAlive() == true)
         {
-            if (hasShield == true)
+            if (Input.GetKeyDown(KeyCode.Period))
             {
-                Shield();
-                hasShield = false;
+                if (hasShield == true)
+                {
+                    Shield();
+                    hasShield = false;
+                }
+                else if (hasHPack == true)
+                {
+                    Heal();
+                    hasHPack = false;
+                }
             }
-            else if (hasHPack == true)
-            {
-                Heal();
-                hasHPack = false;
-            }
-            else if (GetComponent<Shoot>().dynamiteAmmo > 0)
-                GetComponent<Shoot>().ShootDynamite();
         }
     }
 
@@ -92,15 +95,17 @@ public class PowerUp : MonoBehaviour
         if (gameObject.GetComponent<ShipMovement>().health < 100)
         {
             gameObject.GetComponent<ShipMovement>().health += 25;
+            if (gameObject.GetComponent<ShipMovement>().GetPlayerHealth() > 100)
+            {
+                gameObject.GetComponent<ShipMovement>().health = 100;
+            }
         }
     }
 
     void Shield()
     {
-        // I'm guessing this won't follow the ship and will have to be changed, but not sure so maybe ?
-        var shield = (GameObject)Instantiate(shieldPrefab, transform.position, transform.rotation);
-        shield.transform.up = transform.up;
-        shield.transform.right = transform.right;
+        transform.Find("shieldPrefab").gameObject.SetActive(true);
+        transform.Find("shieldBack").gameObject.SetActive(true);
     }
 
     void SetOthersToFalse(string powerup)
@@ -120,5 +125,23 @@ public class PowerUp : MonoBehaviour
             hasShield = false;
             GetComponent<Shoot>().dynamiteAmmo = 0;
         }
+    }
+
+    public string GetPlayerPowerup()
+    {
+        if (hasHPack == true)
+        {
+            return "repair";
+        }
+        else if (hasShield == true)
+        {
+            return "shield";
+        }
+        else if (gameObject.GetComponent<Shoot>().dynamiteAmmo > 0)
+        {
+            return "dynamite";
+        }
+        
+        return "none";
     }
 }

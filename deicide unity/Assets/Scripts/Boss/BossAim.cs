@@ -21,10 +21,13 @@ public class BossAim : MonoBehaviour
 
     void BossPlayerLock()
     {
-        // Checking for ship position and aiming at it
-        var PlayerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
-        var aim = Quaternion.FromToRotation(Vector3.left, PlayerPos - transform.position);
-        transform.rotation = aim;
-        if (PlayerPos == null) { PlayerAlive = false; }
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<ShipMovement>().GetPlayerAlive() == true)
+        {
+            // Checking for ship position and aiming at it
+            var PlayerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+            var aim = Quaternion.FromToRotation(Vector3.left, PlayerPos - transform.position);
+            transform.rotation = aim;
+            if (PlayerPos == null) { PlayerAlive = false; }
+        }
     }
 }

@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\PowerUps\BalloonMovement.cs" />
     <Compile Include="Assets\Scripts\PowerUps\PowerUp.cs" />
     <Compile Include="Assets\Scripts\PowerUps\PUSpawn.cs" />
+    <Compile Include="Assets\Scripts\PowerUps\Shield.cs" />
     <Compile Include="Assets\Scripts\Projectiles\Bullet.cs" />
     <Compile Include="Assets\Scripts\Projectiles\Dynamite.cs" />
     <Compile Include="Assets\Scripts\Projectiles\FeatherDamage.cs" />
@@ -79,6 +80,8 @@
     <Compile Include="Assets\Scripts\Utility\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Utility\OffsetScroller.cs" />
     <Compile Include="Assets\Scripts\Utility\ScreenShake.cs" />
+    <Compile Include="Assets\Scripts\Utility\UIManager.cs" />
+    <Compile Include="Assets\ShieldScript.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/Daniel/Documents/GitHub/Deicide/deicide unity/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
