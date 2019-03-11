@@ -9,7 +9,7 @@ public class Dynamite : MonoBehaviour
     public float delay = 2;
 
     //public float power = 10.0f;
-    public float radius = 2f;
+    public float radius = 4f;
     //public float upforce = 1.0f;
 
     public bool shouldDraw = false;
@@ -32,7 +32,7 @@ public class Dynamite : MonoBehaviour
         // Particle effects for the explosion
         var explosion = (GameObject)Instantiate(EnergyExplosion, transform.position, transform.rotation);
         Destroy(explosion, 1.95f);
-        Camera.main.GetComponent<ScreenShake>().Shake(0.2f, 0.2f);
+        Camera.main.GetComponent<ScreenShake>().Shake(0.3f, 0.2f);
         //Camera.current.GetComponent<ScreenShake>().Shake();
 
         Vector2 explosionPos = transform.position;
@@ -57,7 +57,7 @@ public class Dynamite : MonoBehaviour
 
             else if (rb.gameObject.tag == "EnemyHead" || rb.gameObject.tag == "EnemyLegs" || rb.gameObject.tag == "EnemyBody")
             {
-                rb.gameObject.GetComponentInParent<BossHealth>().DamageBoss(Mathf.RoundToInt(50 * 1 / (hit.bounds.SqrDistance(explosionPos) + 1)));
+                rb.gameObject.GetComponentInParent<BossHealth>().DamageBoss(Mathf.RoundToInt(25 * 1 / (hit.bounds.SqrDistance(explosionPos) * 2 + 1)));
             }
         }
         // Destroying the dynamite

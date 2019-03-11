@@ -63,7 +63,7 @@ public class Shoot : MonoBehaviour
     public void ShootDynamite()
     {
         // Spawning dynamite and shooting it towards the mouse
-        GameObject dynamite = Instantiate(Dynamite, Gun.transform.position, Gun.transform.rotation);
+        GameObject dynamite = Instantiate(Dynamite, Gun.transform.position, Quaternion.AngleAxis(45.0f, Vector3.forward).normalized * Gun.transform.rotation);
         dynamite.GetComponent<Rigidbody2D>().velocity = dynamite.transform.right * 7;
         Destroy(dynamite, 4.0f);
         delayDynamite = 0;
