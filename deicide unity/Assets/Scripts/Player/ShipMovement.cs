@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ShipMovement : MonoBehaviour
 {
@@ -152,6 +153,7 @@ public class ShipMovement : MonoBehaviour
                 GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().TurnOffUI();
                 transform.Find("ShipSprite").gameObject.SetActive(false);
                 transform.Find("GunRotator").transform.Find("Gun").gameObject.SetActive(false);
+                SceneManager.LoadScene("MenuScene");
             }
         }
     }

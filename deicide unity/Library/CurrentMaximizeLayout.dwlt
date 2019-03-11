@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 498}
   m_MaxSize: {x: 14004, y: 14048}
   vertical: 0
-  controlID: 9382
+  controlID: 4946
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 498}
   m_MaxSize: {x: 10002, y: 14048}
   vertical: 1
-  controlID: 9346
+  controlID: 4947
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 224}
   m_MaxSize: {x: 8006, y: 4024}
   vertical: 0
-  controlID: 9347
+  controlID: 4948
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -174,8 +174,8 @@ MonoBehaviour:
     y: 0
     width: 408
     height: 573
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 224}
+  m_MaxSize: {x: 4002, y: 4024}
   m_ActualView: {fileID: 6}
   m_Panes:
   - {fileID: 6}
@@ -212,7 +212,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: d4460000f44600000c4700001e470000
+      m_ExpandedIDs: d6b4ffffd8b4ffffdab4ffffecb4ffffeeb4ffff00b5ffff06b8ffff10b8ffff60b8ffff80b8ffffa0b8ffff24ebffffd4fbffffbc380000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -290,14 +290,14 @@ MonoBehaviour:
     height: 553
   m_PersistentViewDataDictionary: {fileID: 0}
   m_WindowGUID: 52df65590cc7c08468b1e31f008f1bf0
-  m_SceneLighting: 0
+  m_SceneLighting: 1
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -8.104494, y: 0.20190199, z: 0.20312515}
+    m_Target: {x: -1.9719249, y: -7.2885947, z: -0.13825445}
     speed: 2
-    m_Value: {x: -8.104494, y: 0.20190199, z: 0.20312515}
+    m_Value: {x: -1.9719249, y: -7.2885947, z: -0.13825445}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -329,9 +329,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 1.662447
+    m_Target: 24.057749
     speed: 2
-    m_Value: 1.662447
+    m_Value: 24.057749
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -388,8 +388,8 @@ MonoBehaviour:
     y: 573
     width: 1360
     height: 374
-  m_MinSize: {x: 230, y: 250}
-  m_MaxSize: {x: 10000, y: 10000}
+  m_MinSize: {x: 232, y: 274}
+  m_MaxSize: {x: 10002, y: 10024}
   m_ActualView: {fileID: 11}
   m_Panes:
   - {fileID: 11}
@@ -424,8 +424,7 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SearchFilter:
     m_NameFilter: 
-    m_ClassNames:
-    - Prefab
+    m_ClassNames: []
     m_AssetLabels: []
     m_AssetBundleNames: []
     m_VersionControlStates: []
@@ -434,20 +433,21 @@ MonoBehaviour:
     m_SceneHandles: 
     m_ShowAllHits: 0
     m_SearchArea: 1
-    m_Folders: []
+    m_Folders:
+    - Assets/Sprites/Background
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Sprites/Background
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\axelt\Documents\GitHub\Deicide\deicide unity
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 04ca9a3b
-    m_LastClickedID: 1000000004
-    m_ExpandedIDs: 00000000000a0000ae0a0000cc0a00000a0c00009e0c0000b40c0000f60c0000b02b0000b22b000000ca9a3b
+    scrollPos: {x: 0, y: 76.65845}
+    m_SelectedIDs: fc0a0000
+    m_LastClickedID: 2812
+    m_ExpandedIDs: 00000000ec0900009a0a0000b80a0000f60b00008a0c0000a00c0000e20c00009c2e00009e2e000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -475,7 +475,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000000a0000ae0a0000cc0a00000a0c00009e0c0000b40c0000f60c0000b02b0000b22b000000ca9a3b
+    m_ExpandedIDs: 00000000ec0900009a0a0000b80a0000f60b00008a0c0000a00c0000e20c00009c2e00009e2e000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -500,8 +500,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: f4460000
-    m_LastClickedInstanceID: 18164
+    m_SelectedInstanceIDs: d6b4ffff
+    m_LastClickedInstanceID: -19242
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:

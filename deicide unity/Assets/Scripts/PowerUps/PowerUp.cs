@@ -13,6 +13,7 @@ public class PowerUp : MonoBehaviour
     {
         if (gameObject.GetComponent<ShipMovement>().GetPlayerAlive() == true)
         {
+            Debug.Log(other.gameObject.tag);
             if (other.gameObject.CompareTag("ShieldPowerUp"))
             {
                 other.gameObject.SetActive(false);
