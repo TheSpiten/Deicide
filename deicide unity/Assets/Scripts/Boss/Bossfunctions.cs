@@ -137,7 +137,7 @@ public class Bossfunctions : MonoBehaviour
         {
             stormDuration = duration;
             stormSpeed = 1 / speed;
-            featherTimer = 0;
+            featherTimer = stormSpeed / 2;
             action = Action.StormWait;
         }
 
@@ -355,6 +355,14 @@ public class Bossfunctions : MonoBehaviour
                 Instantiate(javelin, javelinSpawnPoint.transform);
                 transform.Translate(-1f, 0, 0);
                 GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(2);
+                break;
+
+            case Action.StormWait:
+                if (stormAnimator.gameObject.activeSelf == false)
+                {
+                    spriteRenderer.enabled = false;
+                    stormAnimator.gameObject.SetActive(true);
+                }
                 break;
 
             case Action.StormFeathers:

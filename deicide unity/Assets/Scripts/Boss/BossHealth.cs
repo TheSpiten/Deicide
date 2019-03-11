@@ -12,4 +12,9 @@ public class BossHealth : MonoBehaviour
         if (bossHealth <= 0)
             Destroy(gameObject);
     }
+
+    public float GetBossHealth()
+    {
+        return bossHealth;
+    }
 }

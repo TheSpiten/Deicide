@@ -15,6 +15,11 @@ TagManager:
   - Bullet
   - ShieldBack
   - ShieldFront
+  - Enemy
+  - HealthPowerUp
+  - DynamitePowerUp
+  - ShieldPowerUp
+  - AudioManager
   layers:
   - Default
   - TransparentFX
