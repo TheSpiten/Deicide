@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    public GameObject shieldPrefab;
+    //public GameObject shieldPrefab;
     bool hasShield = false;
     bool hasHPack = false;
 
@@ -13,6 +13,7 @@ public class PowerUp : MonoBehaviour
     {
         if (gameObject.GetComponent<ShipMovement>().GetPlayerAlive() == true)
         {
+            Debug.Log(other.gameObject.tag);
             if (other.gameObject.CompareTag("ShieldPowerUp"))
             {
                 other.gameObject.SetActive(false);

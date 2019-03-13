@@ -55,7 +55,7 @@ public class Shoot : MonoBehaviour
         bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * 20;
         Destroy(bullet, 4.0f);
         delay = 0;
-        Camera.main.GetComponent<ScreenShake>().Shake(0.05f, 0.1f);
+        Camera.main.GetComponent<ScreenShake>().Shake(0.025f, 0.1f);
         // Plays shooting sound
         GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(1);
     }
@@ -63,7 +63,7 @@ public class Shoot : MonoBehaviour
     public void ShootDynamite()
     {
         // Spawning dynamite and shooting it towards the mouse
-        GameObject dynamite = Instantiate(Dynamite, Gun.transform.position, Gun.transform.rotation);
+        GameObject dynamite = Instantiate(Dynamite, Gun.transform.position, Quaternion.AngleAxis(45.0f, Vector3.forward).normalized * Gun.transform.rotation);
         dynamite.GetComponent<Rigidbody2D>().velocity = dynamite.transform.right * 7;
         Destroy(dynamite, 4.0f);
         delayDynamite = 0;
