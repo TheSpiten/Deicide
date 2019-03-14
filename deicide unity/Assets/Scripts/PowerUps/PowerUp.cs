@@ -97,10 +97,8 @@ public class PowerUp : MonoBehaviour
 
     void Shield()
     {
-        // I'm guessing this won't follow the ship and will have to be changed, but not sure so maybe ?
-        var shield = (GameObject)Instantiate(shieldPrefab, transform.position, transform.rotation);
-        shield.transform.up = transform.up;
-        shield.transform.right = transform.right;
+        transform.Find("shieldPrefab").gameObject.SetActive(true);
+        transform.Find("shieldBack").gameObject.SetActive(true);
     }
 
     void SetOthersToFalse(string powerup)
@@ -120,5 +118,23 @@ public class PowerUp : MonoBehaviour
             hasShield = false;
             GetComponent<Shoot>().dynamiteAmmo = 0;
         }
+    }
+
+    public string GetPlayerPowerup()
+    {
+        if (hasHPack == true)
+        {
+            return "repair";
+        }
+        else if (hasShield == true)
+        {
+            return "shield";
+        }
+        else if (gameObject.GetComponent<Shoot>().dynamiteAmmo > 0)
+        {
+            return "dynamite";
+        }
+        
+        return "none";
     }
 }

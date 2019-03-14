@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ShipMovement : MonoBehaviour
 {
-
     Rigidbody2D rb;
     public float speed;
     public float dashDelay;
@@ -126,5 +125,15 @@ public class ShipMovement : MonoBehaviour
             returnTime = 0;
         }
         return returnTime;
+    }
+
+    public float GetPlayerHealth()
+    {
+        return health;
+    }
+
+    public float GetPlayerDashTimer()
+    {
+        return dashTimer;
     }
 }
