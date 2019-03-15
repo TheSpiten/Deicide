@@ -1060,7 +1060,7 @@ PrefabInstance:
     - target: {fileID: 6355890363449407988, guid: 210567eee618cd847ad65c479726c239,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6355890363449407988, guid: 210567eee618cd847ad65c479726c239,
         type: 3}
@@ -1745,6 +1745,21 @@ PrefabInstance:
         type: 3}
       propertyPath: spearSpeed
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422246930380145229, guid: e53837e7a424644419da623f144797d6,
+        type: 3}
+      propertyPath: xPos
+      value: -8.13293
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422246930380145229, guid: e53837e7a424644419da623f144797d6,
+        type: 3}
+      propertyPath: SpawnPos.y
+      value: 6.004479
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422246930380145229, guid: e53837e7a424644419da623f144797d6,
+        type: 3}
+      propertyPath: SpawnPos.x
+      value: -8.13293
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e53837e7a424644419da623f144797d6, type: 3}

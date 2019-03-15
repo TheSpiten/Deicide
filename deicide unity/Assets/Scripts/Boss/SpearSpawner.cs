@@ -6,7 +6,8 @@ public class SpearSpawner : MonoBehaviour
 {
     public GameObject Spear;
     public float spearSpeed;
-    
+    public Vector2 SpawnPos;
+    public float xPos;
     
     
     
@@ -33,6 +34,8 @@ public class SpearSpawner : MonoBehaviour
         {
             var spears = (GameObject)Instantiate(Spear, transform.position, transform.rotation);
             spears.GetComponent<Rigidbody2D>().velocity = -spears.transform.up * spearSpeed;
+            xPos = xPos + 1.0f;
+            transform.position = Vector2.right * xPos;
             Destroy(spears, 2.0f);
         }
     } 
