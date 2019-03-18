@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public bool objectSelected;
+
     public void PlayGame()
     {
         SceneManager.LoadScene("Alternate Movement");
