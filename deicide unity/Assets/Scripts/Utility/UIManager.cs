@@ -169,9 +169,12 @@ public class UIManager : MonoBehaviour
 
     private void UpdateBossHealth()
     {
-        float bossHealth = GameObject.FindGameObjectWithTag("Enemy").GetComponent<BossHealth>().GetBossHealth();
-        
-        bossHealthBar.GetComponent<RectTransform>().anchoredPosition = new Vector2(bossHealthBar.GetComponent<RectTransform>().anchoredPosition.x, (bossHealth - 1000) * 1.15f);
+        if (GameObject.FindGameObjectWithTag("Enemy") != null)
+        {
+            float bossHealth = GameObject.FindGameObjectWithTag("Enemy").GetComponent<BossHealth>().GetBossHealth();
+
+            bossHealthBar.GetComponent<RectTransform>().anchoredPosition = new Vector2(bossHealthBar.GetComponent<RectTransform>().anchoredPosition.x, (bossHealth - 1000) * 1.15f);
+        }
     }
 
     public void TurnOffUI()
