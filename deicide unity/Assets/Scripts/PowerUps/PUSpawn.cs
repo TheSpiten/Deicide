@@ -12,7 +12,7 @@ public class PUSpawn : MonoBehaviour
     private void FixedUpdate()
     {
         PUdelay++;
-        if (PUdelay > 200)
+        if (PUdelay > 300)
         {
             SpawnPU();
             PUdelay = 0;

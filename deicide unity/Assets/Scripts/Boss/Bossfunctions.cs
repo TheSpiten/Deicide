@@ -15,12 +15,14 @@ public class Bossfunctions : MonoBehaviour
     {
         protected AttackType attackType;
         protected Action action;
+        protected bool startAnimation;
         protected bool end;
 
         public Attack(AttackType type)
         {
             attackType = type;
             action = Action.None;
+            startAnimation = true;
             end = false;
         }
 
@@ -134,8 +136,8 @@ public class Bossfunctions : MonoBehaviour
         public StormClass(float duration, float speed) : base(AttackType.Storm)
         {
             stormDuration = duration;
-            stormSpeed = speed;
-            featherTimer = stormSpeed;
+            stormSpeed = 1 / speed;
+            featherTimer = stormSpeed / 2;
             action = Action.StormWait;
         }
 
@@ -195,20 +197,24 @@ public class Bossfunctions : MonoBehaviour
     private GameObject player;
     public GameObject javelin;
     public GameObject javelinSpawnPoint;
+    private float originalTransformX;
     public float jabInterval;
     private float jabCountdown;
 
     private SpriteRenderer spriteRenderer;
     public Sprite standardSprite;
     public Animator jabAnimator;
+    public Animator stormAnimator;
 
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        originalTransformX = transform.position.x;
         attackStack = new List<Attack>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         jabAnimator.gameObject.SetActive(false);
+        stormAnimator.gameObject.SetActive(false);
 
         // TEMPORARY
         jabCountdown = 1;
@@ -227,13 +233,13 @@ public class Bossfunctions : MonoBehaviour
         }
         else if (Input.GetKeyDown(stormKey))
         {
-            StormAttack();
+            StormAttack(4, 1);
         }
         else if (Input.GetKeyDown(spearsKey))
         {
             SpearsAttack();
         }
-
+        /*
         if (jabCountdown > 0)
         {
             jabCountdown -= Time.deltaTime;
@@ -242,6 +248,19 @@ public class Bossfunctions : MonoBehaviour
         {
             JabAttack(2);
             jabCountdown = jabInterval;
+        }
+        */
+        if (attackStack.Count <= 0)
+        {
+            JabAttack(2);
+            JabAttack(2);
+            StormAttack(4, 1);
+            JabAttack(2);
+            JabAttack(2);
+            JabAttack(2);
+            StormAttack(4, 1.5f);
+            JabAttack(2);
+            StormAttack(4, 0.75f);
         }
 
         AttackUpdate();
@@ -297,6 +316,7 @@ public class Bossfunctions : MonoBehaviour
             {
                 if (attackStack[1].End() == true)
                 {
+                    transform.position = new Vector3(originalTransformX, transform.position.y, transform.position.z);
                     attackStack.RemoveAt(1);
                     Debug.Log("Second Attack Ended");
                 }
@@ -304,11 +324,13 @@ public class Bossfunctions : MonoBehaviour
 
             if (attackStack[0].End() == true)
             {
+                transform.position = new Vector3(originalTransformX, transform.position.y, transform.position.z);
                 attackStack.RemoveAt(0);
 
                 // Resets sprite in case there was an animation
                 spriteRenderer.enabled = true;
                 jabAnimator.gameObject.SetActive(false);
+                stormAnimator.gameObject.SetActive(false);
             }
         }
     }
@@ -337,10 +359,24 @@ public class Bossfunctions : MonoBehaviour
 
             case Action.JabStrike:
                 Instantiate(javelin, javelinSpawnPoint.transform);
+                transform.Translate(-1f, 0, 0);
                 GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(2);
                 break;
 
+            case Action.StormWait:
+                if (stormAnimator.gameObject.activeSelf == false)
+                {
+                    spriteRenderer.enabled = false;
+                    stormAnimator.gameObject.SetActive(true);
+                }
+                break;
+
             case Action.StormFeathers:
+                if (stormAnimator.gameObject.activeSelf == false)
+                {
+                    spriteRenderer.enabled = false;
+                    stormAnimator.gameObject.SetActive(true);
+                }
                 GetComponent<FeatherStorm>().FeatherAttack();
                 GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(5);
                 break;
@@ -354,15 +390,17 @@ public class Bossfunctions : MonoBehaviour
         attackStack.Add(jabAttack);
     }
 
-    private void StormAttack()
+    private void StormAttack(float duration, float speed)
     {
-        StormClass stormAttack = new StormClass(4, 1);
+        StormClass stormAttack = new StormClass(duration, speed);
 
         attackStack.Add(stormAttack);
     }
 
     private void SpearsAttack()
     {
+        SpearsClass spearAttack = new SpearsClass();
 
+        attackStack.Add(spearAttack);
     }
 }

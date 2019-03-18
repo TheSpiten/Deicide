@@ -8,7 +8,7 @@ public class Shield : MonoBehaviour
     void FixedUpdate()
     {
         timer += Time.fixedDeltaTime;
-        if (timer > 2.0f)
+        if (timer > 1.0f)
         {
             gameObject.SetActive(false);
             timer = 0.0f;
@@ -19,7 +19,10 @@ public class Shield : MonoBehaviour
     {
         if (collision.CompareTag("Feather") == true || collision.CompareTag("Javelin") == true)
         {
-            gameObject.SetActive(false);
+            //GameObject.FindGameObjectWithTag("ShieldFront").SetActive(false);
+            //GameObject.FindGameObjectWithTag("ShieldBack").SetActive(false);
+
+            //gameObject.SetActive(false);
             Destroy(collision.gameObject);
         }
     }
