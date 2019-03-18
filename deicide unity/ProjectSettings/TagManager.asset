@@ -15,6 +15,7 @@ TagManager:
   - ShieldPowerUp
   - HealthPowerUp
   - DynamitePowerUp
+  - SpearSpawner
   layers:
   - Default
   - TransparentFX

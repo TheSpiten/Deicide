@@ -1675,6 +1675,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpearSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 1422246930380145228, guid: e53837e7a424644419da623f144797d6,
+        type: 3}
+      propertyPath: m_TagString
+      value: SpearSpawner
+      objectReference: {fileID: 0}
     - target: {fileID: 1422246930380145230, guid: e53837e7a424644419da623f144797d6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1760,6 +1765,31 @@ PrefabInstance:
         type: 3}
       propertyPath: SpawnPos.x
       value: -8.13293
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422246930380145229, guid: e53837e7a424644419da623f144797d6,
+        type: 3}
+      propertyPath: yPos
+      value: 6.004479
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422246930380145229, guid: e53837e7a424644419da623f144797d6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422246930380145229, guid: e53837e7a424644419da623f144797d6,
+        type: 3}
+      propertyPath: multi
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422246930380145229, guid: e53837e7a424644419da623f144797d6,
+        type: 3}
+      propertyPath: multiX
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422246930380145229, guid: e53837e7a424644419da623f144797d6,
+        type: 3}
+      propertyPath: multiY
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e53837e7a424644419da623f144797d6, type: 3}
