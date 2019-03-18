@@ -2509,6 +2509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf3ae9c4ea6a7aa4bb15bc342f928891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectSelected: 0
 --- !u!224 &1754994464
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2676,7 +2677,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 979938740}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &1903857937

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4829934877925119331}
   - component: {fileID: 4829934877925119324}
   - component: {fileID: 550138414}
-  - component: {fileID: 8699014937990239928}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
@@ -126,19 +125,6 @@ MonoBehaviour:
   FeatherSpawn: {fileID: 1168484735}
   ConeSize: 4
   FeatherAmount: 5
---- !u!114 &8699014937990239928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 550138413}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20da4289b8933f94dba224e7a6f39afb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bossHealth: 1000
 --- !u!1 &845650901
 GameObject:
   m_ObjectHideFlags: 0
