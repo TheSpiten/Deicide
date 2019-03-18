@@ -1620,6 +1620,9 @@ MonoBehaviour:
   soundBossHit1: {fileID: 0}
   soundBossHit2: {fileID: 0}
   soundBossHit3: {fileID: 0}
+  musicBossIntro: {fileID: 0}
+  musicBossMain: {fileID: 0}
+  musicBoss1: {fileID: 0}
 --- !u!82 &421458539
 AudioSource:
   m_ObjectHideFlags: 0

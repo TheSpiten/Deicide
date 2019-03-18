@@ -16,12 +16,19 @@ public class AudioManager : MonoBehaviour
     public AudioClip soundBossHit1;
     public AudioClip soundBossHit2;
     public AudioClip soundBossHit3;
+    private List<int> bossHitSounds;
+
+    public AudioClip musicBossIntro;
+    public AudioClip musicBossMain;
+    public AudioClip musicBoss1;
 
     private AudioSource soundSource;
 
+    private enum Music { intro, main, one }
     private bool isMusicPlaying;
-    private int currentMusicPlaying;
-    private List<int> bossHitSounds;
+    private Music currentMusicPlaying;
+    private float musicTimer;
+    private float musicLength;
 
     private void Awake()
     {
@@ -46,12 +53,21 @@ public class AudioManager : MonoBehaviour
         // Music is by default not playing
         isMusicPlaying = false;
         currentMusicPlaying = 0;
+        musicTimer = 0;
+        musicLength = 0;
     }
 
     private void Start()
     {
         // Gets attached audio source component
         soundSource = GetComponent<AudioSource>();
+
+        PlayMusic(0);
+    }
+
+    private void Update()
+    {
+        MusicUpdate();
     }
 
     public void PlaySound(int soundNumber)
@@ -150,15 +166,53 @@ public class AudioManager : MonoBehaviour
         // Plays music depending on the integer
         switch (musicNumber)
         {
-            // Place music here plz
+            // Length of sound -0.115f
             case 0:
-
+                currentMusicPlaying = Music.intro;
+                musicLength = 13.584f;
                 break;
 
             case 1:
-
+                currentMusicPlaying = Music.one;
+                musicLength = 25.538f;
                 break;
         }
+    }
+
+    private void MusicUpdate()
+    {
+        if (musicTimer > 0 || musicTimer > Time.deltaTime)
+        {
+            musicTimer -= Time.deltaTime;
+            PlayMusic(1);
+        }
+        else
+        {
+            musicTimer += musicLength;
+            if (currentMusicPlaying == Music.intro)
+            {
+                soundSource.PlayOneShot(musicBossIntro, 0.15f);
+            }
+            else
+            {
+                soundSource.PlayOneShot(CurrentMusic(currentMusicPlaying), 0.15f);
+                soundSource.PlayOneShot(musicBossMain, 0.15f);
+            }
+        }
+    }
+
+    private AudioClip CurrentMusic(Music music)
+    {
+        switch (music)
+        {
+            case Music.intro:
+                return musicBossIntro;
+
+            case Music.one:
+                return musicBoss1;
+        }
+
+        return musicBossMain;
     }
 
     public void ResumeMusic()
