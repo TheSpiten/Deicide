@@ -23,7 +23,7 @@ public class ScreenShake : MonoBehaviour
         startPos = transform.localPosition;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (shakeDuration > 0)
         {
