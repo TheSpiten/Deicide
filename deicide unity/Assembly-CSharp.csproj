@@ -67,29 +67,48 @@
      <Compile Include="Assets\Scripts\PowerUps\PowerUp.cs" />
      <Compile Include="Assets\Scripts\PowerUps\PUSpawn.cs" />
      <Compile Include="Assets\Scripts\PowerUps\Shield.cs" />
+     <Compile Include="Assets\Scripts\PowerUps\ShieldScript.cs" />
      <Compile Include="Assets\Scripts\Projectiles\Bullet.cs" />
      <Compile Include="Assets\Scripts\Projectiles\Dynamite.cs" />
      <Compile Include="Assets\Scripts\Projectiles\FeatherDamage.cs" />
      <Compile Include="Assets\Scripts\Projectiles\Spear.cs" />
      <Compile Include="Assets\Scripts\TestEnemy.cs" />
      <Compile Include="Assets\Scripts\Utility\AudioManager.cs" />
+     <Compile Include="Assets\Scripts\Utility\MainMenu.cs" />
      <Compile Include="Assets\Scripts\Utility\OffsetScroller.cs" />
      <Compile Include="Assets\Scripts\Utility\ScreenShake.cs" />
      <Compile Include="Assets\Scripts\Utility\UIManager.cs" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>C:/Users/Jeppsson/Documents/GitHub/Deicide/deicide unity/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>C:/Users/Jeppe/Documents/GitHub/Deicide/deicide unity/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.PackageManagerUI.Editor">
- <HintPath>C:/Users/Jeppsson/Documents/GitHub/Deicide/deicide unity/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+ <HintPath>C:/Users/Jeppe/Documents/GitHub/Deicide/deicide unity/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>C:/Users/Jeppsson/Documents/GitHub/Deicide/deicide unity/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>C:/Users/Jeppe/Documents/GitHub/Deicide/deicide unity/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>C:/Users/Jeppsson/Documents/GitHub/Deicide/deicide unity/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>C:/Users/Jeppe/Documents/GitHub/Deicide/deicide unity/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.DataPrivacy">
- <HintPath>C:/Users/Jeppsson/Documents/GitHub/Deicide/deicide unity/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+ <HintPath>C:/Users/Jeppe/Documents/GitHub/Deicide/deicide unity/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
