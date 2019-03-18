@@ -6,20 +6,22 @@ public class SpearSpawner : MonoBehaviour
 {
     public GameObject Spear;
     public float spearSpeed;
-    public Vector2 SpawnPos;
+    private Vector2 SpawnPos;
     private Transform spawnTransform;
     // multi is the multiplier for the distance between the spears
     public float multiX;
     public float multiY;
-    public float xPos;
-    public float yPos;
+    private float xPos;
+    private float yPos;
+
     
     
     
     // Start is called before the first frame update
     void Start()
     {
-       
+        xPos = transform.position.x;
+        yPos = transform.position.y;
     }
 
     // Update is called once per frame

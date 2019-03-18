@@ -8,7 +8,7 @@ public class Bossfunctions : MonoBehaviour
     enum AttackType { Jab, Storm, Spears }
     enum JabState { Track, Target, Strike }
     enum BossPhase { Normal0, Enraged0 }
-    enum Action { None, JabTrack, JabTarget, JabStrike, StormWait, StormFeathers }
+    enum Action { None, JabTrack, JabTarget, JabStrike, StormWait, StormFeathers, SpearsRain }
 
     // Declares base attack class
     private class Attack
@@ -177,8 +177,7 @@ public class Bossfunctions : MonoBehaviour
             featherTimer = stormSpeed;
         }
     }
-
-    // Placeholder for spear attack
+    
     private class SpearsClass : Attack
     {
         private float eyeWait;
@@ -187,8 +186,9 @@ public class Bossfunctions : MonoBehaviour
         private float spearSpeed;
 
 
-        public SpearsClass(float timmer) : base(AttackType.Spears)
+        public SpearsClass(float timer) : base(AttackType.Spears)
         {
+            
             
         }
     }
@@ -205,6 +205,7 @@ public class Bossfunctions : MonoBehaviour
     public Sprite standardSprite;
     public Animator jabAnimator;
     public Animator stormAnimator;
+    public Animator spearsAnimator;
 
 
     private void Awake()
@@ -215,6 +216,7 @@ public class Bossfunctions : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         jabAnimator.gameObject.SetActive(false);
         stormAnimator.gameObject.SetActive(false);
+        spearsAnimator.gameObject.SetActive(false);
 
         // TEMPORARY
         jabCountdown = 1;
@@ -250,6 +252,7 @@ public class Bossfunctions : MonoBehaviour
             jabCountdown = jabInterval;
         }
         */
+
         if (attackStack.Count <= 0)
         {
             JabAttack(2);
@@ -355,12 +358,14 @@ public class Bossfunctions : MonoBehaviour
                     spriteRenderer.enabled = false;
                     jabAnimator.gameObject.SetActive(true);
                 }
+                spearsAnimator.gameObject.SetActive(false);
                 break;
 
             case Action.JabStrike:
                 Instantiate(javelin, javelinSpawnPoint.transform);
                 transform.Translate(-1f, 0, 0);
                 GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(2);
+                spearsAnimator.gameObject.SetActive(false);
                 break;
 
             case Action.StormWait:
@@ -379,6 +384,12 @@ public class Bossfunctions : MonoBehaviour
                 }
                 GetComponent<FeatherStorm>().FeatherAttack();
                 GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(5);
+                break;
+
+            case Action.SpearsRain:
+                GameObject.FindGameObjectWithTag("SpearSpawner").GetComponent<SpearSpawner>().SpearInstantiate();
+                spearsAnimator.gameObject.SetActive(true);
+                GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(8);
                 break;
         }
     }
@@ -399,7 +410,7 @@ public class Bossfunctions : MonoBehaviour
 
     private void SpearsAttack()
     {
-        SpearsClass spearAttack = new SpearsClass();
+        SpearsClass spearAttack = new SpearsClass(1);
 
         attackStack.Add(spearAttack);
     }
