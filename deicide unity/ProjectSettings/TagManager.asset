@@ -20,6 +20,7 @@ TagManager:
   - DynamitePowerUp
   - ShieldPowerUp
   - AudioManager
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -29,8 +30,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Player
+  - Background
   - 
   - 
   - 
