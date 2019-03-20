@@ -8,6 +8,25 @@ public class BossHealth : MonoBehaviour
     public float shakeMEUP = 0.0f;
     public GameObject Explosiooooooooons;
 
+    private int startHealth;
+
+    private void Start()
+    {
+        startHealth = bossHealth;
+    }
+
+    private void Update()
+    {
+        if (bossHealth < startHealth * 0.75f)
+        {
+            GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlayMusic(2);
+        }
+        else
+        {
+            GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlayMusic(1);
+        }
+    }
+
     private void FixedUpdate()
     {
         shakeMEUP += 0.1f;
