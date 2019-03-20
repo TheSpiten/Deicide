@@ -8796,12 +8796,42 @@ PrefabInstance:
     - target: {fileID: 6536600824234683389, guid: 40b04382b6a9834469c38d710ecf9d0f,
         type: 3}
       propertyPath: health
-      value: 100
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 6536600824234683389, guid: 40b04382b6a9834469c38d710ecf9d0f,
         type: 3}
       propertyPath: isShielded
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6536600824234683389, guid: 40b04382b6a9834469c38d710ecf9d0f,
+        type: 3}
+      propertyPath: dashSpeedIncrease
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6536600824234683389, guid: 40b04382b6a9834469c38d710ecf9d0f,
+        type: 3}
+      propertyPath: dashSpeedDuration
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6536600824234683389, guid: 40b04382b6a9834469c38d710ecf9d0f,
+        type: 3}
+      propertyPath: dashMultiplier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6536600824234683389, guid: 40b04382b6a9834469c38d710ecf9d0f,
+        type: 3}
+      propertyPath: dragMultiplier
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6536600824234683389, guid: 40b04382b6a9834469c38d710ecf9d0f,
+        type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6536600824234683389, guid: 40b04382b6a9834469c38d710ecf9d0f,
+        type: 3}
+      propertyPath: dashDelay
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6536600823550982465, guid: 40b04382b6a9834469c38d710ecf9d0f,
         type: 3}
@@ -8827,6 +8857,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6536600824234683386, guid: 40b04382b6a9834469c38d710ecf9d0f,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6536600824234683386, guid: 40b04382b6a9834469c38d710ecf9d0f,
+        type: 3}
+      propertyPath: m_Mass
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 6536600824234683386, guid: 40b04382b6a9834469c38d710ecf9d0f,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40b04382b6a9834469c38d710ecf9d0f, type: 3}
