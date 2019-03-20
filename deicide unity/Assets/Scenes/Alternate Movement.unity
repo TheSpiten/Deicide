@@ -6496,7 +6496,7 @@ SpriteRenderer:
   m_Size: {x: 0.3, y: 0.09}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1669356049
@@ -8788,51 +8788,9 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6536600825415963506, guid: 40b04382b6a9834469c38d710ecf9d0f,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 1e64cd8c73780cb44b28a16c6ffbda75,
-        type: 3}
-    - target: {fileID: 6536600825415963506, guid: 40b04382b6a9834469c38d710ecf9d0f,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.23
-      objectReference: {fileID: 0}
-    - target: {fileID: 6536600825415963506, guid: 40b04382b6a9834469c38d710ecf9d0f,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 6536600825415963506, guid: 40b04382b6a9834469c38d710ecf9d0f,
-        type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6536600824847210634, guid: 40b04382b6a9834469c38d710ecf9d0f,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6536600824847210634, guid: 40b04382b6a9834469c38d710ecf9d0f,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 5e8da9cc46dd6ee4ab93facda55d0005,
-        type: 3}
-    - target: {fileID: 6536600824847210634, guid: 40b04382b6a9834469c38d710ecf9d0f,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 1.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 6536600824847210634, guid: 40b04382b6a9834469c38d710ecf9d0f,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.79
-      objectReference: {fileID: 0}
-    - target: {fileID: 6536600824847210634, guid: 40b04382b6a9834469c38d710ecf9d0f,
-        type: 3}
-      propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6536600824234683389, guid: 40b04382b6a9834469c38d710ecf9d0f,
@@ -8900,7 +8858,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
-<<<<<<< HEAD
     - target: {fileID: 6536600824234683386, guid: 40b04382b6a9834469c38d710ecf9d0f,
         type: 3}
       propertyPath: m_AngularDrag
@@ -8915,17 +8872,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LinearDrag
       value: 1.5
-=======
-    - target: {fileID: 6536600824983734914, guid: 40b04382b6a9834469c38d710ecf9d0f,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6536600824983734914, guid: 40b04382b6a9834469c38d710ecf9d0f,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
->>>>>>> master
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40b04382b6a9834469c38d710ecf9d0f, type: 3}
