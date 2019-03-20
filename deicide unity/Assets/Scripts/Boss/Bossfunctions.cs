@@ -183,14 +183,21 @@ public class Bossfunctions : MonoBehaviour
         private float eyeWait;
         private float indicWait;
         private float spearDuration;
-        private float spearSpeed;
+        //private float spearSpeed;
 
 
         public SpearsClass(float timer) : base(AttackType.Spears)
         {
-            
-            
+            eyeWait = timer;
+
+
         }
+        public override void Update()
+        {
+
+        }
+            
+        
     }
 
     // Normal variables
