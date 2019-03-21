@@ -22,7 +22,7 @@ public class BossHealth : MonoBehaviour
             Camera.main.GetComponent<ScreenShake>().Shake(0.3f, 1.0f);
             for (int i = 0; i < 30; i++)
             {
-                Vector3 randomito = new Vector3(Random.Range(-3.0f, 3.0f), Random.Range(-3.0f, 3.0f), 0);
+                Vector3 randomito = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-3.0f, 3.0f), 0);
                 var expl = (GameObject)Instantiate(Explosiooooooooons, transform.position + randomito, transform.rotation);
             }
             Time.timeScale = 0.25f;

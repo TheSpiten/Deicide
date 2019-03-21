@@ -1752,7 +1752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20da4289b8933f94dba224e7a6f39afb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossHealth: 1000
+  bossHealth: 10
   shakeMEUP: 0
   Explosiooooooooons: {fileID: 1329845292236604, guid: 9bba9cf244c53c5439505dfc96fdd11c,
     type: 3}
