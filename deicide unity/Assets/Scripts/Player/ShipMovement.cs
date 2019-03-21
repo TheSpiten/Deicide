@@ -13,6 +13,8 @@ public class ShipMovement : MonoBehaviour
     public float dashSpeedIncrease;
     public float dashSpeedDuration;
     public int health = 100;
+    private float iTimer;
+    public float iFrames;
     private float dashTimer;
     private float dashSpeedTimer;
     private float dashCurrentIncreasedSpeed;
@@ -28,6 +30,8 @@ public class ShipMovement : MonoBehaviour
         dashCurrentIncreasedSpeed = 1;
 
         alive = true;
+
+        iTimer = 0;
     }
 
     // Should maybe be FixedUpdate()?
@@ -109,6 +113,12 @@ public class ShipMovement : MonoBehaviour
             {
                 dashCurrentIncreasedSpeed = 1;
             }
+
+            // Counts iFrames
+            if (iTimer > 0)
+            {
+                iTimer -= Time.deltaTime;
+            }
         }
     }
 
@@ -123,16 +133,20 @@ public class ShipMovement : MonoBehaviour
     // Ship takes 1 damage
     public void Damage(int damage)
     {
-        health -= damage;
-        if (health <= 0)
+        if (iTimer <= 0)
         {
-            if (alive == true)
+            health -= damage;
+            iTimer = iFrames;
+            if (health <= 0)
             {
-                alive = false;
-                GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().TurnOffUI();
-                transform.Find("ShipSprite").gameObject.SetActive(false);
-                transform.Find("GunRotator").transform.Find("Gun").gameObject.SetActive(false);
-                SceneManager.LoadScene("MenuScene");
+                if (alive == true)
+                {
+                    alive = false;
+                    GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().TurnOffUI();
+                    transform.Find("ShipSprite").gameObject.SetActive(false);
+                    transform.Find("GunRotator").transform.Find("Gun").gameObject.SetActive(false);
+                    SceneManager.LoadScene("MenuScene");
+                }
             }
         }
     }
