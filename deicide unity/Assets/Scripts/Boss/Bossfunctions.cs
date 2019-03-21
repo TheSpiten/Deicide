@@ -219,47 +219,54 @@ public class Bossfunctions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var jabKey = KeyCode.Alpha1;
-        var stormKey = KeyCode.Alpha2;
-        var spearsKey = KeyCode.Alpha3;
+        if (GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().GameStarting() == false)
+        {
+            var jabKey = KeyCode.Alpha1;
+            var stormKey = KeyCode.Alpha2;
+            var spearsKey = KeyCode.Alpha3;
 
-        if (Input.GetKeyDown(jabKey))
-        {
-            JabAttack(2);
-        }
-        else if (Input.GetKeyDown(stormKey))
-        {
-            StormAttack(4, 1);
-        }
-        else if (Input.GetKeyDown(spearsKey))
-        {
-            SpearsAttack();
-        }
-        /*
-        if (jabCountdown > 0)
-        {
-            jabCountdown -= Time.deltaTime;
+            if (Input.GetKeyDown(jabKey))
+            {
+                JabAttack(2);
+            }
+            else if (Input.GetKeyDown(stormKey))
+            {
+                StormAttack(4, 1);
+            }
+            else if (Input.GetKeyDown(spearsKey))
+            {
+                SpearsAttack();
+            }
+            /*
+            if (jabCountdown > 0)
+            {
+                jabCountdown -= Time.deltaTime;
+            }
+            else
+            {
+                JabAttack(2);
+                jabCountdown = jabInterval;
+            }
+            */
+            if (attackStack.Count <= 0)
+            {
+                JabAttack(2);
+                JabAttack(2);
+                StormAttack(4, 1);
+                JabAttack(2);
+                JabAttack(2);
+                JabAttack(2);
+                StormAttack(4, 1.5f);
+                JabAttack(2);
+                StormAttack(4, 0.75f);
+            }
+
+            AttackUpdate();
         }
         else
         {
-            JabAttack(2);
-            jabCountdown = jabInterval;
-        }
-        */
-        if (attackStack.Count <= 0)
-        {
-            JabAttack(2);
-            JabAttack(2);
-            StormAttack(4, 1);
-            JabAttack(2);
-            JabAttack(2);
-            JabAttack(2);
-            StormAttack(4, 1.5f);
-            JabAttack(2);
-            StormAttack(4, 0.75f);
-        }
 
-        AttackUpdate();
+        }
     }
 
     private void AttackUpdate()
