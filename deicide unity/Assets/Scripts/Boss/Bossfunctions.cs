@@ -5,10 +5,11 @@ using UnityEngine;
 public class Bossfunctions : MonoBehaviour
 {
     // Boss state and general attack variables
-    enum AttackType { Jab, Storm, Spears }
-    enum JabState { Track, Target, Strike }
-    enum BossPhase { Normal0, Enraged0 }
-    enum Action { None, JabTrack, JabTarget, JabStrike, StormWait, StormFeathers, SpearsRain }
+    enum AttackType {Jab, Storm, Spears}
+    enum JabState {Track, Target, Strike}
+    enum RainState {Eye, End}
+    enum BossPhase {Normal0, Enraged0}
+    enum Action {None, JabTrack, JabTarget, JabStrike, StormWait, StormFeathers, SpearsRain}
 
     // Declares base attack class
     private class Attack
@@ -181,23 +182,60 @@ public class Bossfunctions : MonoBehaviour
     private class SpearsClass : Attack
     {
         private float eyeWait;
-        private float indicWait;
+        private float endTimer;
         private float spearDuration;
         private float spearSpeed;
-
+        private RainState state;
+        private Action action;
 
         public SpearsClass(float speed) : base(AttackType.Spears)
         {
+            state = RainState.Eye;
             spearSpeed = speed;
             eyeWait = 1.0f;
-            indicWait = 1.0f;
+            endTimer = 1.0f;
+            action = Action.None;
+            
         }
+
         public override void Update()
         {
+            switch (state)
+            {
+                case RainState.Eye:
+                    if (eyeWait > 0)
+                    {
+                        eyeWait -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        action = Action.SpearsRain;
+                    }
+                    break;
 
+                case RainState.End:
+                    if (endTimer > 0)
+                    {
+                        endTimer -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        end = true;
+                    }
+                    break;
+            }
         }
-            
-        
+
+        public override Action GetAction()
+        {
+            Action returnAction = action;
+            if (action == Action.SpearsRain)
+            {
+                action = Action.None;
+                state = RainState.End;
+            }
+            return returnAction;
+        }
     }
 
     // Normal variables
@@ -263,6 +301,7 @@ public class Bossfunctions : MonoBehaviour
         if (attackStack.Count <= 0)
         {
             JabAttack(2);
+            SpearsAttack();
             JabAttack(2);
             StormAttack(4, 1);
             JabAttack(2);
