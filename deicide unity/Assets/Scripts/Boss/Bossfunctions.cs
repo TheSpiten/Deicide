@@ -5,10 +5,11 @@ using UnityEngine;
 public class Bossfunctions : MonoBehaviour
 {
     // Boss state and general attack variables
-    enum AttackType { Jab, Storm, Spears }
-    enum JabState { Track, Target, Strike }
-    enum BossPhase { Normal0, Enraged0 }
-    enum Action { None, JabTrack, JabTarget, JabStrike, StormWait, StormFeathers }
+    enum AttackType {Jab, Storm, Spears}
+    enum JabState {Track, Target, Strike}
+    enum RainState {Eye, End}
+    enum BossPhase {Normal0, Enraged0}
+    enum Action {None, JabTrack, JabTarget, JabStrike, StormWait, StormFeathers, SpearsRain}
 
     // Declares base attack class
     private class Attack
@@ -61,8 +62,8 @@ public class Bossfunctions : MonoBehaviour
         public JabClass(float timer) : base(AttackType.Jab)
         {
             trackTimer = timer;
-            jabTimer = trackTimer / 4;
-            endTimer = jabTimer;
+            jabTimer = trackTimer / 8;
+            endTimer = trackTimer / 4;
             state = JabState.Track;
             action = Action.JabTrack;
         }
@@ -177,13 +178,63 @@ public class Bossfunctions : MonoBehaviour
             featherTimer = stormSpeed;
         }
     }
-
-    // Placeholder for spear attack
+    
     private class SpearsClass : Attack
     {
-        public SpearsClass() : base(AttackType.Spears)
+        private float eyeWait;
+        private float endTimer;
+        private float spearDuration;
+        private float spearSpeed;
+        private RainState state;
+        private Action action;
+
+        public SpearsClass(float speed) : base(AttackType.Spears)
         {
+            state = RainState.Eye;
+            spearSpeed = speed;
+            eyeWait = 1.0f;
+            endTimer = 1.0f;
+            action = Action.None;
             
+        }
+
+        public override void Update()
+        {
+            switch (state)
+            {
+                case RainState.Eye:
+                    if (eyeWait > 0)
+                    {
+                        eyeWait -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        action = Action.SpearsRain;
+                    }
+                    break;
+
+                case RainState.End:
+                    if (endTimer > 0)
+                    {
+                        endTimer -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        end = true;
+                    }
+                    break;
+            }
+        }
+
+        public override Action GetAction()
+        {
+            Action returnAction = action;
+            if (action == Action.SpearsRain)
+            {
+                action = Action.None;
+                state = RainState.End;
+            }
+            return returnAction;
         }
     }
 
@@ -197,8 +248,10 @@ public class Bossfunctions : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     public Sprite standardSprite;
+    public Animator anticipationAnimator;
     public Animator jabAnimator;
     public Animator stormAnimator;
+    public Animator spearsAnimator;
 
 
     private void Awake()
@@ -207,8 +260,10 @@ public class Bossfunctions : MonoBehaviour
         originalTransformX = transform.position.x;
         attackStack = new List<Attack>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        anticipationAnimator.gameObject.SetActive(false);
         jabAnimator.gameObject.SetActive(false);
         stormAnimator.gameObject.SetActive(false);
+        spearsAnimator.gameObject.SetActive(false);
 
         // TEMPORARY
         jabCountdown = 1;
@@ -217,47 +272,55 @@ public class Bossfunctions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var jabKey = KeyCode.Alpha1;
-        var stormKey = KeyCode.Alpha2;
-        var spearsKey = KeyCode.Alpha3;
+        if (GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().GameStarting() == false)
+        {
+            var jabKey = KeyCode.Alpha1;
+            var stormKey = KeyCode.Alpha2;
+            var spearsKey = KeyCode.Alpha3;
 
-        if (Input.GetKeyDown(jabKey))
-        {
-            JabAttack(2);
-        }
-        else if (Input.GetKeyDown(stormKey))
-        {
-            StormAttack(4, 1);
-        }
-        else if (Input.GetKeyDown(spearsKey))
-        {
-            SpearsAttack();
-        }
-        /*
-        if (jabCountdown > 0)
-        {
-            jabCountdown -= Time.deltaTime;
+            if (Input.GetKeyDown(jabKey))
+            {
+                JabAttack(2);
+            }
+            else if (Input.GetKeyDown(stormKey))
+            {
+                StormAttack(4, 1);
+            }
+            else if (Input.GetKeyDown(spearsKey))
+            {
+                SpearsAttack();
+            }
+            /*
+            if (jabCountdown > 0)
+            {
+                jabCountdown -= Time.deltaTime;
+            }
+            else
+            {
+                JabAttack(2);
+                jabCountdown = jabInterval;
+            }
+            */
+            if (attackStack.Count <= 0)
+            {
+                JabAttack(2);
+                SpearsAttack();
+                JabAttack(2);
+                StormAttack(4, 1);
+                JabAttack(2);
+                JabAttack(2);
+                JabAttack(2);
+                StormAttack(4, 1.5f);
+                JabAttack(2);
+                StormAttack(4, 0.75f);
+            }
+
+            AttackUpdate();
         }
         else
         {
-            JabAttack(2);
-            jabCountdown = jabInterval;
+            
         }
-        */
-        if (attackStack.Count <= 0)
-        {
-            JabAttack(2);
-            JabAttack(2);
-            StormAttack(4, 1);
-            JabAttack(2);
-            JabAttack(2);
-            JabAttack(2);
-            StormAttack(4, 1.5f);
-            JabAttack(2);
-            StormAttack(4, 0.75f);
-        }
-
-        AttackUpdate();
     }
 
     private void AttackUpdate()
@@ -325,6 +388,8 @@ public class Bossfunctions : MonoBehaviour
                 spriteRenderer.enabled = true;
                 jabAnimator.gameObject.SetActive(false);
                 stormAnimator.gameObject.SetActive(false);
+                anticipationAnimator.gameObject.SetActive(false);
+                anticipationAnimator.speed = 1;
             }
         }
     }
@@ -341,20 +406,24 @@ public class Bossfunctions : MonoBehaviour
                     Vector3 newVector = new Vector3(0, newY, 0);
                     transform.Translate(newVector);
                 }
+                spriteRenderer.enabled = false;
+                anticipationAnimator.gameObject.SetActive(true);
                 break;
 
             case Action.JabTarget:
                 if (jabAnimator.gameObject.activeSelf == false)
                 {
-                    spriteRenderer.enabled = false;
-                    jabAnimator.gameObject.SetActive(true);
+                    anticipationAnimator.speed = 0;
                 }
+                spearsAnimator.gameObject.SetActive(false);
                 break;
 
             case Action.JabStrike:
                 Instantiate(javelin, javelinSpawnPoint.transform);
-                transform.Translate(-1f, 0, 0);
+                transform.Translate(-2.5f, 0, 0);
                 GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(2);
+                jabAnimator.gameObject.SetActive(true);
+                anticipationAnimator.gameObject.SetActive(false);
                 break;
 
             case Action.StormWait:
@@ -373,6 +442,12 @@ public class Bossfunctions : MonoBehaviour
                 }
                 GetComponent<FeatherStorm>().FeatherAttack();
                 GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(5);
+                break;
+
+            case Action.SpearsRain:
+                GameObject.FindGameObjectWithTag("SpearSpawner").GetComponent<SpearSpawner>().SpearInstantiate();
+                spearsAnimator.gameObject.SetActive(true);
+                GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(8);
                 break;
         }
     }
@@ -393,7 +468,7 @@ public class Bossfunctions : MonoBehaviour
 
     private void SpearsAttack()
     {
-        SpearsClass spearAttack = new SpearsClass();
+        SpearsClass spearAttack = new SpearsClass(1);
 
         attackStack.Add(spearAttack);
     }

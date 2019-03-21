@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
+    private bool gameStarting;
+    private float startTimer;
+
     private GameObject baseUI;
     private bool showUI;
 
@@ -28,6 +31,9 @@ public class UIManager : MonoBehaviour
         
     void Awake()
     {
+        gameStarting = true;
+        startTimer = 1f;
+
         baseUI = GameObject.Find("UI_base");
         showUI = true;
 
@@ -53,27 +59,35 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        if (showUI == true)
+        if (startTimer > 0)
         {
-            UpdateHealth();
-            UpdateDash();
-            UpdatePowerup();
-            UpdateBossHealth();
+            startTimer -= Time.deltaTime;
         }
-
-        if (Input.GetKeyDown(KeyCode.Y))
+        else
         {
-            SceneManager.LoadScene("Alternate Movement");
-        }
-        else if (Input.GetKeyDown(KeyCode.T))
-        {
-            if (Time.timeScale == 0)
+            gameStarting = false;
+            if (showUI == true)
             {
-                Time.timeScale = 1;
+                UpdateHealth();
+                UpdateDash();
+                UpdatePowerup();
+                UpdateBossHealth();
             }
-            else
+
+            if (Input.GetKeyDown(KeyCode.Y))
             {
-                Time.timeScale = 0;
+                SceneManager.LoadScene("Alternate Movement");
+            }
+            else if (Input.GetKeyDown(KeyCode.T))
+            {
+                if (Time.timeScale == 0)
+                {
+                    Time.timeScale = 1;
+                }
+                else
+                {
+                    Time.timeScale = 0;
+                }
             }
         }
     }
@@ -189,5 +203,10 @@ public class UIManager : MonoBehaviour
         playerDashIcon.SetActive(false);
         playerDashText.gameObject.SetActive(false);
         bossUI.SetActive(false);
+    }
+
+    public bool GameStarting()
+    {
+        return gameStarting;
     }
 }

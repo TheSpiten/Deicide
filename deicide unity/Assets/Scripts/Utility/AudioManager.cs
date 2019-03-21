@@ -37,7 +37,6 @@ public class AudioManager : MonoBehaviour
     public AudioClip musicBoss3;
     public AudioClip musicBoss4;
 
-
     private enum Music { intro, main, one, two, three, four }
     private bool isMusicPlaying;
     private Music currentMusicPlaying;

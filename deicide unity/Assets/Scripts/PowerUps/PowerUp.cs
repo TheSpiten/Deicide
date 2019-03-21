@@ -24,7 +24,8 @@ public class PowerUp : MonoBehaviour
             else if (other.gameObject.CompareTag("HealthPowerUp"))
             {
                 other.gameObject.SetActive(false);
-                hasHPack = true;
+                //hasHPack = true;
+                Heal();
                 SetOthersToFalse("health");
                 GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(4);
                 //Destroy(other.gameObject);
@@ -79,11 +80,11 @@ public class PowerUp : MonoBehaviour
                     Shield();
                     hasShield = false;
                 }
-                else if (hasHPack == true)
-                {
-                    Heal();
-                    hasHPack = false;
-                }
+                //else if (hasHPack == true)
+                //{
+                //    Heal();
+                //    hasHPack = false;
+                //}
             }
         }
     }
@@ -94,7 +95,7 @@ public class PowerUp : MonoBehaviour
     {
         if (gameObject.GetComponent<ShipMovement>().health < 100)
         {
-            gameObject.GetComponent<ShipMovement>().health += 30;
+            gameObject.GetComponent<ShipMovement>().health += 25;
             if (gameObject.GetComponent<ShipMovement>().GetPlayerHealth() > 100)
             {
                 gameObject.GetComponent<ShipMovement>().health = 100;
