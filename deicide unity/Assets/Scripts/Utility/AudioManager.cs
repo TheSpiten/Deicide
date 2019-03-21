@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    public AudioSource soundSource;
+    public AudioSource musicSource;
+
     public AudioClip soundMachineGun1;
     public AudioClip soundMachineGun2;
     public AudioClip soundMachineGun3;
@@ -21,14 +24,17 @@ public class AudioManager : MonoBehaviour
     public AudioClip musicBossIntro;
     public AudioClip musicBossMain;
     public AudioClip musicBoss1;
+    public AudioClip musicBoss2;
+    public AudioClip musicBoss3;
+    public AudioClip musicBoss4;
 
-    private AudioSource soundSource;
-
-    private enum Music { intro, main, one }
+    private enum Music { intro, main, one, two, three, four }
     private bool isMusicPlaying;
     private Music currentMusicPlaying;
     private float musicTimer;
     private float musicLength;
+    private float musicVolume;
+    private float musicVolumeMain;
 
     private void Awake()
     {
@@ -55,17 +61,16 @@ public class AudioManager : MonoBehaviour
         currentMusicPlaying = 0;
         musicTimer = 0;
         musicLength = 0;
+        musicVolume = 0.15f;
+        musicVolumeMain = 0.15f;
     }
 
     private void Start()
     {
-        // Gets attached audio source component
-        soundSource = GetComponent<AudioSource>();
-
         PlayMusic(0);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         MusicUpdate();
     }
@@ -166,37 +171,62 @@ public class AudioManager : MonoBehaviour
         // Plays music depending on the integer
         switch (musicNumber)
         {
-            // Length of sound -0.115f
+            // Length of sound -0.155f
             case 0:
                 currentMusicPlaying = Music.intro;
-                musicLength = 13.584f;
+                musicLength = 13.534f;
+                musicVolumeMain = 0.15f;
                 break;
 
             case 1:
                 currentMusicPlaying = Music.one;
-                musicLength = 25.538f;
+                musicLength = 25.488f;
+                musicVolume = 0.15f;
+                musicVolumeMain = 0.15f;
+                break;
+
+            case 2:
+                currentMusicPlaying = Music.two;
+                musicLength = 25.488f;
+                musicVolume = 0.2f;
+                musicVolumeMain = 0.1f;
+                break;
+
+            case 3:
+                currentMusicPlaying = Music.three;
+                musicLength = 25.488f;
+                musicVolume = 0.2f;
+                musicVolumeMain = 0.15f;
+                break;
+
+            case 4:
+                currentMusicPlaying = Music.four;
+                musicLength = 25.488f;
+                musicVolume = 0.2f;
+                musicVolumeMain = 0.15f;
                 break;
         }
     }
 
     private void MusicUpdate()
     {
-        if (musicTimer > 0 || musicTimer > Time.deltaTime)
+        if (musicTimer > 0)
         {
-            musicTimer -= Time.deltaTime;
-            PlayMusic(1);
+            musicTimer -= Time.fixedDeltaTime;
         }
         else
         {
-            musicTimer += musicLength;
+            musicTimer = musicLength;
             if (currentMusicPlaying == Music.intro)
             {
-                soundSource.PlayOneShot(musicBossIntro, 0.15f);
+                musicSource.PlayOneShot(musicBossIntro, 0.15f);
+                PlayMusic(1);
             }
             else
             {
-                soundSource.PlayOneShot(CurrentMusic(currentMusicPlaying), 0.15f);
-                soundSource.PlayOneShot(musicBossMain, 0.15f);
+                AudioClip playThisMusic = CurrentMusic(currentMusicPlaying);
+                musicSource.PlayOneShot(playThisMusic, musicVolume);
+                musicSource.PlayOneShot(musicBossMain, 0.15f);
             }
         }
     }
@@ -210,6 +240,15 @@ public class AudioManager : MonoBehaviour
 
             case Music.one:
                 return musicBoss1;
+
+            case Music.two:
+                return musicBoss2;
+
+            case Music.three:
+                return musicBoss3;
+
+            case Music.four:
+                return musicBoss4;
         }
 
         return musicBossMain;
