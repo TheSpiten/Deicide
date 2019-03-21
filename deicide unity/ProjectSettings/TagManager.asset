@@ -58,3 +58,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: HouseClose
+    uniqueID: 2884664315
+    locked: 0
