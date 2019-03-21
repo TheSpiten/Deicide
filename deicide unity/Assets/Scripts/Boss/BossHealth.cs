@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class BossHealth : MonoBehaviour
 {
-    public int bossHealth = 1000;
+    public float bossHealth = 1000;
     public float shakeMEUP = 0.0f;
     public GameObject Explosiooooooooons;
 
-    private int startHealth;
+    private float startHealth;
 
     private void Start()
     {
@@ -40,7 +40,7 @@ public class BossHealth : MonoBehaviour
         shakeMEUP += 0.1f;
     }
 
-    public void DamageBoss(int damage)
+    public void DamageBoss(float damage)
     {
         bossHealth -= damage;
         if (bossHealth <= 0)
