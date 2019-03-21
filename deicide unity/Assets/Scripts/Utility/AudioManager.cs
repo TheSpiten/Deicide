@@ -25,8 +25,10 @@ public class AudioManager : MonoBehaviour
     public AudioClip musicBossMain;
     public AudioClip musicBoss1;
     public AudioClip musicBoss2;
+    public AudioClip musicBoss3;
+    public AudioClip musicBoss4;
 
-    private enum Music { intro, main, one, two }
+    private enum Music { intro, main, one, two, three, four }
     private bool isMusicPlaying;
     private Music currentMusicPlaying;
     private float musicTimer;
@@ -68,7 +70,7 @@ public class AudioManager : MonoBehaviour
         PlayMusic(0);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         MusicUpdate();
     }
@@ -189,14 +191,28 @@ public class AudioManager : MonoBehaviour
                 musicVolume = 0.2f;
                 musicVolumeMain = 0.1f;
                 break;
+
+            case 3:
+                currentMusicPlaying = Music.three;
+                musicLength = 25.488f;
+                musicVolume = 0.2f;
+                musicVolumeMain = 0.15f;
+                break;
+
+            case 4:
+                currentMusicPlaying = Music.four;
+                musicLength = 25.488f;
+                musicVolume = 0.2f;
+                musicVolumeMain = 0.15f;
+                break;
         }
     }
 
     private void MusicUpdate()
     {
-        if (musicTimer > 0 || musicTimer > Time.deltaTime)
+        if (musicTimer > 0)
         {
-            musicTimer -= Time.deltaTime;
+            musicTimer -= Time.fixedDeltaTime;
         }
         else
         {
@@ -227,6 +243,12 @@ public class AudioManager : MonoBehaviour
 
             case Music.two:
                 return musicBoss2;
+
+            case Music.three:
+                return musicBoss3;
+
+            case Music.four:
+                return musicBoss4;
         }
 
         return musicBossMain;

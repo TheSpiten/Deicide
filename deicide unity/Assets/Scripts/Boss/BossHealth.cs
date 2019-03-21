@@ -17,7 +17,15 @@ public class BossHealth : MonoBehaviour
 
     private void Update()
     {
-        if (bossHealth < startHealth * 0.75f)
+        if (bossHealth < startHealth * 0.25f)
+        {
+            GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlayMusic(4);
+        }
+        else if (bossHealth < startHealth * 0.5f)
+        {
+            GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlayMusic(3);
+        }
+        else if (bossHealth < startHealth * 0.7f)
         {
             GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlayMusic(2);
         }
