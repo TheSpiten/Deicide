@@ -4,27 +4,24 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - AudioManager
+  - Feather
+  - ShieldBack
+  - ShieldFront
+  - Bullet
+  - HealthPowerUp
+  - ShieldPowerUp
+  - DynamitePowerUp
   - UIManager
+  - Enemy
   - Boundary
+  - Boss
+  - Javelin
   - BossShield
   - EnemyHead
   - EnemyLegs
   - EnemyBody
-  - Feather
-  - Javelin
-  - Bullet
-  - ShieldBack
-  - ShieldFront
-  - Enemy
-  - HealthPowerUp
-  - DynamitePowerUp
-  - ShieldPowerUp
-  - AudioManager
-  - Boss
-<<<<<<< HEAD
   - SpearSpawner
-=======
->>>>>>> master
   layers:
   - Default
   - TransparentFX
@@ -34,8 +31,8 @@ TagManager:
   - UI
   - 
   - 
-  - Player
-  - Background
+  - 
+  - 
   - 
   - 
   - 

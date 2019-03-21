@@ -38,13 +38,14 @@ public class SpearSpawner : MonoBehaviour
     public void SpearInstantiate()
     {
         spawnTransform = GameObject.Find("SpearSpawner").transform;
-        for (int i = 1; i < 5; i++)
+        for (int i = 1; i <= 8; i++)
         {
             var spears = (GameObject)Instantiate(Spear, transform.position, transform.rotation);
-            spears.GetComponent<Rigidbody2D>().velocity = -spears.transform.up * spearSpeed;
-            SpawnPos = new Vector2((xPos + (i * multiX)), (yPos + (i * multiY)));
+            //spears.GetComponent<Rigidbody2D>().velocity = -spears.transform.up * spearSpeed;
+            SpawnPos = new Vector2((xPos + (i * multiX)), yPos);
             spawnTransform.position = SpawnPos;
-            Destroy(spears, 2.0f);
+            spears.GetComponent<Spear>().SetSpear(i, spearSpeed, 0.2f);
+            Destroy(spears, 10.0f);
         }
         xPos = -8.13293f;
         yPos = 6.004479f;
