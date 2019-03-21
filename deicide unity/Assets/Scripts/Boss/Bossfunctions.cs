@@ -304,6 +304,7 @@ public class Bossfunctions : MonoBehaviour
             if (attackStack.Count <= 0)
             {
                 JabAttack(2);
+                SpearsAttack();
                 JabAttack(2);
                 StormAttack(4, 1);
                 JabAttack(2);
@@ -318,25 +319,7 @@ public class Bossfunctions : MonoBehaviour
         }
         else
         {
-            JabAttack(2);
-            jabCountdown = jabInterval;
-        }
-        */
-
-        if (attackStack.Count <= 0)
-        {
-            JabAttack(2);
-            SpearsAttack();
-            JabAttack(2);
-            StormAttack(4, 1);
-            JabAttack(2);
-            JabAttack(2);
-            JabAttack(2);
-            StormAttack(4, 1.5f);
-            JabAttack(2);
-            StormAttack(4, 0.75f);
-        }
-
+            
         }
     }
 
