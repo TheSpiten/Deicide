@@ -21,6 +21,15 @@ public class AudioManager : MonoBehaviour
     public AudioClip soundBossHit3;
     private List<int> bossHitSounds;
 
+    public AudioClip soundDash;
+    public AudioClip soundElectricShield;
+    public AudioClip soundDynamite;
+    public AudioClip soundRepair;
+    public AudioClip soundPlayerHit;
+    public AudioClip soundMenuSelect;
+    public AudioClip soundMenuSwitch;
+    public AudioClip soundFireworks;
+
     public AudioClip musicBossIntro;
     public AudioClip musicBossMain;
     public AudioClip musicBoss1;
@@ -92,7 +101,7 @@ public class AudioManager : MonoBehaviour
                     SetBossHitSounds();
                 }
                 int randomGunSounds = bossHitSounds[Mathf.FloorToInt(Random.Range(0, bossHitSounds.Count - 0.0001f))];
-                
+
                 switch (randomGunSounds)
                 {
                     case 1:
@@ -161,6 +170,47 @@ public class AudioManager : MonoBehaviour
                 soundClip = soundMachineGun1;
                 soundVolume = 0.15f;
                 break;
+
+            case 9:
+                soundClip = soundDash;
+                soundVolume = 1f;
+                break;
+
+            case 10:
+                soundClip = soundElectricShield;
+                soundVolume = 1f;
+                break;
+
+            case 11:
+                soundClip = soundDynamite;
+                soundVolume = 1f;
+                break;
+
+            case 12:
+                soundClip = soundRepair;
+                soundVolume = 1f;
+                break;
+
+            case 13:
+                soundClip = soundPlayerHit;
+                soundVolume = 1f;
+                break;
+
+            case 14:
+                soundClip = soundMenuSelect;
+                soundVolume = 1f;
+                break;
+
+            case 15:
+                soundClip = soundMenuSwitch;
+                soundVolume = 1f;
+                break;
+
+            case 16:
+                soundClip = soundFireworks;
+                soundVolume = 1f;
+                break;
+
         }
 
         soundSource.PlayOneShot(soundClip, soundVolume);

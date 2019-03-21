@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\Boss\BossHealth.cs" />
     <Compile Include="Assets\Scripts\Boss\FeatherStorm.cs" />
     <Compile Include="Assets\Scripts\Boss\JavelinBehavior.cs" />
+    <Compile Include="Assets\Scripts\Boss\SpearSpawner.cs" />
     <Compile Include="Assets\Scripts\Player\AlternateMov.cs" />
     <Compile Include="Assets\Scripts\Player\GunAim.cs" />
     <Compile Include="Assets\Scripts\Player\ShipMovement.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Assets\Scripts\Projectiles\Bullet.cs" />
     <Compile Include="Assets\Scripts\Projectiles\Dynamite.cs" />
     <Compile Include="Assets\Scripts\Projectiles\FeatherDamage.cs" />
+    <Compile Include="Assets\Scripts\Projectiles\Spear.cs" />
     <Compile Include="Assets\Scripts\TestEnemy.cs" />
     <Compile Include="Assets\Scripts\Utility\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Utility\MainMenu.cs" />
