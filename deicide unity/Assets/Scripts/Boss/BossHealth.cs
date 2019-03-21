@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class BossHealth : MonoBehaviour
 {
-    public int bossHealth = 1000;
+    public float bossHealth = 1000;
     public float shakeMEUP = 0.0f;
     public GameObject Explosiooooooooons;
 
-    private int startHealth;
+    private float startHealth;
 
     private void Start()
     {
@@ -40,7 +40,7 @@ public class BossHealth : MonoBehaviour
         shakeMEUP += 0.1f;
     }
 
-    public void DamageBoss(int damage)
+    public void DamageBoss(float damage)
     {
         bossHealth -= damage;
         if (bossHealth <= 0)
@@ -49,7 +49,7 @@ public class BossHealth : MonoBehaviour
             Camera.main.GetComponent<ScreenShake>().Shake(0.3f, 1.0f);
             for (int i = 0; i < 30; i++)
             {
-                Vector3 randomito = new Vector3(Random.Range(-3.0f, 3.0f), Random.Range(-3.0f, 3.0f), 0);
+                Vector3 randomito = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-3.0f, 3.0f), 0);
                 var expl = (GameObject)Instantiate(Explosiooooooooons, transform.position + randomito, transform.rotation);
             }
             Time.timeScale = 0.25f;

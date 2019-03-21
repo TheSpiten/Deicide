@@ -5,10 +5,11 @@ using UnityEngine;
 public class Bossfunctions : MonoBehaviour
 {
     // Boss state and general attack variables
-    enum AttackType { Jab, Storm, Spears }
-    enum JabState { Track, Target, Strike }
-    enum BossPhase { Normal0, Enraged0 }
-    enum Action { None, JabTrack, JabTarget, JabStrike, StormWait, StormFeathers }
+    enum AttackType {Jab, Storm, Spears}
+    enum JabState {Track, Target, Strike}
+    enum RainState {Eye, End}
+    enum BossPhase {Normal0, Enraged0}
+    enum Action {None, JabTrack, JabTarget, JabStrike, StormWait, StormFeathers, SpearsRain}
 
     // Declares base attack class
     private class Attack
@@ -177,13 +178,63 @@ public class Bossfunctions : MonoBehaviour
             featherTimer = stormSpeed;
         }
     }
-
-    // Placeholder for spear attack
+    
     private class SpearsClass : Attack
     {
-        public SpearsClass() : base(AttackType.Spears)
+        private float eyeWait;
+        private float endTimer;
+        private float spearDuration;
+        private float spearSpeed;
+        private RainState state;
+        private Action action;
+
+        public SpearsClass(float speed) : base(AttackType.Spears)
         {
+            state = RainState.Eye;
+            spearSpeed = speed;
+            eyeWait = 1.0f;
+            endTimer = 1.0f;
+            action = Action.None;
             
+        }
+
+        public override void Update()
+        {
+            switch (state)
+            {
+                case RainState.Eye:
+                    if (eyeWait > 0)
+                    {
+                        eyeWait -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        action = Action.SpearsRain;
+                    }
+                    break;
+
+                case RainState.End:
+                    if (endTimer > 0)
+                    {
+                        endTimer -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        end = true;
+                    }
+                    break;
+            }
+        }
+
+        public override Action GetAction()
+        {
+            Action returnAction = action;
+            if (action == Action.SpearsRain)
+            {
+                action = Action.None;
+                state = RainState.End;
+            }
+            return returnAction;
         }
     }
 
@@ -200,6 +251,7 @@ public class Bossfunctions : MonoBehaviour
     public Animator anticipationAnimator;
     public Animator jabAnimator;
     public Animator stormAnimator;
+    public Animator spearsAnimator;
 
 
     private void Awake()
@@ -211,6 +263,7 @@ public class Bossfunctions : MonoBehaviour
         anticipationAnimator.gameObject.SetActive(false);
         jabAnimator.gameObject.SetActive(false);
         stormAnimator.gameObject.SetActive(false);
+        spearsAnimator.gameObject.SetActive(false);
 
         // TEMPORARY
         jabCountdown = 1;
@@ -251,6 +304,7 @@ public class Bossfunctions : MonoBehaviour
             if (attackStack.Count <= 0)
             {
                 JabAttack(2);
+                SpearsAttack();
                 JabAttack(2);
                 StormAttack(4, 1);
                 JabAttack(2);
@@ -265,7 +319,7 @@ public class Bossfunctions : MonoBehaviour
         }
         else
         {
-
+            
         }
     }
 
@@ -361,6 +415,7 @@ public class Bossfunctions : MonoBehaviour
                 {
                     anticipationAnimator.speed = 0;
                 }
+                spearsAnimator.gameObject.SetActive(false);
                 break;
 
             case Action.JabStrike:
@@ -388,6 +443,12 @@ public class Bossfunctions : MonoBehaviour
                 GetComponent<FeatherStorm>().FeatherAttack();
                 GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(5);
                 break;
+
+            case Action.SpearsRain:
+                GameObject.FindGameObjectWithTag("SpearSpawner").GetComponent<SpearSpawner>().SpearInstantiate();
+                spearsAnimator.gameObject.SetActive(true);
+                GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(8);
+                break;
         }
     }
 
@@ -407,7 +468,7 @@ public class Bossfunctions : MonoBehaviour
 
     private void SpearsAttack()
     {
-        SpearsClass spearAttack = new SpearsClass();
+        SpearsClass spearAttack = new SpearsClass(1);
 
         attackStack.Add(spearAttack);
     }
