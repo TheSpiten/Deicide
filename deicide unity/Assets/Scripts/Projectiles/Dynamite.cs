@@ -7,8 +7,6 @@ public class Dynamite : MonoBehaviour
     public GameObject TestExplosionArea;
     public GameObject EnergyExplosion;
     public float delay = 2;
-    int dynamiteDamage = 15;
-    int dynamiteImpact = 5;
 
     //public float power = 10.0f;
     public float radius = 4f;
@@ -59,7 +57,7 @@ public class Dynamite : MonoBehaviour
 
             else if (rb.gameObject.tag == "EnemyHead" || rb.gameObject.tag == "EnemyLegs" || rb.gameObject.tag == "EnemyBody")
             {
-                rb.gameObject.GetComponentInParent<BossHealth>().DamageBoss(Mathf.RoundToInt(dynamiteDamage * 1 / (hit.bounds.SqrDistance(explosionPos) * 2 + 1)));
+                rb.gameObject.GetComponentInParent<BossHealth>().DamageBoss(Mathf.RoundToInt(25 * 1 / (hit.bounds.SqrDistance(explosionPos) * 2 + 1)));
             }
         }
         // Destroying the dynamite
@@ -72,7 +70,7 @@ public class Dynamite : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             // TestEnemy is a script name, careful with the names if you change/reuse
-            collision.gameObject.GetComponentInParent<BossHealth>().DamageBoss(dynamiteImpact);
+            collision.gameObject.GetComponentInParent<BossHealth>().DamageBoss(10);
             Detonate();
         }
         else if (collision.gameObject.tag == "Bullet")

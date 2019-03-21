@@ -14,7 +14,7 @@ public class JavelinBehavior : MonoBehaviour
         {
             if (collision.GetComponent<ShipMovement>().isShielded == false)
             {
-                collision.gameObject.GetComponent<ShipMovement>().Damage(30);
+                collision.gameObject.GetComponent<ShipMovement>().Damage(40);
                 //collision.gameObject.GetComponent<Bossfunctions>().HitBoss(collision.gameObject.tag);
                 //Destroy(collision);
                 GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(3);

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    float bulletDamage = 2.5f;
     // Only checking for collision with object tagged "Enemy"
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -17,7 +16,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.tag == "EnemyHead" || collision.gameObject.tag == "EnemyLegs" || collision.gameObject.tag == "EnemyBody")
         {
             //collision.gameObject.GetComponent<Bossfunctions>().HitBoss(collision.gameObject.tag);
-            collision.gameObject.GetComponentInParent<BossHealth>().DamageBoss(bulletDamage);
+            collision.gameObject.GetComponentInParent<BossHealth>().DamageBoss(10);
             Destroy(gameObject);
             GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(0);
         }
