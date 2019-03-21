@@ -61,8 +61,8 @@ public class Bossfunctions : MonoBehaviour
         public JabClass(float timer) : base(AttackType.Jab)
         {
             trackTimer = timer;
-            jabTimer = trackTimer / 4;
-            endTimer = jabTimer;
+            jabTimer = trackTimer / 8;
+            endTimer = trackTimer / 4;
             state = JabState.Track;
             action = Action.JabTrack;
         }
@@ -197,6 +197,7 @@ public class Bossfunctions : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     public Sprite standardSprite;
+    public Animator anticipationAnimator;
     public Animator jabAnimator;
     public Animator stormAnimator;
 
@@ -207,6 +208,7 @@ public class Bossfunctions : MonoBehaviour
         originalTransformX = transform.position.x;
         attackStack = new List<Attack>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        anticipationAnimator.gameObject.SetActive(false);
         jabAnimator.gameObject.SetActive(false);
         stormAnimator.gameObject.SetActive(false);
 
@@ -325,6 +327,8 @@ public class Bossfunctions : MonoBehaviour
                 spriteRenderer.enabled = true;
                 jabAnimator.gameObject.SetActive(false);
                 stormAnimator.gameObject.SetActive(false);
+                anticipationAnimator.gameObject.SetActive(false);
+                anticipationAnimator.speed = 1;
             }
         }
     }
@@ -341,20 +345,23 @@ public class Bossfunctions : MonoBehaviour
                     Vector3 newVector = new Vector3(0, newY, 0);
                     transform.Translate(newVector);
                 }
+                spriteRenderer.enabled = false;
+                anticipationAnimator.gameObject.SetActive(true);
                 break;
 
             case Action.JabTarget:
                 if (jabAnimator.gameObject.activeSelf == false)
                 {
-                    spriteRenderer.enabled = false;
-                    jabAnimator.gameObject.SetActive(true);
+                    anticipationAnimator.speed = 0;
                 }
                 break;
 
             case Action.JabStrike:
                 Instantiate(javelin, javelinSpawnPoint.transform);
-                transform.Translate(-1f, 0, 0);
+                transform.Translate(-2.5f, 0, 0);
                 GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(2);
+                jabAnimator.gameObject.SetActive(true);
+                anticipationAnimator.gameObject.SetActive(false);
                 break;
 
             case Action.StormWait:
