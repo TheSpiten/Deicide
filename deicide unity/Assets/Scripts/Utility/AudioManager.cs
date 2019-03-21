@@ -102,7 +102,7 @@ public class AudioManager : MonoBehaviour
                     SetBossHitSounds();
                 }
                 int randomGunSounds = bossHitSounds[Mathf.FloorToInt(Random.Range(0, bossHitSounds.Count - 0.0001f))];
-                
+
                 switch (randomGunSounds)
                 {
                     case 1:
