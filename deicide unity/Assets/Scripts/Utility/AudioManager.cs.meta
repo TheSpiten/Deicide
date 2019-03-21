@@ -23,6 +23,7 @@ MonoImporter:
   - musicBoss1: {fileID: 8300000, guid: 088ba527b606b114c99fd51d9518b5f2, type: 3}
   - musicBoss2: {fileID: 8300000, guid: ae9dc0147be87f044811352d09e57889, type: 3}
   - musicBoss3: {fileID: 8300000, guid: 3644e8b1ef1d99d49b4f65ee15df03bf, type: 3}
+  - musicBoss4: {fileID: 8300000, guid: 7126a62302c7838488c4be2a25be0fe8, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
