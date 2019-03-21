@@ -68,6 +68,7 @@ MonoBehaviour:
   soundPlayerHit: {fileID: 8300000, guid: 467608f2d1117d047af9f752589e9339, type: 3}
   soundMenuSelect: {fileID: 8300000, guid: 8260fff43a75b334ab2f269427a6b69e, type: 3}
   soundMenuSwitch: {fileID: 8300000, guid: eafd9b0e833f1b24c8c94566f1a18d63, type: 3}
+  soundFireworks: {fileID: 8300000, guid: f7f91db627423204e96d2672659bf543, type: 3}
   musicBossIntro: {fileID: 8300000, guid: 16f210e42528bdf4a81da92bdc4713c1, type: 3}
   musicBossMain: {fileID: 8300000, guid: de4f51d3646b8b34b9805396f7c89d87, type: 3}
   musicBoss1: {fileID: 8300000, guid: 088ba527b606b114c99fd51d9518b5f2, type: 3}
@@ -395,6 +396,7 @@ MonoBehaviour:
   soundPlayerHit: {fileID: 0}
   soundMenuSelect: {fileID: 0}
   soundMenuSwitch: {fileID: 0}
+  soundFireworks: {fileID: 0}
   musicBossIntro: {fileID: 0}
   musicBossMain: {fileID: 0}
   musicBoss1: {fileID: 0}

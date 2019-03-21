@@ -28,6 +28,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip soundPlayerHit;
     public AudioClip soundMenuSelect;
     public AudioClip soundMenuSwitch;
+    public AudioClip soundFireworks;
 
     public AudioClip musicBossIntro;
     public AudioClip musicBossMain;
@@ -203,6 +204,11 @@ public class AudioManager : MonoBehaviour
 
             case 15:
                 soundClip = soundMenuSwitch;
+                soundVolume = 1f;
+                break;
+
+            case 16:
+                soundClip = soundFireworks;
                 soundVolume = 1f;
                 break;
 
