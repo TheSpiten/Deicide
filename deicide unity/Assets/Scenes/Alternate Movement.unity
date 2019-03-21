@@ -1548,6 +1548,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5549109139505656562, guid: 0b2efabaca6227f43922b8b32cb471b6,
+        type: 3}
+      propertyPath: soundRepair
+      value: 
+      objectReference: {fileID: 8300000, guid: 58bd27e19309f234597fa4e85244c411, type: 3}
+    - target: {fileID: 5549109139505656562, guid: 0b2efabaca6227f43922b8b32cb471b6,
+        type: 3}
+      propertyPath: soundPlayerHit
+      value: 
+      objectReference: {fileID: 8300000, guid: 467608f2d1117d047af9f752589e9339, type: 3}
+    - target: {fileID: 5549109139505656562, guid: 0b2efabaca6227f43922b8b32cb471b6,
+        type: 3}
+      propertyPath: soundMenuSwitch
+      value: 
+      objectReference: {fileID: 8300000, guid: eafd9b0e833f1b24c8c94566f1a18d63, type: 3}
+    - target: {fileID: 5549109139505656562, guid: 0b2efabaca6227f43922b8b32cb471b6,
+        type: 3}
+      propertyPath: soundMenuSelect
+      value: 
+      objectReference: {fileID: 8300000, guid: 8260fff43a75b334ab2f269427a6b69e, type: 3}
+    - target: {fileID: 5549109139505656562, guid: 0b2efabaca6227f43922b8b32cb471b6,
+        type: 3}
+      propertyPath: soundDynamite
+      value: 
+      objectReference: {fileID: 8300000, guid: 705b441a4ae91b84d899567259d9e3cf, type: 3}
+    - target: {fileID: 5549109139505656562, guid: 0b2efabaca6227f43922b8b32cb471b6,
+        type: 3}
+      propertyPath: soundDash
+      value: 
+      objectReference: {fileID: 8300000, guid: a74ed72721a28bf4b8ae55cc3b596e7e, type: 3}
+    - target: {fileID: 5549109139505656562, guid: 0b2efabaca6227f43922b8b32cb471b6,
+        type: 3}
+      propertyPath: soundElectricShield
+      value: 
+      objectReference: {fileID: 8300000, guid: fef38a0125cd4b540ab9cd03a44562bc, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b2efabaca6227f43922b8b32cb471b6, type: 3}
 --- !u!1 &427845790 stripped
@@ -7905,6 +7940,21 @@ PrefabInstance:
     - target: {fileID: 6536600824234683384, guid: 40b04382b6a9834469c38d710ecf9d0f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6536600824234683389, guid: 40b04382b6a9834469c38d710ecf9d0f,
+        type: 3}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6536600824234683389, guid: 40b04382b6a9834469c38d710ecf9d0f,
+        type: 3}
+      propertyPath: dashDelay
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6536600824234683390, guid: 40b04382b6a9834469c38d710ecf9d0f,
+        type: 3}
+      propertyPath: dynamiteAmmo
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
