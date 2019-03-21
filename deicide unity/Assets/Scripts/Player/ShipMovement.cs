@@ -16,7 +16,6 @@ public class ShipMovement : MonoBehaviour
     private float dashTimer;
     private float dashSpeedTimer;
     private float dashCurrentIncreasedSpeed;
-    private float bounceTimer;
 
     private bool alive;
 
@@ -28,24 +27,13 @@ public class ShipMovement : MonoBehaviour
         
         dashCurrentIncreasedSpeed = 1;
 
-        bounceTimer = 0;
-
         alive = true;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Boundary")
-        {
-            bounceTimer = 1f;
-            //rb.AddForce(-rb.velocity * 20);
-        }
     }
 
     // Should maybe be FixedUpdate()?
     void FixedUpdate()
     {
-        if (bounceTimer <= 0 && alive == true)
+        if (alive == true)
         {
             // Updates dash speed
             float newVelocityX = rb.velocity.x;
@@ -96,15 +84,6 @@ public class ShipMovement : MonoBehaviour
             dashTimer = TimerTick(dashTimer);
             // Updates dashSpeedTimer
             dashSpeedTimer = TimerTick(dashSpeedTimer);
-            // Updates bounceTimer
-            if (bounceTimer > 0)
-            {
-                bounceTimer -= Time.deltaTime;
-            }
-            else
-            {
-                bounceTimer = 0;
-            }
 
             // Declares input keys
             var shootKey = KeyCode.Z;

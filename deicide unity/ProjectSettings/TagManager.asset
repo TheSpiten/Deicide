@@ -21,7 +21,10 @@ TagManager:
   - ShieldPowerUp
   - AudioManager
   - Boss
+<<<<<<< HEAD
   - SpearSpawner
+=======
+>>>>>>> master
   layers:
   - Default
   - TransparentFX
@@ -31,8 +34,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Player
+  - Background
   - 
   - 
   - 

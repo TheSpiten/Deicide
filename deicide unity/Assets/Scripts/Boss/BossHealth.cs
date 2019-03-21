@@ -8,6 +8,33 @@ public class BossHealth : MonoBehaviour
     public float shakeMEUP = 0.0f;
     public GameObject Explosiooooooooons;
 
+    private int startHealth;
+
+    private void Start()
+    {
+        startHealth = bossHealth;
+    }
+
+    private void Update()
+    {
+        if (bossHealth < startHealth * 0.25f)
+        {
+            GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlayMusic(4);
+        }
+        else if (bossHealth < startHealth * 0.5f)
+        {
+            GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlayMusic(3);
+        }
+        else if (bossHealth < startHealth * 0.7f)
+        {
+            GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlayMusic(2);
+        }
+        else
+        {
+            GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlayMusic(1);
+        }
+    }
+
     private void FixedUpdate()
     {
         shakeMEUP += 0.1f;
@@ -22,11 +49,11 @@ public class BossHealth : MonoBehaviour
             Camera.main.GetComponent<ScreenShake>().Shake(0.3f, 1.0f);
             for (int i = 0; i < 30; i++)
             {
-                Vector2 randomito = new Vector2(Random.Range(-2.0f, 1.0f), Random.Range(-2.0f, 1.0f));
-                var expl = (GameObject)Instantiate(Explosiooooooooons, transform.position * randomito, transform.rotation);
+                Vector3 randomito = new Vector3(Random.Range(-3.0f, 3.0f), Random.Range(-3.0f, 3.0f), 0);
+                var expl = (GameObject)Instantiate(Explosiooooooooons, transform.position + randomito, transform.rotation);
             }
-            Time.timeScale = 0.5f;
-            Destroy(gameObject, 0.5f);
+            Time.timeScale = 0.25f;
+            Destroy(gameObject, 0.2f);
         }
     }
 

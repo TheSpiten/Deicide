@@ -4,6 +4,8 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
+  - soundSource: {instanceID: 0}
+  - musicSource: {instanceID: 0}
   - soundMachineGun1: {fileID: 8300000, guid: b195693ae2c594740b948bd874a4d329, type: 3}
   - soundMachineGun2: {fileID: 8300000, guid: e05a9cc957f22dd4f9fda06ba146a953, type: 3}
   - soundMachineGun3: {fileID: 8300000, guid: 6c5edb4e6d49b2f47bc7206fc6ed1c01, type: 3}
@@ -16,6 +18,11 @@ MonoImporter:
   - soundBossHit1: {fileID: 8300000, guid: 32cbffc8ee68334458539008e8e36e1e, type: 3}
   - soundBossHit2: {fileID: 8300000, guid: a5f62f0cb4b5afc4490e896418faa21b, type: 3}
   - soundBossHit3: {fileID: 8300000, guid: 6730ec018fd9737458d25b233467269c, type: 3}
+  - musicBossIntro: {fileID: 8300000, guid: 16f210e42528bdf4a81da92bdc4713c1, type: 3}
+  - musicBossMain: {fileID: 8300000, guid: de4f51d3646b8b34b9805396f7c89d87, type: 3}
+  - musicBoss1: {fileID: 8300000, guid: 088ba527b606b114c99fd51d9518b5f2, type: 3}
+  - musicBoss2: {fileID: 8300000, guid: ae9dc0147be87f044811352d09e57889, type: 3}
+  - musicBoss3: {fileID: 8300000, guid: 3644e8b1ef1d99d49b4f65ee15df03bf, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
