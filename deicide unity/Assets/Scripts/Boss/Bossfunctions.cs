@@ -15,12 +15,14 @@ public class Bossfunctions : MonoBehaviour
     {
         protected AttackType attackType;
         protected Action action;
+        protected bool startAnimation;
         protected bool end;
 
         public Attack(AttackType type)
         {
             attackType = type;
             action = Action.None;
+            startAnimation = true;
             end = false;
         }
 
@@ -135,7 +137,7 @@ public class Bossfunctions : MonoBehaviour
         {
             stormDuration = duration;
             stormSpeed = 1 / speed;
-            featherTimer = 0;
+            featherTimer = stormSpeed / 2;
             action = Action.StormWait;
         }
 
@@ -196,6 +198,7 @@ public class Bossfunctions : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public Sprite standardSprite;
     public Animator jabAnimator;
+    public Animator stormAnimator;
 
 
     private void Awake()
@@ -205,6 +208,7 @@ public class Bossfunctions : MonoBehaviour
         attackStack = new List<Attack>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         jabAnimator.gameObject.SetActive(false);
+        stormAnimator.gameObject.SetActive(false);
 
         // TEMPORARY
         jabCountdown = 1;
@@ -248,9 +252,9 @@ public class Bossfunctions : MonoBehaviour
             JabAttack(2);
             JabAttack(2);
             JabAttack(2);
-            StormAttack(4, 2);
+            StormAttack(4, 1.5f);
             JabAttack(2);
-            StormAttack(6, 1.5f);
+            StormAttack(4, 0.75f);
         }
 
         AttackUpdate();
@@ -320,6 +324,7 @@ public class Bossfunctions : MonoBehaviour
                 // Resets sprite in case there was an animation
                 spriteRenderer.enabled = true;
                 jabAnimator.gameObject.SetActive(false);
+                stormAnimator.gameObject.SetActive(false);
             }
         }
     }
@@ -352,7 +357,20 @@ public class Bossfunctions : MonoBehaviour
                 GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(2);
                 break;
 
+            case Action.StormWait:
+                if (stormAnimator.gameObject.activeSelf == false)
+                {
+                    spriteRenderer.enabled = false;
+                    stormAnimator.gameObject.SetActive(true);
+                }
+                break;
+
             case Action.StormFeathers:
+                if (stormAnimator.gameObject.activeSelf == false)
+                {
+                    spriteRenderer.enabled = false;
+                    stormAnimator.gameObject.SetActive(true);
+                }
                 GetComponent<FeatherStorm>().FeatherAttack();
                 GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(5);
                 break;

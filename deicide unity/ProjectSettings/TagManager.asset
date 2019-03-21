@@ -4,20 +4,23 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemy
+  - UIManager
+  - Boundary
+  - BossShield
   - EnemyHead
   - EnemyLegs
   - EnemyBody
-  - AudioManager
-  - Javelin
   - Feather
+  - Javelin
   - Bullet
-  - ShieldPowerUp
+  - ShieldBack
+  - ShieldFront
+  - Enemy
   - HealthPowerUp
   - DynamitePowerUp
-  - BossShield
-  - Boundary
-  - UIManager
+  - ShieldPowerUp
+  - AudioManager
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -27,9 +30,9 @@ TagManager:
   - UI
   - 
   - 
-  - PlayerBounds
+  - Player
   - Background
-  - Enemy
+  - 
   - 
   - 
   - 
@@ -54,10 +57,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Projectile
-    uniqueID: 1000192209
-    locked: 0
-  - name: Player
-    uniqueID: 3325479913
     locked: 0

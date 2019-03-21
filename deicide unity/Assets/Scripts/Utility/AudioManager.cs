@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    public AudioSource soundSource;
+    public AudioSource musicSource;
+
     public AudioClip soundMachineGun1;
     public AudioClip soundMachineGun2;
     public AudioClip soundMachineGun3;
@@ -16,12 +19,22 @@ public class AudioManager : MonoBehaviour
     public AudioClip soundBossHit1;
     public AudioClip soundBossHit2;
     public AudioClip soundBossHit3;
-
-    private AudioSource soundSource;
-
-    private bool isMusicPlaying;
-    private int currentMusicPlaying;
     private List<int> bossHitSounds;
+
+    public AudioClip musicBossIntro;
+    public AudioClip musicBossMain;
+    public AudioClip musicBoss1;
+    public AudioClip musicBoss2;
+    public AudioClip musicBoss3;
+    public AudioClip musicBoss4;
+
+    private enum Music { intro, main, one, two, three, four }
+    private bool isMusicPlaying;
+    private Music currentMusicPlaying;
+    private float musicTimer;
+    private float musicLength;
+    private float musicVolume;
+    private float musicVolumeMain;
 
     private void Awake()
     {
@@ -46,12 +59,20 @@ public class AudioManager : MonoBehaviour
         // Music is by default not playing
         isMusicPlaying = false;
         currentMusicPlaying = 0;
+        musicTimer = 0;
+        musicLength = 0;
+        musicVolume = 0.15f;
+        musicVolumeMain = 0.15f;
     }
 
     private void Start()
     {
-        // Gets attached audio source component
-        soundSource = GetComponent<AudioSource>();
+        PlayMusic(0);
+    }
+
+    private void FixedUpdate()
+    {
+        MusicUpdate();
     }
 
     public void PlaySound(int soundNumber)
@@ -96,7 +117,7 @@ public class AudioManager : MonoBehaviour
                     SetBossHitSounds();
                     bossHitSounds.Remove(randomGunSounds);
                 }
-                soundVolume = 0.15f;
+                soundVolume = 0.25f;
                 break;
 
             // Cannon shot
@@ -113,8 +134,8 @@ public class AudioManager : MonoBehaviour
 
             // Javelin hit
             case 3:
-                soundClip = soundJavelinHit;
-                soundVolume = 1f;
+                //soundClip = soundJavelinHit;
+                //soundVolume = 1f;
                 break;
 
             // Pickup sound
@@ -134,6 +155,12 @@ public class AudioManager : MonoBehaviour
                 soundClip = soundStormIn;
                 soundVolume = 1f;
                 break;
+
+            // Shield hit sound
+            case 7:
+                soundClip = soundMachineGun1;
+                soundVolume = 0.15f;
+                break;
         }
 
         soundSource.PlayOneShot(soundClip, soundVolume);
@@ -144,15 +171,87 @@ public class AudioManager : MonoBehaviour
         // Plays music depending on the integer
         switch (musicNumber)
         {
-            // Place music here plz
+            // Length of sound -0.155f
             case 0:
-
+                currentMusicPlaying = Music.intro;
+                musicLength = 13.534f;
+                musicVolumeMain = 0.15f;
                 break;
 
             case 1:
+                currentMusicPlaying = Music.one;
+                musicLength = 25.488f;
+                musicVolume = 0.15f;
+                musicVolumeMain = 0.15f;
+                break;
 
+            case 2:
+                currentMusicPlaying = Music.two;
+                musicLength = 25.488f;
+                musicVolume = 0.2f;
+                musicVolumeMain = 0.1f;
+                break;
+
+            case 3:
+                currentMusicPlaying = Music.three;
+                musicLength = 25.488f;
+                musicVolume = 0.2f;
+                musicVolumeMain = 0.15f;
+                break;
+
+            case 4:
+                currentMusicPlaying = Music.four;
+                musicLength = 25.488f;
+                musicVolume = 0.2f;
+                musicVolumeMain = 0.15f;
                 break;
         }
+    }
+
+    private void MusicUpdate()
+    {
+        if (musicTimer > 0)
+        {
+            musicTimer -= Time.fixedDeltaTime;
+        }
+        else
+        {
+            musicTimer = musicLength;
+            if (currentMusicPlaying == Music.intro)
+            {
+                musicSource.PlayOneShot(musicBossIntro, 0.15f);
+                PlayMusic(1);
+            }
+            else
+            {
+                AudioClip playThisMusic = CurrentMusic(currentMusicPlaying);
+                musicSource.PlayOneShot(playThisMusic, musicVolume);
+                musicSource.PlayOneShot(musicBossMain, 0.15f);
+            }
+        }
+    }
+
+    private AudioClip CurrentMusic(Music music)
+    {
+        switch (music)
+        {
+            case Music.intro:
+                return musicBossIntro;
+
+            case Music.one:
+                return musicBoss1;
+
+            case Music.two:
+                return musicBoss2;
+
+            case Music.three:
+                return musicBoss3;
+
+            case Music.four:
+                return musicBoss4;
+        }
+
+        return musicBossMain;
     }
 
     public void ResumeMusic()

@@ -6,7 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
+    private GameObject baseUI;
+    private bool showUI;
+
     private GameObject healthUI;
+    private GameObject healthBackgroundUI;
     private float healthValue;
 
     float playerDashTimer;
@@ -18,10 +22,17 @@ public class UIManager : MonoBehaviour
     private GameObject repairIcon;
     private GameObject shieldIcon;
     private GameObject dynamiteIcon;
+
+    private GameObject bossUI;
+    private GameObject bossHealthBar;
         
     void Awake()
     {
-        healthUI = GameObject.Find("UI_health");
+        baseUI = GameObject.Find("UI_base");
+        showUI = true;
+
+        healthUI = GameObject.Find("UI_health_coloured");
+        healthBackgroundUI = GameObject.Find("UI_health_background");
         playerPowerup = Powerup.none;
         playerDashTimer = -1;
         playerDashText = transform.Find("UI_dash_timer").GetComponent<Text>();
@@ -30,6 +41,9 @@ public class UIManager : MonoBehaviour
         repairIcon = transform.Find("UI_powerup_icons").transform.Find("UI_powerup_repair").gameObject;
         shieldIcon = transform.Find("UI_powerup_icons").transform.Find("UI_powerup_shield").gameObject;
         dynamiteIcon = transform.Find("UI_powerup_icons").transform.Find("UI_powerup_dynamite").gameObject;
+        
+        bossUI = transform.parent.transform.Find("UI_boss").gameObject;
+        bossHealthBar = transform.parent.transform.Find("UI_boss").transform.Find("UI_boss_heatlh_colour").gameObject;
     }
 
     private void Start()
@@ -39,9 +53,13 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        UpdateHealth();
-        UpdateDash();
-        UpdatePowerup();
+        if (showUI == true)
+        {
+            UpdateHealth();
+            UpdateDash();
+            UpdatePowerup();
+            UpdateBossHealth();
+        }
 
         if (Input.GetKeyDown(KeyCode.Y))
         {
@@ -147,5 +165,29 @@ public class UIManager : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    private void UpdateBossHealth()
+    {
+        if (GameObject.FindGameObjectWithTag("Enemy") != null)
+        {
+            float bossHealth = GameObject.FindGameObjectWithTag("Enemy").GetComponent<BossHealth>().GetBossHealth();
+
+            bossHealthBar.GetComponent<RectTransform>().anchoredPosition = new Vector2(bossHealthBar.GetComponent<RectTransform>().anchoredPosition.x, (bossHealth - 1000) * 1.15f);
+        }
+    }
+
+    public void TurnOffUI()
+    {
+        showUI = false;
+        baseUI.SetActive(false);
+        healthUI.SetActive(false);
+        healthBackgroundUI.SetActive(false);
+        repairIcon.SetActive(false);
+        shieldIcon.SetActive(false);
+        dynamiteIcon.SetActive(false);
+        playerDashIcon.SetActive(false);
+        playerDashText.gameObject.SetActive(false);
+        bossUI.SetActive(false);
     }
 }
