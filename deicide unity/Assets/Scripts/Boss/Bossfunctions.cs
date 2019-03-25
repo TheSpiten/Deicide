@@ -186,7 +186,6 @@ public class Bossfunctions : MonoBehaviour
         private float spearDuration;
         private float spearSpeed;
         private RainState state;
-        private Action action;
 
         public SpearsClass(float speed) : base(AttackType.Spears)
         {
@@ -308,7 +307,9 @@ public class Bossfunctions : MonoBehaviour
                 JabAttack(2);
                 StormAttack(4, 1);
                 JabAttack(2);
+                SpearsAttack();
                 JabAttack(2);
+                SpearsAttack();
                 JabAttack(2);
                 StormAttack(4, 1.5f);
                 JabAttack(2);
@@ -319,7 +320,10 @@ public class Bossfunctions : MonoBehaviour
         }
         else
         {
-            
+            transform.position = new Vector2(transform.position.x - Time.deltaTime * 0.7f, transform.position.y);
+            originalTransformX = transform.position.x;
+            spriteRenderer.enabled = false;
+            anticipationAnimator.gameObject.SetActive(true);
         }
     }
 
