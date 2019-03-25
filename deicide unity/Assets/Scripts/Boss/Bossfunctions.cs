@@ -335,7 +335,10 @@ public class Bossfunctions : MonoBehaviour
         }
         else
         {
-            
+            transform.position = new Vector2(transform.position.x - Time.deltaTime * 0.7f, transform.position.y);
+            originalTransformX = transform.position.x;
+            spriteRenderer.enabled = false;
+            anticipationAnimator.gameObject.SetActive(true);
         }
     }
 
