@@ -267,6 +267,7 @@ public class Bossfunctions : MonoBehaviour
     public Animator stormAnimator;
     public Animator spearsAnimator;
 
+    private int bossPhase;
 
     private void Awake()
     {
@@ -278,6 +279,8 @@ public class Bossfunctions : MonoBehaviour
         jabAnimator.gameObject.SetActive(false);
         stormAnimator.gameObject.SetActive(false);
         spearsAnimator.gameObject.SetActive(false);
+
+        bossPhase = 0;
 
         // TEMPORARY
         jabCountdown = 1;
@@ -315,6 +318,52 @@ public class Bossfunctions : MonoBehaviour
                 jabCountdown = jabInterval;
             }
             */
+            float health = GetComponent<BossHealth>().GetBossPercentage();
+            if (health < 0.5f)
+            {
+                if (bossPhase != 3)
+                {
+                    bossPhase = 3;
+                    attackStack.Clear();
+                }
+
+                if (attackStack.Count <= 0)
+                {
+                    // Phase 3 attacks
+
+                }
+            }
+            else if (health < 0.8f)
+            {
+                if (bossPhase != 2)
+                {
+                    bossPhase = 2;
+                    attackStack.Clear();
+                }
+
+                if (attackStack.Count <= 0)
+                {
+                    // Phase 2 attacks
+
+                }
+            }
+            else
+            {
+                if (bossPhase != 1)
+                {
+                    bossPhase = 1;
+                    attackStack.Clear();
+                }
+
+                if (attackStack.Count <= 0)
+                {
+                    // Phase 1 attacks
+                    JabAttack(2);
+                    SpearsAttack("Random");
+
+                }
+            }
+            /*
             if (attackStack.Count <= 0)
             {
                 JabAttack(2);
@@ -330,12 +379,12 @@ public class Bossfunctions : MonoBehaviour
                 JabAttack(2);
                 StormAttack(4, 0.75f);
             }
-
+            */
             AttackUpdate();
         }
         else
         {
-            transform.position = new Vector2(transform.position.x - Time.deltaTime * 0.7f, transform.position.y);
+            transform.position = new Vector2(transform.position.x - Time.deltaTime * 2.8f, transform.position.y);
             originalTransformX = transform.position.x;
             spriteRenderer.enabled = false;
             anticipationAnimator.gameObject.SetActive(true);

@@ -61,4 +61,9 @@ public class BossHealth : MonoBehaviour
     {
         return bossHealth;
     }
+
+    public float GetBossPercentage()
+    {
+        return bossHealth / startHealth;
+    }
 }

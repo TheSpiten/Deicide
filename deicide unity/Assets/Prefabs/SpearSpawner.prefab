@@ -48,3 +48,4 @@ MonoBehaviour:
   multiX: 1.2
   multiY: 1.3
   numberOfSpears: 8
+  numberOfRandomSpears: 5

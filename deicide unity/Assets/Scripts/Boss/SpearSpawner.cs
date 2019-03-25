@@ -14,8 +14,7 @@ public class SpearSpawner : MonoBehaviour
     private float xPos;
     private float yPos;
     public int numberOfSpears;
-    
-    
+    public int numberOfRandomSpears;
     
     // Start is called before the first frame update
     void Start()
@@ -76,13 +75,14 @@ public class SpearSpawner : MonoBehaviour
                 break;
 
             case "Random":
+                int xOffset = Mathf.FloorToInt((numberOfSpears - numberOfRandomSpears) / 2);
                 spawnTransform = GameObject.Find("SpearSpawner").transform;
                 List<int> spearSpawnList = new List<int>();
                 for (int p = 1; p <= numberOfSpears; p++)
                 {
                     spearSpawnList.Add(p);
                 }
-                for (int i = 1; i <= numberOfSpears; i++)
+                for (int i = 1; i <= numberOfRandomSpears; i++)
                 {
                     Debug.Log(spearSpawnList.Count);
                     int index = 0;
