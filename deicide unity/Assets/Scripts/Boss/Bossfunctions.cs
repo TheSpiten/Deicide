@@ -393,7 +393,6 @@ public class Bossfunctions : MonoBehaviour
                 {
                     transform.position = new Vector3(originalTransformX, transform.position.y, transform.position.z);
                     attackStack.RemoveAt(1);
-                    Debug.Log("Second Attack Ended");
                 }
             }
 

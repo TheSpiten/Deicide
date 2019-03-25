@@ -43,7 +43,8 @@ public class SpearSpawner : MonoBehaviour
                 spawnTransform = GameObject.Find("SpearSpawner").transform;
                 for (int i = 1; i <= numberOfSpears; i++)
                 {
-                    var spears = (GameObject)Instantiate(Spear, transform.position, transform.rotation);
+                    var spears = (GameObject)Instantiate(Spear);
+                    spears.transform.position = new Vector2(transform.position.x, transform.position.y + 3.65f);
                     //spears.GetComponent<Rigidbody2D>().velocity = -spears.transform.up * spearSpeed;
                     SpawnPos = new Vector2((xPos + (i * multiX)), yPos);
                     spawnTransform.position = SpawnPos;
@@ -62,7 +63,8 @@ public class SpearSpawner : MonoBehaviour
                 {
                     SpawnPos = new Vector2((xPos + (i * multiX)), yPos);
                     spawnTransform.position = SpawnPos;
-                    var spears = (GameObject)Instantiate(Spear, transform.position, transform.rotation);
+                    var spears = (GameObject)Instantiate(Spear);
+                    spears.transform.position = new Vector2(transform.position.x, transform.position.y + 3.65f);
                     spears.GetComponent<Spear>().SetSpear(numberOfSpears - i, spearSpeed, 0.2f);
                     Destroy(spears, 10.0f);
                     //spears.GetComponent<Rigidbody2D>().velocity = -spears.transform.up * spearSpeed;
@@ -85,7 +87,8 @@ public class SpearSpawner : MonoBehaviour
                     Debug.Log(spearSpawnList.Count);
                     int index = 0;
                     int spawn = 0;
-                    var spears = (GameObject)Instantiate(Spear, transform.position, transform.rotation);
+                    var spears = (GameObject)Instantiate(Spear);
+                    spears.transform.position = new Vector2(transform.position.x, transform.position.y + 3.65f);
                     // Set the 0 to 1 to remove the gap in the spears
                     index = Mathf.FloorToInt(Random.Range(0, spearSpawnList.Count - 0.0001f));
                     spawn = spearSpawnList[index];
