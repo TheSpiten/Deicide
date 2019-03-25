@@ -37,9 +37,9 @@ public class Spear : MonoBehaviour
             if (privateIndicator == null && hasSpawnedIndicator == false)
             {
                 privateIndicator = (GameObject) Instantiate(IndicatorPrefab, transform);
-                privateIndicator.transform.position = new Vector2(transform.position.x, 4.9f);
+                privateIndicator.transform.position = new Vector2(transform.position.x, 4.94f);
                 privateIndicator.transform.parent = null;
-                Destroy(privateIndicator, 1f);
+                Destroy(privateIndicator, 2f);
                 hasSpawnedIndicator = true;
             }
 
