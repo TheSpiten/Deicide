@@ -187,6 +187,7 @@ public class Bossfunctions : MonoBehaviour
         private float spearSpeed;
         private string rainType;
         private RainState state;
+        private Action action;
 
         public SpearsClass(float speed, string type) : base(AttackType.Spears)
         {
@@ -334,10 +335,7 @@ public class Bossfunctions : MonoBehaviour
         }
         else
         {
-            transform.position = new Vector2(transform.position.x - Time.deltaTime * 0.7f, transform.position.y);
-            originalTransformX = transform.position.x;
-            spriteRenderer.enabled = false;
-            anticipationAnimator.gameObject.SetActive(true);
+            
         }
     }
 
