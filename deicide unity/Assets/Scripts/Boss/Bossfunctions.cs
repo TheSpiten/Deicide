@@ -380,7 +380,10 @@ public class Bossfunctions : MonoBehaviour
                 StormAttack(4, 0.75f);
             }
             */
-            AttackUpdate();
+            if (player != null)
+            {
+                AttackUpdate();
+            }
         }
         else
         {
