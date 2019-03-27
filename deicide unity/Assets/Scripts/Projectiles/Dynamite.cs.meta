@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7530116b367b31048835963b1bd09ae8
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - TestExplosionArea: {fileID: 4907208007375028613, guid: 7409b27aa580acb4b8e372054d986504,
+      type: 3}
+  - EnergyExplosion: {fileID: 1329845292236604, guid: 9bba9cf244c53c5439505dfc96fdd11c,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
