@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class ShipMovement : MonoBehaviour
 {
+    public GameObject FireExplosion;
+
     Rigidbody2D rb;
     public float speed;
     public float dashDelay;
@@ -149,9 +151,12 @@ public class ShipMovement : MonoBehaviour
                 {
                     alive = false;
                     GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().TurnOffUI();
-                    transform.Find("ShipSprite").gameObject.SetActive(false);
-                    transform.Find("GunRotator").transform.Find("Gun").gameObject.SetActive(false);
-                    SceneManager.LoadScene("MenuScene");
+                    //transform.Find("ShipSprite").gameObject.SetActive(false);
+                    //transform.Find("GunRotator").transform.Find("Gun").gameObject.SetActive(false);
+                    Time.timeScale = 0.25f;
+                    Destroy(gameObject, 0.1f);
+                    //SceneManager.LoadScene("MenuScene");
+                    var explosion = (GameObject)Instantiate(FireExplosion, transform.position, transform.rotation);
                 }
             }
         }

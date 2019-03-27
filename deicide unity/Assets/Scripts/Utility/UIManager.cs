@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour
     void Awake()
     {
         gameStarting = true;
-        startTimer = 1f;
+        startTimer = 2.85f;
 
         baseUI = GameObject.Find("UI_base");
         showUI = true;

@@ -117,6 +117,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IndicatorPrefab: {fileID: 5574134686570519511, guid: 8ffd97d4e49aecb479852c54c0339ac9,
     type: 3}
+  ClosingIndicatorPrefab: {fileID: 8237796241121052944, guid: 30f3670cc9e53b049ab37e6d7186d70c,
+    type: 3}
 --- !u!60 &5649181679328135270
 PolygonCollider2D:
   m_ObjectHideFlags: 0

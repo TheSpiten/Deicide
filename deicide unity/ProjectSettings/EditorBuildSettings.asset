@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Alternate Movement.unity
     guid: 86ae51c09358ea94789da364c6412c1a
+  - enabled: 1
+    path: Assets/Scenes/Axel's Scene.unity
+    guid: 1367494de9035e54cb6baa9af06c8654
   m_configObjects: {}

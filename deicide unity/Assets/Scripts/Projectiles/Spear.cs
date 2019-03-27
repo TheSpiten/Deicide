@@ -6,14 +6,20 @@ public class Spear : MonoBehaviour
 {
     private float spearSpeed;
     private float spearTimer;
+    private float indicatorTimer;
     private GameObject privateIndicator;
+    private GameObject closingIndicator;
     public GameObject IndicatorPrefab;
+    public GameObject ClosingIndicatorPrefab;
     private bool hasSpawnedIndicator;
+    private bool hasSpawnedClosingIndicator;
 
     public void Start()
     {
         privateIndicator = null;
         hasSpawnedIndicator = false;
+        indicatorTimer = 1.8f;
+        hasSpawnedClosingIndicator = false;
     }
 
     public void SetSpear(float timer, float speed, float delay){
@@ -34,12 +40,25 @@ public class Spear : MonoBehaviour
 
         if (spearTimer <= 0.5f)
         {
+            if (indicatorTimer > 0)
+            {
+                indicatorTimer -= Time.deltaTime;
+            }
+            else if (hasSpawnedClosingIndicator == false)
+            {
+                closingIndicator = GameObject.Instantiate(ClosingIndicatorPrefab);
+                closingIndicator.transform.position = new Vector2(transform.position.x, 4.94f);
+                closingIndicator.transform.parent = null;
+                Destroy(closingIndicator, 0.2f);
+                hasSpawnedClosingIndicator = true;
+            }
+
             if (privateIndicator == null && hasSpawnedIndicator == false)
             {
-                privateIndicator = (GameObject) Instantiate(IndicatorPrefab, transform);
+                privateIndicator = (GameObject) Instantiate(IndicatorPrefab);
                 privateIndicator.transform.position = new Vector2(transform.position.x, 4.94f);
                 privateIndicator.transform.parent = null;
-                Destroy(privateIndicator, 2f);
+                Destroy(privateIndicator, 1.8f);
                 hasSpawnedIndicator = true;
             }
 

@@ -59,7 +59,7 @@ public class AudioManager : MonoBehaviour
         }
 
         // Does not destroy itself when a scene is loaded
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         // Sets list for machine gun sounds
         bossHitSounds = new List<int>();

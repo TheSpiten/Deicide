@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossHealth : MonoBehaviour
 {
     public float bossHealth = 1000;
     public float shakeMEUP = 0.0f;
     public GameObject Explosiooooooooons;
+    //float timerToEnd = 0;
 
     private float startHealth;
 
@@ -37,6 +39,7 @@ public class BossHealth : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //timerToEnd += Time.unscaledDeltaTime;
         shakeMEUP += 0.1f;
     }
 
@@ -45,6 +48,7 @@ public class BossHealth : MonoBehaviour
         bossHealth -= damage;
         if (bossHealth <= 0)
         {
+            //timerToEnd = Time.realtimeSinceStartup;
             shakeMEUP = 0.0f;
             Camera.main.GetComponent<ScreenShake>().Shake(0.3f, 1.0f);
             for (int i = 0; i < 30; i++)
@@ -53,12 +57,19 @@ public class BossHealth : MonoBehaviour
                 var expl = (GameObject)Instantiate(Explosiooooooooons, transform.position + randomito, transform.rotation);
             }
             Time.timeScale = 0.25f;
-            Destroy(gameObject, 0.2f);
+            Destroy(gameObject, 0.1f);
         }
+        return;
     }
 
     public float GetBossHealth()
     {
         return bossHealth;
+    }
+
+
+    public float GetBossPercentage()
+    {
+        return bossHealth / startHealth;
     }
 }
