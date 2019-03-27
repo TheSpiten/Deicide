@@ -2695,7 +2695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20da4289b8933f94dba224e7a6f39afb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossHealth: 10
+  bossHealth: 1000
   shakeMEUP: 0
   Explosiooooooooons: {fileID: 1329845292236604, guid: 9bba9cf244c53c5439505dfc96fdd11c,
     type: 3}
@@ -5459,7 +5459,7 @@ PrefabInstance:
     - target: {fileID: 1422246930380145230, guid: e53837e7a424644419da623f144797d6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1422246930380145230, guid: e53837e7a424644419da623f144797d6,
         type: 3}
@@ -11423,7 +11423,7 @@ PrefabInstance:
     - target: {fileID: 6536600824234683389, guid: 40b04382b6a9834469c38d710ecf9d0f,
         type: 3}
       propertyPath: health
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6536600824983734917, guid: 40b04382b6a9834469c38d710ecf9d0f,
         type: 3}
