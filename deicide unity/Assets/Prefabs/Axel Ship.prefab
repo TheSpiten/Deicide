@@ -390,7 +390,7 @@ MonoBehaviour:
   dragMultiplier: 2.3
   dashSpeedIncrease: 0.5
   dashSpeedDuration: 0.3
-  health: 1000
+  health: 100
   iFrames: 1
   isShielded: 0
 --- !u!114 &6536600824234683391

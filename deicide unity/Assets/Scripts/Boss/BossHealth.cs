@@ -66,6 +66,7 @@ public class BossHealth : MonoBehaviour
     {
         return bossHealth;
     }
+<<<<<<< HEAD
      
     //void NormalTime()
     //{
@@ -75,5 +76,11 @@ public class BossHealth : MonoBehaviour
     void VictoryScene()
     {
         SceneManager.LoadScene("Axel's Scene");
+=======
+
+    public float GetBossPercentage()
+    {
+        return bossHealth / startHealth;
+>>>>>>> master
     }
 }
