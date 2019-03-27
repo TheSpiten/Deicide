@@ -2588,25 +2588,6 @@ MonoBehaviour:
   speed_x: 0
   speed_y: 0
   health: 0
-<<<<<<< HEAD
---- !u!114 &427845792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 427845790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20da4289b8933f94dba224e7a6f39afb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bossHealth: 1000
-  shakeMEUP: 0
-  Explosiooooooooons: {fileID: 1329845292236604, guid: 9bba9cf244c53c5439505dfc96fdd11c,
-    type: 3}
-=======
->>>>>>> master
 --- !u!1 &429220841
 GameObject:
   m_ObjectHideFlags: 0
@@ -11117,29 +11098,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-    - target: {fileID: 6536600824234683389, guid: 40b04382b6a9834469c38d710ecf9d0f,
-        type: 3}
-      propertyPath: FireExplosion
-      value: 
-      objectReference: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664,
-        type: 3}
-    - target: {fileID: 6536600824234683389, guid: 40b04382b6a9834469c38d710ecf9d0f,
-        type: 3}
-      propertyPath: health
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6536600824983734917, guid: 40b04382b6a9834469c38d710ecf9d0f,
-        type: 3}
-      propertyPath: m_TagString
-      value: ShipSprite
-      objectReference: {fileID: 0}
-    - target: {fileID: 6536600824847210636, guid: 40b04382b6a9834469c38d710ecf9d0f,
-        type: 3}
-      propertyPath: m_TagString
-      value: ShipSprite
-      objectReference: {fileID: 0}
-=======
->>>>>>> master
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40b04382b6a9834469c38d710ecf9d0f, type: 3}
