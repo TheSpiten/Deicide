@@ -80,6 +80,8 @@
     <Compile Include="Assets\Scripts\Projectiles\FeatherDamage.cs" />
     <Compile Include="Assets\Scripts\TestEnemy.cs" />
     <Compile Include="Assets\Scripts\Utility\AudioManager.cs" />
+    <Compile Include="Assets\Scripts\Utility\GameEnd.cs" />
+    <Compile Include="Assets\Scripts\Utility\LevelChanger.cs" />
     <Compile Include="Assets\Scripts\Utility\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Utility\OffsetScroller.cs" />
     <Compile Include="Assets\Scripts\Utility\PauseMenu.cs" />

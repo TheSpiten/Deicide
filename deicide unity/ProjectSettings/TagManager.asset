@@ -21,6 +21,8 @@ TagManager:
   - ShieldPowerUp
   - AudioManager
   - Boss
+  - ShipSprite
+  - LevelChanger
   layers:
   - Default
   - TransparentFX
