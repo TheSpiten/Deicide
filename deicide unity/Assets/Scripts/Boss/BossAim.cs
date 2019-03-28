@@ -5,10 +5,12 @@ using UnityEngine;
 public class BossAim : MonoBehaviour
 {
     bool PlayerAlive;
+    GameObject player;
 
     private void Start()
     {
         PlayerAlive = true;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
@@ -21,13 +23,16 @@ public class BossAim : MonoBehaviour
 
     void BossPlayerLock()
     {
-        if (GameObject.FindGameObjectWithTag("Player").GetComponent<ShipMovement>().GetPlayerAlive() == true)
+        if (player != null)
         {
-            // Checking for ship position and aiming at it
-            var PlayerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
-            var aim = Quaternion.FromToRotation(Vector3.left, PlayerPos - transform.position);
-            transform.rotation = aim;
-            if (PlayerPos == null) { PlayerAlive = false; }
+            if (player.GetComponent<ShipMovement>().GetPlayerAlive() == true)
+            {
+                // Checking for ship position and aiming at it
+                var PlayerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+                var aim = Quaternion.FromToRotation(Vector3.left, PlayerPos - transform.position);
+                transform.rotation = aim;
+                if (PlayerPos == null) { PlayerAlive = false; }
+            }
         }
     }
 }

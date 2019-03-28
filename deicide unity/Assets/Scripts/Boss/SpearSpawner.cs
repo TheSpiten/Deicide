@@ -84,7 +84,6 @@ public class SpearSpawner : MonoBehaviour
                 }
                 for (int i = 1; i <= numberOfRandomSpears; i++)
                 {
-                    Debug.Log(spearSpawnList.Count);
                     int index = 0;
                     int spawn = 0;
                     var spears = (GameObject)Instantiate(Spear);

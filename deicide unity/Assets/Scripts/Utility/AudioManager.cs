@@ -16,6 +16,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip soundStormOut;
     public AudioClip soundStormIn;
     public AudioClip soundPickup;
+    public AudioClip soundEye;
+    public AudioClip soundRain;
     public AudioClip soundBossHit1;
     public AudioClip soundBossHit2;
     public AudioClip soundBossHit3;
@@ -171,44 +173,56 @@ public class AudioManager : MonoBehaviour
                 soundVolume = 0.15f;
                 break;
 
+            // Eye sound
+            case 8:
+                soundClip = soundEye;
+                soundVolume = 0.4f;
+                break;
+
             case 9:
                 soundClip = soundDash;
-                soundVolume = 1f;
+                soundVolume = 0.1f;
                 break;
 
             case 10:
                 soundClip = soundElectricShield;
-                soundVolume = 1f;
+                soundVolume = 0.1f;
                 break;
 
             case 11:
                 soundClip = soundDynamite;
-                soundVolume = 1f;
+                soundVolume = 0.1f;
                 break;
 
             case 12:
                 soundClip = soundRepair;
-                soundVolume = 1f;
+                soundVolume = 0.1f;
                 break;
 
             case 13:
                 soundClip = soundPlayerHit;
-                soundVolume = 1f;
+                soundVolume = 0.1f;
                 break;
 
             case 14:
                 soundClip = soundMenuSelect;
-                soundVolume = 1f;
+                soundVolume = 0.1f;
                 break;
 
             case 15:
                 soundClip = soundMenuSwitch;
-                soundVolume = 1f;
+                soundVolume = 0.1f;
                 break;
 
             case 16:
                 soundClip = soundFireworks;
-                soundVolume = 1f;
+                soundVolume = 0.1f;
+                break;
+
+            // Sound spear rain
+            case 17:
+                soundClip = soundRain;
+                soundVolume = 0.15f;
                 break;
 
         }

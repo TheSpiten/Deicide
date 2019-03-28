@@ -5,7 +5,7 @@ using UnityEngine;
 public class Dynamite : MonoBehaviour
 {
     public GameObject TestExplosionArea;
-    public GameObject EnergyExplosion;
+    public GameObject GreenExplosion;
     public float delay = 2;
 
     //public float power = 10.0f;
@@ -30,7 +30,7 @@ public class Dynamite : MonoBehaviour
     void Detonate()
     {
         // Particle effects for the explosion
-        var explosion = (GameObject)Instantiate(EnergyExplosion, transform.position, transform.rotation);
+        var explosion = (GameObject)Instantiate(GreenExplosion, transform.position, transform.rotation);
         Destroy(explosion, 1.95f);
         Camera.main.GetComponent<ScreenShake>().Shake(0.4f, 0.2f);
         //Camera.current.GetComponent<ScreenShake>().Shake();

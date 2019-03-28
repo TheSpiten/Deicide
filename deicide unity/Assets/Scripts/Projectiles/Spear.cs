@@ -13,11 +13,13 @@ public class Spear : MonoBehaviour
     public GameObject ClosingIndicatorPrefab;
     private bool hasSpawnedIndicator;
     private bool hasSpawnedClosingIndicator;
+    private bool hasPlayedAudio;
 
     public void Start()
     {
         privateIndicator = null;
         hasSpawnedIndicator = false;
+        hasPlayedAudio = false;
         indicatorTimer = 1.8f;
         hasSpawnedClosingIndicator = false;
     }
@@ -36,6 +38,13 @@ public class Spear : MonoBehaviour
         else
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, Mathf.Abs(spearSpeed) * -1);
+
+            if (hasPlayedAudio == false)
+            {
+                hasPlayedAudio = true;
+
+                GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(17);
+            }
         }
 
         if (spearTimer <= 0.5f)
