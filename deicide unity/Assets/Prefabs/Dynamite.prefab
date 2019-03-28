@@ -143,7 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TestExplosionArea: {fileID: 4907208007375028613, guid: 7409b27aa580acb4b8e372054d986504,
     type: 3}
-  EnergyExplosion: {fileID: 1329845292236604, guid: 9bba9cf244c53c5439505dfc96fdd11c,
+  GreenExplosion: {fileID: 4221786155958988631, guid: cdd2a54c1b3431249868d3b3ed5bb60b,
     type: 3}
   delay: 2
   radius: 2

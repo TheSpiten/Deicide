@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5549109139505656562}
   - component: {fileID: 605429030007622436}
   - component: {fileID: 5899607145031766141}
-  - component: {fileID: 421458539}
   - component: {fileID: 421458538}
   m_Layer: 0
   m_Name: AudioManager
@@ -58,16 +57,18 @@ MonoBehaviour:
   soundStormOut: {fileID: 8300000, guid: 6f1655a11f9e4454e956890bd9541d60, type: 3}
   soundStormIn: {fileID: 8300000, guid: 4484cbea6a2b5a548bdb77d1d9ea7915, type: 3}
   soundPickup: {fileID: 8300000, guid: 998ef83203da9664aacfa58e6bc41840, type: 3}
+  soundEye: {fileID: 8300000, guid: 5ba2f55b27c837e489a352bb00ec5c7b, type: 3}
+  soundRain: {fileID: 8300000, guid: af48711f3fd39d040b301c2398c9fb79, type: 3}
   soundBossHit1: {fileID: 8300000, guid: 32cbffc8ee68334458539008e8e36e1e, type: 3}
   soundBossHit2: {fileID: 8300000, guid: a5f62f0cb4b5afc4490e896418faa21b, type: 3}
   soundBossHit3: {fileID: 8300000, guid: 6730ec018fd9737458d25b233467269c, type: 3}
-  soundDash: {fileID: 8300000, guid: a74ed72721a28bf4b8ae55cc3b596e7e, type: 3}
-  soundElectricShield: {fileID: 8300000, guid: fef38a0125cd4b540ab9cd03a44562bc, type: 3}
-  soundDynamite: {fileID: 8300000, guid: 705b441a4ae91b84d899567259d9e3cf, type: 3}
-  soundRepair: {fileID: 8300000, guid: 58bd27e19309f234597fa4e85244c411, type: 3}
-  soundPlayerHit: {fileID: 8300000, guid: 467608f2d1117d047af9f752589e9339, type: 3}
-  soundMenuSelect: {fileID: 8300000, guid: 8260fff43a75b334ab2f269427a6b69e, type: 3}
-  soundMenuSwitch: {fileID: 8300000, guid: eafd9b0e833f1b24c8c94566f1a18d63, type: 3}
+  soundDash: {fileID: 0}
+  soundElectricShield: {fileID: 0}
+  soundDynamite: {fileID: 0}
+  soundRepair: {fileID: 0}
+  soundPlayerHit: {fileID: 0}
+  soundMenuSelect: {fileID: 0}
+  soundMenuSwitch: {fileID: 0}
   soundFireworks: {fileID: 8300000, guid: f7f91db627423204e96d2672659bf543, type: 3}
   musicBossIntro: {fileID: 8300000, guid: 16f210e42528bdf4a81da92bdc4713c1, type: 3}
   musicBossMain: {fileID: 8300000, guid: de4f51d3646b8b34b9805396f7c89d87, type: 3}
@@ -267,102 +268,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &421458539
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1924129926093713840}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &421458538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,6 +291,8 @@ MonoBehaviour:
   soundStormOut: {fileID: 0}
   soundStormIn: {fileID: 0}
   soundPickup: {fileID: 0}
+  soundEye: {fileID: 0}
+  soundRain: {fileID: 0}
   soundBossHit1: {fileID: 0}
   soundBossHit2: {fileID: 0}
   soundBossHit3: {fileID: 0}

@@ -330,6 +330,16 @@ public class Bossfunctions : MonoBehaviour
                 if (attackStack.Count <= 0)
                 {
                     // Phase 3 attacks
+                    JabAttack(2);
+                    StormAttack(4, 0.5f);
+                    SpearsAttack("Right");
+                    JabAttack(2);
+                    SpearsAttack("Random");
+                    JabAttack(2);
+                    SpearsAttack("Left");
+                    StormAttack(4, 1f);
+                    JabAttack(2);
+                    SpearsAttack("Random");
 
                 }
             }
@@ -344,6 +354,12 @@ public class Bossfunctions : MonoBehaviour
                 if (attackStack.Count <= 0)
                 {
                     // Phase 2 attacks
+                    JabAttack(2);
+                    StormAttack(4, 1);
+                    JabAttack(2);
+                    StormAttack(2, 1.25f);
+                    JabAttack(2);
+                    StormAttack(4, 1.25f);
 
                 }
             }
@@ -359,7 +375,6 @@ public class Bossfunctions : MonoBehaviour
                 {
                     // Phase 1 attacks
                     JabAttack(2);
-                    SpearsAttack("Random");
 
                 }
             }
