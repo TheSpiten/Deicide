@@ -23,6 +23,9 @@ TagManager:
   - Boss
   - ShipSprite
   - LevelChanger
+  - SpearSpawner
+  - Indicator
+  - Tutorial
   layers:
   - Default
   - TransparentFX

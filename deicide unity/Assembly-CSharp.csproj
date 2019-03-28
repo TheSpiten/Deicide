@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\EffectExamples\Misc Effects\Scripts\SpawnEffect.cs" />
+    <Compile Include="Assets\OpenTutorial.cs" />
     <Compile Include="Assets\Scripts\Boss\BossAim.cs" />
     <Compile Include="Assets\Scripts\Boss\Bossfunctions.cs" />
     <Compile Include="Assets\Scripts\Boss\BossHealth.cs" />
@@ -82,12 +83,14 @@
     <Compile Include="Assets\Scripts\Projectiles\Spear.cs" />
     <Compile Include="Assets\Scripts\TestEnemy.cs" />
     <Compile Include="Assets\Scripts\Utility\AudioManager.cs" />
+    <Compile Include="Assets\Scripts\Utility\BackToMain.cs" />
     <Compile Include="Assets\Scripts\Utility\GameEnd.cs" />
     <Compile Include="Assets\Scripts\Utility\LevelChanger.cs" />
     <Compile Include="Assets\Scripts\Utility\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Utility\OffsetScroller.cs" />
     <Compile Include="Assets\Scripts\Utility\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Utility\ScreenShake.cs" />
+    <Compile Include="Assets\Scripts\Utility\TutorialManager.cs" />
     <Compile Include="Assets\Scripts\Utility\UIManager.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
