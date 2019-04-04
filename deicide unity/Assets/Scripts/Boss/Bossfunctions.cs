@@ -324,7 +324,7 @@ public class Bossfunctions : MonoBehaviour
                 if (bossPhase != 3)
                 {
                     bossPhase = 3;
-                    attackStack.Clear();
+                    ClearAttackStack();
                 }
 
                 if (attackStack.Count <= 0)
@@ -348,7 +348,7 @@ public class Bossfunctions : MonoBehaviour
                 if (bossPhase != 2)
                 {
                     bossPhase = 2;
-                    attackStack.Clear();
+                    ClearAttackStack();
                 }
 
                 if (attackStack.Count <= 0)
@@ -368,7 +368,7 @@ public class Bossfunctions : MonoBehaviour
                 if (bossPhase != 1)
                 {
                     bossPhase = 1;
-                    attackStack.Clear();
+                    ClearAttackStack();
                 }
 
                 if (attackStack.Count <= 0)
@@ -546,6 +546,44 @@ public class Bossfunctions : MonoBehaviour
                 spearsAnimator.gameObject.SetActive(true);
                 GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlaySound(8);
                 break;
+        }
+    }
+
+    private void ClearAttackStack()
+    {
+        // Clears attackStack
+        // Keeps the attacks that may not have ended yet
+        if (attackStack.Count > 1)
+        {
+            // If one of the two coming attacks are a Spears attack two of them are kept, otherwise all but one are removed
+            if (attackStack[0].GetAttackType() == AttackType.Spears || attackStack[1].GetAttackType() == AttackType.Spears)
+            {
+                for (int i = attackStack.Count - 1; i > 1; i--)
+                {
+                    attackStack.RemoveAt(i);
+                }
+            }
+            else
+            {
+                // All but one are removed
+                for (int i = attackStack.Count - 1; i > 0; i--)
+                {
+                    attackStack.RemoveAt(i);
+                }
+            }
+        }
+        else if (attackStack.Count > 0)
+        {
+            // All but one are removed
+            for (int i = attackStack.Count - 1; i > 0; i--)
+            {
+                attackStack.RemoveAt(i);
+            }
+        }
+        else
+        {
+            // Completely clears the stack
+            attackStack.Clear();
         }
     }
 
