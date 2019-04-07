@@ -25,7 +25,7 @@ public class GameEnd : MonoBehaviour
         Time.timeScale = 1.0f;
     }
 
-    void MainMenu()
+    public void MainMenu()
     {
         SceneManager.LoadScene("MenuScene");
     }
